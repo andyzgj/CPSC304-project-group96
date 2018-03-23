@@ -10,7 +10,7 @@ public class VIPInfo {
      this.points = points;}
 
      public int getID(){return id;}
-
+//todo
      public int getPoints(){return points;}
 
 }
