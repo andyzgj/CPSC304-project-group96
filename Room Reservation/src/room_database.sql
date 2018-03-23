@@ -144,7 +144,16 @@ INTO		Guest(ID, name, birthday, phone_num, credit_card_num)
 VALUES	(52033688,'Andy','1992-08-18',6205869176,1925827681016543);
 INSERT
 INTO		Guest(ID, name, birthday, phone_num, credit_card_num)
+VALUES	(13424149,'Andydada','1992-08-18',5488888888,1925827681018888);
+INSERT
+INTO		Guest(ID, name, birthday, phone_num, credit_card_num)
 VALUES	(57483960,'Jingwei','1997-01-21',5847105827,1029756472102760);
+INSERT
+INTO		Guest(ID, name, birthday, phone_num, credit_card_num)
+VALUES	(23847112,'yege','1997-01-21',7788398166,1029756472102762);
+INSERT
+INTO		Guest(ID, name, birthday, phone_num, credit_card_num)
+VALUES	(19387981,'liqingzhao','1997-01-21',7788338162,1029756472102763);
 INSERT
 INTO		Guest(ID, name, birthday, phone_num, credit_card_num)
 VALUES	(58395748,'Happy','1997-04-19',5748102958,1029584710295647);
@@ -178,6 +187,12 @@ INTO		Make_Reservation(reserve_num, number_of_guest, staying_period, discount, I
 VALUES	(12345,2,'1 day',100,52033688);
 INSERT
 INTO		Make_Reservation(reserve_num, number_of_guest, staying_period, discount, ID)
+VALUES	(12346,4,'30 day',10000,12231312);
+INSERT
+INTO		Make_Reservation(reserve_num, number_of_guest, staying_period, discount, ID)
+VALUES	(12347,1,'1 day',0.1,34324341);
+INSERT
+INTO		Make_Reservation(reserve_num, number_of_guest, staying_period, discount, ID)
 VALUES	(54321,2,'2 days',90,57483960);
 INSERT
 INTO		Make_Reservation(reserve_num, number_of_guest, staying_period, discount, ID)
@@ -195,10 +210,28 @@ INTO		Room(room_num, type, price)
 VALUES	(103,'Single Room',150);
 INSERT
 INTO		Room(room_num, type, price)
+VALUES	(105,'Single Room',150);
+INSERT
+INTO		Room(room_num, type, price)
+VALUES	(108,'Single Room',150);
+INSERT
+INTO		Room(room_num, type, price)
 VALUES	(204,'Double Room',250);
 INSERT
 INTO		Room(room_num, type, price)
+VALUES	(206,'Double Room',250);
+INSERT
+INTO		Room(room_num, type, price)
+VALUES	(208,'Double Room',250);
+INSERT
+INTO		Room(room_num, type, price)
 VALUES	(304,'Executive Room',400);
+INSERT
+INTO		Room(room_num, type, price)
+VALUES	(306,'Executive Room',400);
+INSERT
+INTO		Room(room_num, type, price)
+VALUES	(308,'Executive Room',400);
 INSERT
 INTO		Room(room_num, type, price)
 VALUES	(507,'Deluxe Suite',500);
