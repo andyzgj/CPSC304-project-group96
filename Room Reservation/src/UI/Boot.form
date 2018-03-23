@@ -49,10 +49,10 @@
               <text value="guest"/>
             </properties>
           </component>
-          <component id="cac0" class="javax.swing.JButton" binding="button2" default-binding="true">
+          <component id="cac0" class="javax.swing.JButton" binding="employeeButton" default-binding="true">
             <constraints/>
             <properties>
-              <text value="Button"/>
+              <text value="employee"/>
             </properties>
           </component>
         </children>
