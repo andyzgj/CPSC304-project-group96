@@ -12,7 +12,7 @@ public class VIPInfo extends GuestInfo{
     }
 
 
-     public int getID(){return id;}
+     public int getID(){return points;}
 
      public int getPoints(){return points;}
 
