@@ -19,7 +19,7 @@ public class GuestInfo {
     }
 
     public int getID() {
-        return credit_card_num;
+        return id;
     }
 
     public String getName() {
