@@ -20,7 +20,7 @@ public class Omanager {
         }
 
         public static Omanager getInstance() {
-            return instance;
+            return    instance;
         }
 
         public Connection getConnection() {
