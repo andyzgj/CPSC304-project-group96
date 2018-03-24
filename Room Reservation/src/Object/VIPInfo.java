@@ -8,7 +8,8 @@ public class VIPInfo extends GuestInfo{
     int points;
 
     public VIPInfo(int id, String name, Date birthday, int phone_num, int credit_card_num){
-        //todo
+        //little test
+        // andy is the best
     }
 
 
