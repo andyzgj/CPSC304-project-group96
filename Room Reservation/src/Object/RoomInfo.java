@@ -1,12 +1,12 @@
 package Object;
 
-public class Room {
+public class RoomInfo {
 
     int room_num;
     String type;
     double price;
 
-    public Room(int room_num, String type, double price){
+    public RoomInfo(int room_num, String type, double price){
         this.room_num = room_num;
         this.type = type;
         this.price = price;

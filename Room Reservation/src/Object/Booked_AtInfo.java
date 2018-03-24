@@ -1,11 +1,11 @@
 package Object;
 
-public class Booked_At {
+public class Booked_AtInfo {
 
     int room_num;
     int reserve_num;
 
-    public Booked_At(int room_num, int reserve_num){
+    public Booked_AtInfo(int room_num, int reserve_num){
         this.room_num = room_num;
         this.reserve_num = reserve_num;
     }
