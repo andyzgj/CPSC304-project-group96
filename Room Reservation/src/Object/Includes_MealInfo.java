@@ -1,6 +1,7 @@
 package Object;
 
-import java.sql.Time;
+
+import java.sql.Date;
 
 public class Includes_MealInfo {
 
@@ -8,8 +9,8 @@ public class Includes_MealInfo {
     int reserve_num;
     double price;
     String name;
-    Time time;
-    public  Includes_MealInfo(int reserve_num, double price, String name, Time time){
+    Date time;
+    public  Includes_MealInfo(int reserve_num, double price, String name, Date time){
         this.reserve_num = reserve_num;
         this.price = price;
         this.name = name;
@@ -22,6 +23,6 @@ public class Includes_MealInfo {
 
     public String getName(){return name;}
 
-    public Time time(){return time;}
+    public Date time(){return time;}
 
 }
