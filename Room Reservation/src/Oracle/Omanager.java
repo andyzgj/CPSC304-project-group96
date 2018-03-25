@@ -22,7 +22,7 @@ public class Omanager {
         public Connection getConnection() {
             if (c == null) {
                 try {
-                    DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+                   DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
                     //c = DriverManager.getConnection("jdbc:oracle:thin:@dbhost.ugrad.cs.ubc.ca:1522:ug", "ora_v4l0b", "a26821158");
                     c = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1522:ug", "ora_v4l0b", "a26821158");
                     System.out.println("Connection succeeded");

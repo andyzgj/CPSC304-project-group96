@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GuestLogin extends JFrame{
+public class GuestLogin{
 
     public GuestLogin(){
 
@@ -13,6 +13,7 @@ public class GuestLogin extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 //go to register window
                 // TODO
+                frame.dispose();
             }
         });
         loginButton.addActionListener(new ActionListener() {
@@ -57,5 +58,13 @@ public class GuestLogin extends JFrame{
     private JRadioButton guestIDRadioButton;
     private JTextField selectLogInTypeTextField;
     private JPanel buttom;
+    public static JFrame frame = new JFrame("GuestLogin");
+    public static void run() {
+
+        frame.setContentPane(new GuestLogin().mainPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
 }
 
