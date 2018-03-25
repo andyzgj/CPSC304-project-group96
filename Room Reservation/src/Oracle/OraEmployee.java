@@ -28,11 +28,11 @@ public class OraEmployee {
             ResultSet rs = st.executeQuery("select * from Employee"); //rs is a table of data representing a database result set
 
             while(rs.next()) {
-                String ename = rs.getString("employee_name");
-                int eid = rs.getInt("employee_id");
-                int phone_num = rs.getInt("phone_number");
+                String ename = rs.getString("ename");
+                int employee_id = rs.getInt("employee_ID");
+                int phone_num = rs.getInt("phone_num");
 
-                EmployeeInfo employeeInfo = new EmployeeInfo(ename,eid,phone_num);
+                EmployeeInfo employeeInfo = new EmployeeInfo(ename,employee_id,phone_num);
                 employees.add(employeeInfo);
             }
         } catch (SQLException e) {
@@ -48,7 +48,7 @@ public class OraEmployee {
         int eid = rand.nextInt(9999); //randomly generate a number between 0 and 9999
         if (!isValidEID(eid)) {
             try {
-                PreparedStatement ps = con.prepareStatement("insert into Employee values (?,?,?,?,?)");
+                PreparedStatement ps = con.prepareStatement("insert into Employee values (?,?,?)");
                 ps.setInt(1,eid);
                 ps.setString(2, ename);
                 ps.setInt(3, phone_num);

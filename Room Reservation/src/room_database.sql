@@ -329,6 +329,7 @@ INSERT
 INTO		Provides(reserve_num, stall_num)
 VALUES	(54321,76);
 
+commit work;
 
 
 
