@@ -112,24 +112,24 @@ public class OraMakeReservation {
         return true;
     }
 
-    /*
-    public List<MakeReservationInfo> getTransactionsByEmployee(int employee_id) {
+
+    public List<MakeReservationInfo> getReservationWithEmployee(int employee_id) {
         List<MakeReservationInfo> ret = new ArrayList<>();
 
         try {
             Statement st = con.createStatement();
-            String query = "select tid, tamount, tday, ttime, cid from trans_input_empl where eid = " + eid;
+            String query = "select reserve_num, number_of_guest, staying_period, discount, ID from reserve_with_employee where employee_ID = " + employee_id;
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                int tid = rs.getInt("tid");
-                int tamount = rs.getInt("tamount");
-                Date tday = rs.getDate("tday");
-                String ttime = rs.getString("ttime");
-                int cid = rs.getInt("cid");
+                int reserve_num = rs.getInt("reserve_num");
+                int number_of_guest = rs.getInt("number_of_guest");
+                String staying_period = rs.getString("staying_period");
+                double discount = rs.getDouble("discount");
+                int id = rs.getInt("ID");
 
-                MakeReservationInfo ti = new MakeReservationInfo(tid, tamount, tday, ttime, cid, eid);
-                ret.add(ti);
+                MakeReservationInfo m = new MakeReservationInfo(reserve_num, number_of_guest, staying_period, discount, id);
+                ret.add(m);
             }
 
 
@@ -138,5 +138,29 @@ public class OraMakeReservation {
         }
         return ret;
     }
-    */
+
+
+
+    private void createReservationWithEmployee() {
+        try {
+            Statement st = con.createStatement();
+            String query = "create view reserve_with_employee as "
+                    + "select Employee.ename, Employee.employee_ID, Employee.phone_num, "
+                    + "Make_Reservation.reserve_num, Make_Reservation.number_of_guest, Make_Reservation.staying_period, Make_Reservation.discount, Make_Reservation.ID "
+                    + "from Employee join Approve on Employee.employee_ID = Approve.employee_ID"
+                    + " join Make_Reservation on Make_Reservation.reserve_num = Approve.reserve_num";
+            st.executeQuery(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void dropReservationWithEmployee() {
+        try {
+            Statement st = con.createStatement();
+            st.executeQuery("drop view reserve_with_employee");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
