@@ -83,7 +83,7 @@ public class OraGuest {
 
         }
 
-    public boolean isValidID(int id) {
+        public boolean isValidID(int id) {
         try {
             Statement st = c.createStatement();
             String query = "select 1 from Guest where ID = " + id;
@@ -114,6 +114,24 @@ public class OraGuest {
                 return false;
         }
 
+    public GuestInfo getGuestById(int id) {
+        GuestInfo gi = null;
+        try {
+            Statement st = c.createStatement();
+            String query = "select * from Guest where ID = " + id;
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()) {
+                String name = rs.getString("gname");
+                Date birthday = rs.getDate("birthday");
+                int phone_num = rs.getInt("phone_num");
+                int credit = rs.getInt("credit_card_num");
+                gi = new GuestInfo(id,name,birthday,phone_num, credit);
 
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return gi;
+    }
 
 }
