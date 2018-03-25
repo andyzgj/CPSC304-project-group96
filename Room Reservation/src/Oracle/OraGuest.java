@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 import Object.GuestInfo;
 
 public class OraGuest {
 
-
+        Random rand;
         Omanager manager;
         Connection c;
 
@@ -25,7 +27,7 @@ public class OraGuest {
 
                 while (rs.next()) {
                     int id = rs.getInt("id");
-                    String name = rs.getString("name");
+                    String name = rs.getString("gname");
                     Date birthday = rs.getDate("birthday");
                     int phone = rs.getInt("phone_num");
                     int credit = rs.getInt("credit_card_num");
@@ -43,7 +45,7 @@ public class OraGuest {
 
         public void InsertGuest(int id , String name , Date birthday, int phone, int credit ) {
             PreparedStatement ps;
-
+            rand = new Random();
             try {
                 ps = c.prepareStatement("INSERT INTO Guest VALUES (?,?,?,?,?)");
                 ps.setInt(1, id);
@@ -81,9 +83,21 @@ public class OraGuest {
 
         }
 
+    public boolean isValidID(int id) {
+        try {
+            Statement st = c.createStatement();
+            String query = "select 1 from Guest where ID = " + id;
+            ResultSet rs = st.executeQuery(query);
+            if (!rs.next()) return false; //when there are no more guest id in the result set
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
         public boolean updateGuestInfo( int id , String name , Date birthday, String phone, int credit_card_num) {
             manager.getConnection();
-            int rowCount = manager.execute("UPDATE Guest SET name = "
+            int rowCount = manager.execute("UPDATE Guest SET gname = "
                     + name
                     + " , birthday = "
                     + birthday
