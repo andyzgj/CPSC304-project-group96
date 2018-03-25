@@ -83,7 +83,7 @@ public class OraGuest {
 
         }
 
-    public boolean isValidID(int id) {
+        public boolean isValidID(int id) {
         try {
             Statement st = c.createStatement();
             String query = "select 1 from Guest where ID = " + id;

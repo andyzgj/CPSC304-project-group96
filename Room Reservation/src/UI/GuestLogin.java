@@ -13,21 +13,30 @@ public class GuestLogin{
             public void actionPerformed(ActionEvent e) {
                 //go to register window
                 // TODO
-                frame.dispose();
+                GuestRegister.run();
             }
         });
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //log in with phone#
-                if(selectID = false){
-                    //call login
-                    //TODO
-                }
-                //log in with ID
-                else{
-                    //call login
-                    //TODO
+                try{
+                    int a = Integer.parseInt(selectLogInTypeTextField.getText());
+                    if(true/*valid*/){
+                        if(selectID = false){
+                            GuestMain.run(a,1);
+                            frame.dispose();
+                        }
+                        //log in with ID
+                        else{
+                            GuestMain.run(a,0);
+                            frame.dispose();
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(frame, "User does not exist!");
+                    }
+                }catch(Exception ex){
+                    JOptionPane.showMessageDialog(frame, "Please provide a valid number!");
                 }
             }
         });
