@@ -45,11 +45,11 @@ public class OraEmployee {
     //insert a new employee information
     public void insertEmployee(String ename, int phone_num) {
         rand = new Random();
-        int eid = rand.nextInt(9999); //randomly generate a number between 0 and 9999
-        if (!isValidEID(eid)) {
+        int employee_ID = rand.nextInt(9999); //randomly generate a number between 0 and 9999
+        if (!isValidEID(employee_ID)) {
             try {
                 PreparedStatement ps = con.prepareStatement("insert into Employee values (?,?,?)");
-                ps.setInt(1,eid);
+                ps.setInt(1,employee_ID);
                 ps.setString(2, ename);
                 ps.setInt(3, phone_num);
                 ps.executeUpdate();
@@ -62,10 +62,10 @@ public class OraEmployee {
     }
 
 
-    public boolean isValidEID(int eid) {
+    public boolean isValidEID(int employee_ID) {
         try {
             Statement st = con.createStatement();
-            String query = "select 1 from Employee where eid = " + eid;
+            String query = "select 1 from Employee where employee_ID = " + employee_ID;
             ResultSet rs = st.executeQuery(query);
             if (!rs.next()) return false; //when there are no more employee id in the result set
         } catch (SQLException e) {
@@ -74,25 +74,26 @@ public class OraEmployee {
         return true;
     }
 
-    public int getEID(String ename) {
-        int eid = 0;
+    public String getEname(int employee_ID) {
+            String ename = null;
         try {
             Statement st = con.createStatement();
-            String query = "select eid from Employee where ename = '" + ename + "'";
+            String query = "select ename from Employee where employee_ID = " + employee_ID;
             ResultSet rs = st.executeQuery(query);
-            if (rs.next()) eid = rs.getInt("eid");
+            if (rs.next())
+                ename = rs.getString("ename");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return eid;
+        return ename;
     }
 
 
 
 
-    public void deleteEmployeeInfo(int eid) {
+    public void deleteEmployeeInfo(int employee_ID) {
         try {
-            PreparedStatement ps = con.prepareStatement("delete from Employee where eid = " + eid);
+            PreparedStatement ps = con.prepareStatement("delete from Employee where employee_ID = " + employee_ID);
             ps.executeUpdate();
             con.commit();
             ps.close();

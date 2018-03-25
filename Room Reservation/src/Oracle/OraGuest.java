@@ -25,7 +25,7 @@ public class OraGuest {
 
                 while (rs.next()) {
                     int id = rs.getInt("id");
-                    String name = rs.getString("name");
+                    String name = rs.getString("gname");
                     Date birthday = rs.getDate("birthday");
                     int phone = rs.getInt("phone_num");
                     int credit = rs.getInt("credit_card_num");
@@ -83,7 +83,7 @@ public class OraGuest {
 
         public boolean updateGuestInfo( int id , String name , Date birthday, String phone, int credit_card_num) {
             manager.getConnection();
-            int rowCount = manager.execute("UPDATE Guest SET name = "
+            int rowCount = manager.execute("UPDATE Guest SET gname = "
                     + name
                     + " , birthday = "
                     + birthday
