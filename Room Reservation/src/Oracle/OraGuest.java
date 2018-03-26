@@ -126,7 +126,7 @@ public class OraGuest {
                 return false;
         }
 
-    public GuestInfo getGuestById(int id) {
+        public GuestInfo getGuestById(int id) {
         GuestInfo gi = null;
         try {
             Statement st = c.createStatement();
@@ -169,7 +169,7 @@ public class OraGuest {
 
     }
 
-    public void deleteGuest(int id) {
+        public void deleteGuest(int id) {
         try {
             PreparedStatement ps = c.prepareStatement("DELETE from Guest WHERE ID = " + id);
             ps.executeUpdate();

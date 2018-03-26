@@ -3,6 +3,7 @@ package Oracle;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import Object.Includes_MealInfo;
 
 
 public class OraIncludes_Meal {
@@ -14,8 +15,8 @@ public class OraIncludes_Meal {
         con = manager.getConnection();
     }
 
-    public List<Object.Includes_MealInfo> getMeal() {
-        List<Object.Includes_MealInfo> meal = new ArrayList<>();
+    public List<Includes_MealInfo> getMeal() {
+        List<Includes_MealInfo> meal = new ArrayList<>();
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select * from Includes_Meal");
@@ -26,7 +27,7 @@ public class OraIncludes_Meal {
                 String name = rs.getString("mname");
                 Date time = rs.getDate("time");
 
-                Object.Includes_MealInfo imi = new Object.Includes_MealInfo(reserve_num,price,name,time);
+                Includes_MealInfo imi = new Includes_MealInfo(reserve_num,price,name,time);
                 meal.add(imi);
             }
 
