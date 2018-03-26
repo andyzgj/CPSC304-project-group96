@@ -1,5 +1,7 @@
 package UI;
 
+import Oracle.OraGuest;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,21 +21,28 @@ public class GuestLogin{
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //log in with phone#
+
                 try{
                     int a = Integer.parseInt(selectLogInTypeTextField.getText());
-                    if(true/*valid*/){
-                        if(selectID = false){
+                    //log in with phone#
+                    if(selectID = false){
+                        if(gm.isValidPhoneNumber(a)){
                             GuestMain.run(a,1);
                             frame.dispose();
                         }
-                        //log in with ID
                         else{
+                            JOptionPane.showMessageDialog(frame, "Phone Number does not exist!");
+                        }
+                    }
+                        //log in with ID
+                    else{
+                        if(gm.isValidID(a)){
                             GuestMain.run(a,0);
                             frame.dispose();
                         }
-                    }else{
-                        JOptionPane.showMessageDialog(frame, "User does not exist!");
+                        else{
+                            JOptionPane.showMessageDialog(frame, "User ID does not exist!");
+                        }
                     }
                 }catch(Exception ex){
                     JOptionPane.showMessageDialog(frame, "Please provide a valid number!");
@@ -67,9 +76,12 @@ public class GuestLogin{
     private JRadioButton guestIDRadioButton;
     private JTextField selectLogInTypeTextField;
     private JPanel buttom;
-    public static JFrame frame = new JFrame("GuestLogin");
-    public static void run() {
+    public static JFrame frame;
+    private OraGuest gm = new OraGuest();
 
+
+    public static void run() {
+        frame = new JFrame("GuestLogin");
         frame.setContentPane(new GuestLogin().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
