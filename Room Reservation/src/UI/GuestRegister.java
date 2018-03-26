@@ -71,9 +71,6 @@ public class GuestRegister extends JDialog {
 
     private void onOK() {
         // add your code here
-        int y = 1900 + year.getSelectedIndex();
-        int m = 1 + month.getSelectedIndex();
-        int d = 1 + date.getSelectedIndex();
         try{
             int y = 1900 + year.getSelectedIndex();
             int m = 1 + month.getSelectedIndex();
