@@ -63,14 +63,15 @@ public class OraVIP {
         return null;
     }
 
-    public boolean deleteVIP(int id) {
-        manager.getConnection();
-        int rowCount = manager.execute("DELETE from VIP WHERE id = " + id);
-        manager.disconnect();
-        if (rowCount == 1)
-            return true;
-        else
-            return false;
+    public void deleteVIP(int id) {
+        try {
+            PreparedStatement ps = con.prepareStatement("DELETE from VIP WHERE ID = " + id);
+            ps.executeUpdate();
+            con.commit();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean updateVIP( int id , double points) {

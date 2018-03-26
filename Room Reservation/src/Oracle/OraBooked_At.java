@@ -3,7 +3,7 @@ package Oracle;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+import Object.Booked_AtInfo;
 public class OraBooked_At {
     Omanager manager;
     Connection con;
@@ -14,17 +14,17 @@ public class OraBooked_At {
     }
 
     //get booking information
-    public List<Object.Booked_AtInfo> getBooked_At() {
-        List<Object.Booked_AtInfo> booklist = new ArrayList<>();
+    public List<Booked_AtInfo> getBooked_At() {
+        List<Booked_AtInfo> booklist = new ArrayList<>();
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select * from BOOKED_AT");
+            ResultSet rs = st.executeQuery("select * from Booked_At");
 
             while (rs.next()) {
                 int room_num = rs.getInt("room_num");
                 int reserve_num = rs.getInt("reserve_num");
 
-                Object.Booked_AtInfo bai = new Object.Booked_AtInfo(room_num,reserve_num);
+                Booked_AtInfo bai = new Booked_AtInfo(room_num,reserve_num);
                 booklist.add(bai);
             }
 
@@ -40,7 +40,7 @@ public class OraBooked_At {
         PreparedStatement ps;
 
         try {
-            ps = con.prepareStatement("INSERT INTO BOOKED_AT VALUES (?,?)");
+            ps = con.prepareStatement("insert into Booked_At values (?,?)");
             ps.setInt(1, room_num);
             ps.setInt(2, reserve_num);
 

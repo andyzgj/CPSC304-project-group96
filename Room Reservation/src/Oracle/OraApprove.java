@@ -16,17 +16,17 @@ public class OraApprove {
     }
 
     //get information about approval
-    public List<Object.ApproveInfo> getApprove() {
-        List<Object.ApproveInfo> approvelist = new ArrayList<>();
+    public List<ApproveInfo> getApprove() {
+        List<ApproveInfo> approvelist = new ArrayList<>();
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select * from APPROVE");
+            ResultSet rs = st.executeQuery("select * from Approve");
 
             while (rs.next()) {
                 int reserve_num = rs.getInt("reserve_num");
                 int employee_ID = rs.getInt("employee_ID");
 
-                Object.ApproveInfo ai = new Object.ApproveInfo(reserve_num,employee_ID);
+                ApproveInfo ai = new ApproveInfo(reserve_num,employee_ID);
                 approvelist.add(ai);
             }
 
@@ -43,7 +43,7 @@ public class OraApprove {
         PreparedStatement ps;
 
         try {
-            ps = con.prepareStatement("INSERT INTO APPROVE VALUES (?,?)");
+            ps = con.prepareStatement("insert into Approve values (?,?)");
             ps.setInt(1, reserve_num);
             ps.setInt(2, employee_ID);
 

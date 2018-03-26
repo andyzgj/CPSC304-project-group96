@@ -134,4 +134,15 @@ public class OraGuest {
         return gi;
     }
 
+    public void deleteGuest(int id) {
+        try {
+            PreparedStatement ps = c.prepareStatement("DELETE from Guest WHERE ID = " + id);
+            ps.executeUpdate();
+            c.commit();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

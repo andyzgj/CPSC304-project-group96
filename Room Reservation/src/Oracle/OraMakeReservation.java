@@ -82,14 +82,15 @@ public class OraMakeReservation {
 
     }
 
-    public boolean deleteReservation(int reserve_num) {
-        manager.getConnection();
-        int rowCount = manager.execute("DELETE from Make_Reservation WHERE reserve_nun = " + reserve_num);
-        manager.disconnect();
-        if (rowCount == 1)
-            return true;
-        else
-            return false;
+    public void deleteReservation(int reserve_num) {
+            try {
+                PreparedStatement ps = con.prepareStatement("DELETE from Make_Reservation WHERE reserve_nun = " + reserve_num);
+                ps.executeUpdate();
+                con.commit();
+                ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
     }
 
     public int generateReserveNum() {
@@ -131,7 +132,7 @@ public class OraMakeReservation {
                 MakeReservationInfo m = new MakeReservationInfo(reserve_num, number_of_guest, staying_period, discount, id);
                 ret.add(m);
             }
-
+            dropReservationWithEmployee();
 
         } catch (SQLException e) {
             e.printStackTrace();
