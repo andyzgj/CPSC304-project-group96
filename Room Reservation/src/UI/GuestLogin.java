@@ -23,9 +23,9 @@ public class GuestLogin{
             public void actionPerformed(ActionEvent e) {
 
                 try{
-                    int a = Integer.parseInt(selectLogInTypeTextField.getText());
                     //log in with phone#
-                    if(selectID = false){
+                    if(selectID == false){
+                        long a = Long.parseLong(selectLogInTypeTextField.getText());
                         if(gm.isValidPhoneNumber(a)){
                             GuestMain.run(a,1);
                             frame.dispose();
@@ -35,7 +35,8 @@ public class GuestLogin{
                         }
                     }
                         //log in with ID
-                    else{
+                    else if(selectID == true){
+                        int a = Integer.parseInt(selectLogInTypeTextField.getText());
                         if(gm.isValidID(a)){
                             GuestMain.run(a,0);
                             frame.dispose();
@@ -62,7 +63,6 @@ public class GuestLogin{
             }
         });
     }
-    private boolean selectID = false;
     private JPanel mainPanel;
     private JRadioButton phoneNumberRadioButton;
     private JButton registerButton;
@@ -78,8 +78,7 @@ public class GuestLogin{
     private JPanel buttom;
     public static JFrame frame;
     private OraGuest gm = new OraGuest();
-
-
+    private boolean selectID = guestIDRadioButton.isSelected();
     public static void run() {
         frame = new JFrame("GuestLogin");
         frame.setContentPane(new GuestLogin().mainPanel);

@@ -43,6 +43,8 @@ public class OraGuest {
             return guests;
         }
 
+        /*TODO: CHANGE SIGNATURE TO public void insertGuest(String name, Date birthday, long phone, long credit)
+                ID should automatically assigned when inserting a guest, make sure no duplicated ID*/
         public void InsertGuest(int id , String name , Date birthday, int phone, int credit ) {
             PreparedStatement ps;
             rand = new Random();
@@ -94,8 +96,8 @@ public class OraGuest {
         }
         return true;
     }
-
-    public boolean isValidPhoneNumber(int phone_num) {
+        /*TODO: CHANGE SIGNATURE TO public boolean isValidPhoneNumber(long phone_num)*/
+        public boolean isValidPhoneNumber(int phone_num) {
         try {
             Statement st = c.createStatement();
             String query = "select 1 from Guest where phone_num = " + phone_num;
@@ -106,7 +108,8 @@ public class OraGuest {
         }
         return true;
     }
-
+        /*TODO: CHANGE SIGNATURE TO public boolean updateGuestInfo( int id , String name , Date birthday, long phone, int credit_card_num)
+        *       Not sure if type of phone should change from String to Long.*/
         public boolean updateGuestInfo( int id , String name , Date birthday, String phone, int credit_card_num) {
             manager.getConnection();
             int rowCount = manager.execute("UPDATE Guest SET gname = "
@@ -146,8 +149,8 @@ public class OraGuest {
         }
         return gi;
     }
-
-    public GuestInfo getGuestByPhoneNumber(int phone_num) {
+        /*TODO: CHANGE SIGNATURE TO public GuestInfo getGuestByPhoneNumber(long phone_num)*/
+        public GuestInfo getGuestByPhoneNumber(int phone_num) {
         GuestInfo gi = null;
         try {
             Statement st = c.createStatement();
