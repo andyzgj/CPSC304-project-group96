@@ -95,6 +95,18 @@ public class OraGuest {
         return true;
     }
 
+    public boolean isValidPhoneNumber(int phone_num) {
+        try {
+            Statement st = c.createStatement();
+            String query = "select 1 from Guest where phone_num = " + phone_num;
+            ResultSet rs = st.executeQuery(query);
+            if (!rs.next()) return false; //when there are no more guest id in the result set
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
         public boolean updateGuestInfo( int id , String name , Date birthday, String phone, int credit_card_num) {
             manager.getConnection();
             int rowCount = manager.execute("UPDATE Guest SET gname = "
@@ -128,10 +140,33 @@ public class OraGuest {
                 gi = new GuestInfo(id,name,birthday,phone_num, credit);
 
             }
+            st.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return gi;
+    }
+
+    public GuestInfo getGuestByPhoneNumber(int phone_num) {
+        GuestInfo gi = null;
+        try {
+            Statement st = c.createStatement();
+            String query = "select * from Guest where phone_num = " + phone_num;
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()) {
+                int id = rs.getInt("ID");
+                String name = rs.getString("gname");
+                Date birthday = rs.getDate("birthday");
+                int credit = rs.getInt("credit_card_num");
+                gi = new GuestInfo(id,name,birthday,phone_num, credit);
+
+            }
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return gi;
+
     }
 
     public void deleteGuest(int id) {
