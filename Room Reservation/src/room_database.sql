@@ -29,7 +29,7 @@ CREATE TABLE Guest(
 	ID					INT,
 	gname 	 			VARCHAR(20),
 	birthday 			DATE,
-	phone_num 			INT,
+	phone_num 			INT CHECK (phone_num <= 9999999999 AND phone_num >=1000000000),
 	credit_card_num 	INT,
 	CONSTRAINT pk_Guest PRIMARY KEY (ID)
 );
