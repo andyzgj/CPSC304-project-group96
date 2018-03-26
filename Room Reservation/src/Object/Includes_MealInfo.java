@@ -24,5 +24,4 @@ public class Includes_MealInfo {
     public String getName(){return name;}
 
     public Date time(){return time;}
-
 }
