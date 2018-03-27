@@ -27,10 +27,31 @@ public class GuestMain {
             }
         });
     }
+
+    public GuestMain(long phone_num,int type) {
+
+            guest = gm.getGuestByPhoneNumber(phone_num);
+
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+    }
     public static void run(int id,int type) {
 
         JFrame frame = new JFrame("GuestMain");
         frame.setContentPane(new GuestMain(id,type).mainPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
+    public static void run(long phone_num,int type) {
+
+        JFrame frame = new JFrame("GuestMain");
+        frame.setContentPane(new GuestMain(phone_num,type).mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

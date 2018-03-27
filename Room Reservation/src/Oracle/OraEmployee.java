@@ -65,7 +65,7 @@ public class OraEmployee {
     public boolean isValidEID(int employee_ID) {
         try {
             Statement st = con.createStatement();
-            String query = "select 1 from Employee where employee_ID = " + employee_ID;
+            String query = "select * from Employee where employee_ID = " + employee_ID;
             ResultSet rs = st.executeQuery(query);
             if (!rs.next()) return false; //when there are no more employee id in the result set
         } catch (SQLException e) {

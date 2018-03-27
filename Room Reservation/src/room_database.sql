@@ -30,7 +30,7 @@ CREATE TABLE Guest(
 	gname 	 			VARCHAR(20),
 	birthday 			DATE,
 	phone_num 			INT CHECK (phone_num <= 9999999999 AND phone_num >=1000000000),
-	credit_card_num 	INT,
+	credit_card_num 	INT CHECK (credit_card_num <= 9999999999999999 AND credit_card_num>=1000000000000000),
 	CONSTRAINT pk_Guest PRIMARY KEY (ID)
 );
 grant select on Guest to public;

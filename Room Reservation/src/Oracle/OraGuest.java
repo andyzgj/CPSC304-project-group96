@@ -10,7 +10,7 @@ import Object.GuestInfo;
 
 public class OraGuest {
 
-        Random rand;
+        Random rand = new Random();;
         Omanager manager;
         Connection c;
 
@@ -46,7 +46,7 @@ public class OraGuest {
 
         public void InsertGuest(String name , Date birthday, long phone, long credit ) {
             PreparedStatement ps;
-            rand = new Random();
+
             int id = generateID();
             try {
                 ps = c.prepareStatement("INSERT INTO Guest VALUES (?,?,?,?,?)");
@@ -86,7 +86,7 @@ public class OraGuest {
         }
 
         public int generateID(){
-            rand = new Random();
+
             int id = rand.nextInt(89999999) + 10000000; //randomly generate a number between 0 and 9999
             if (!isValidID(id)) {
                 return generateID();
@@ -97,7 +97,7 @@ public class OraGuest {
         public boolean isValidID(int id) {
         try {
             Statement st = c.createStatement();
-            String query = "select 1 from Guest where ID = " + id;
+            String query = "select * from Guest where ID = " + id;
             ResultSet rs = st.executeQuery(query);
             if (!rs.next()) return false; //when there are no more guest id in the result set
         } catch (SQLException e) {
