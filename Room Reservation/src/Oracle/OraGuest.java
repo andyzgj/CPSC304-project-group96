@@ -29,8 +29,8 @@ public class OraGuest {
                     int id = rs.getInt("id");
                     String name = rs.getString("gname");
                     Date birthday = rs.getDate("birthday");
-                    int phone = rs.getInt("phone_num");
-                    int credit = rs.getInt("credit_card_num");
+                    long phone = rs.getLong("phone_num");
+                    long credit = rs.getLong("credit_card_num");
 
                     GuestInfo gi = new GuestInfo(id, name, birthday, phone, credit);
                     guests.add(gi);
@@ -43,11 +43,11 @@ public class OraGuest {
             return guests;
         }
 
-        /*TODO: CHANGE SIGNATURE TO public void insertGuest(String name, Date birthday, long phone, long credit)
-                ID should automatically assigned when inserting a guest, make sure no duplicated ID*/
-        public void InsertGuest(int id , String name , Date birthday, int phone, int credit ) {
+
+        public void InsertGuest(String name , Date birthday, long phone, long credit ) {
             PreparedStatement ps;
             rand = new Random();
+            int id = generateID();
             try {
                 ps = c.prepareStatement("INSERT INTO Guest VALUES (?,?,?,?,?)");
                 ps.setInt(1, id);
@@ -56,12 +56,12 @@ public class OraGuest {
 
                 ps.setDate(3, birthday);
 
-                ps.setInt(4, phone);
+                ps.setLong(4, phone);
 
                 if (credit == 0) {
                     ps.setNull(5, java.sql.Types.INTEGER);
                 } else {
-                    ps.setInt(5, credit);
+                    ps.setLong(5, credit);
                 }
 
                 ps.executeUpdate();
@@ -85,6 +85,15 @@ public class OraGuest {
 
         }
 
+        public int generateID(){
+            rand = new Random();
+            int id = rand.nextInt(89999999) + 10000000; //randomly generate a number between 0 and 9999
+            if (!isValidID(id)) {
+                return generateID();
+            }
+            return id;
+        }
+
         public boolean isValidID(int id) {
         try {
             Statement st = c.createStatement();
@@ -96,8 +105,8 @@ public class OraGuest {
         }
         return true;
     }
-        /*TODO: CHANGE SIGNATURE TO public boolean isValidPhoneNumber(long phone_num)*/
-        public boolean isValidPhoneNumber(int phone_num) {
+
+        public boolean isValidPhoneNumber(long phone_num) {
         try {
             Statement st = c.createStatement();
             String query = "select 1 from Guest where phone_num = " + phone_num;
@@ -108,9 +117,8 @@ public class OraGuest {
         }
         return true;
     }
-        /*TODO: CHANGE SIGNATURE TO public boolean updateGuestInfo( int id , String name , Date birthday, long phone, int credit_card_num)
-        *       Not sure if type of phone should change from String to Long.*/
-        public boolean updateGuestInfo( int id , String name , Date birthday, String phone, int credit_card_num) {
+
+        public boolean updateGuestInfo( int id , String name , Date birthday, long phone, long credit_card_num) {
             manager.getConnection();
             int rowCount = manager.execute("UPDATE Guest SET gname = "
                     + name
@@ -138,8 +146,8 @@ public class OraGuest {
             while(rs.next()) {
                 String name = rs.getString("gname");
                 Date birthday = rs.getDate("birthday");
-                int phone_num = rs.getInt("phone_num");
-                int credit = rs.getInt("credit_card_num");
+                long phone_num = rs.getLong("phone_num");
+                long credit = rs.getLong("credit_card_num");
                 gi = new GuestInfo(id,name,birthday,phone_num, credit);
 
             }
@@ -149,8 +157,8 @@ public class OraGuest {
         }
         return gi;
     }
-        /*TODO: CHANGE SIGNATURE TO public GuestInfo getGuestByPhoneNumber(long phone_num)*/
-        public GuestInfo getGuestByPhoneNumber(int phone_num) {
+
+        public GuestInfo getGuestByPhoneNumber(long phone_num) {
         GuestInfo gi = null;
         try {
             Statement st = c.createStatement();
@@ -160,7 +168,7 @@ public class OraGuest {
                 int id = rs.getInt("ID");
                 String name = rs.getString("gname");
                 Date birthday = rs.getDate("birthday");
-                int credit = rs.getInt("credit_card_num");
+                long credit = rs.getLong("credit_card_num");
                 gi = new GuestInfo(id,name,birthday,phone_num, credit);
 
             }
