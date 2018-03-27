@@ -23,7 +23,7 @@ public class GuestRegister extends JDialog {
     private JLabel cardtxt;
     private JTextField name;
     private JLabel nametxt;
-    private static int id = 60000000;
+    private  int id;
     private static JFrame frame = new JFrame("GuestRegister");
     OraGuest gm = new OraGuest();
 
@@ -77,9 +77,8 @@ public class GuestRegister extends JDialog {
             int d = 1 + date.getSelectedIndex();
             long ph = Long.parseLong(phone.getText());
             long cr = Long.parseLong(credit.getText());
-            gm.InsertGuest(name.getText(),new Date(y,m,d),ph,cr);  //TODO: wait for PH an CR type in InsertGuest to change to LONG!!!!
+            id = gm.InsertGuest(name.getText(),new Date(y,m,d),ph,cr);  //TODO: wait for PH an CR type in InsertGuest to change to LONG!!!!
             JOptionPane.showMessageDialog(frame, "guest info check - birthday: "+y+" "+m+" "+d+" Name: "+name.getText()+" id: "+id+" phone: "+ph+" Card: "+cr);
-            id++;
             frame.dispose();
         }catch(Exception e){
             JOptionPane.showMessageDialog(frame, "INVALID Phone Number or Credit Card Number!");

@@ -44,26 +44,20 @@ public class OraGuest {
         }
 
 
-        public void InsertGuest(String name , Date birthday, long phone, long credit ) {
+        public int InsertGuest(String name , Date birthday, long phone, long credit ) {
             PreparedStatement ps;
-
             int id = generateID();
             try {
                 ps = c.prepareStatement("INSERT INTO Guest VALUES (?,?,?,?,?)");
                 ps.setInt(1, id);
-
                 ps.setString(2, name);
-
                 ps.setDate(3, birthday);
-
                 ps.setLong(4, phone);
-
                 if (credit == 0) {
                     ps.setNull(5, java.sql.Types.INTEGER);
                 } else {
                     ps.setLong(5, credit);
                 }
-
                 ps.executeUpdate();
                 c.commit();
                 ps.close();
@@ -82,7 +76,7 @@ public class OraGuest {
                     System.exit(-1);
                 }
             }
-
+           return id;
         }
 
         public int generateID(){
