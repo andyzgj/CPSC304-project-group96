@@ -7,10 +7,10 @@ public class GuestInfo {
     int id;
     String name;
     Date birthday;
-    int phone_num;
-    int credit_card_num;
+    long phone_num;
+    long credit_card_num;
 
-    public GuestInfo(int id, String name, Date birthday, int phone_num, int credit_card_num) {
+    public GuestInfo(int id, String name, Date birthday, long phone_num, long credit_card_num) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
@@ -19,7 +19,7 @@ public class GuestInfo {
     }
 
     public int getID() {
-        return phone_num;
+        return id;
     }
 
     public String getName() {
@@ -30,11 +30,11 @@ public class GuestInfo {
         return birthday;
     }
 
-    public int getPhoneNum(){
+    public long getPhoneNum(){
         return phone_num;
     }
 
-    public int getCredit_card_num(){
+    public long getCredit_card_num(){
         return phone_num;
     }
 
