@@ -70,7 +70,7 @@ public class OraGuest {
         public int generateID(){
 
             int id = rand.nextInt(89999999) + 10000000; //randomly generate a number between 0 and 9999
-            if (!isValidID(id)) {
+            if (isValidID(id)) {
                 return generateID();
             }
             return id;
