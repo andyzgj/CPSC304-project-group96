@@ -61,20 +61,8 @@ public class OraGuest {
                 ps.executeUpdate();
                 c.commit();
                 ps.close();
-            }
-            catch (SQLException ex)
-            {
-                System.out.println("Message: " + ex.getMessage());
-                try
-                {
-                    // undo the insert
-                    c.rollback();
-                }
-                catch (SQLException ex2)
-                {
-                    System.out.println("Message: " + ex2.getMessage());
-                    System.exit(-1);
-                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
            return id;
         }

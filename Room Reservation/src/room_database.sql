@@ -45,10 +45,11 @@ CREATE TABLE VIP(
 grant select on VIP to public;
 
 CREATE TABLE Make_Reservation(
-	reserve_num				INT,
+	reserve_num						INT,
 	number_of_guest			INT,
-	staying_period			VARCHAR(20),
-	discount				FLOAT,
+	start_date      		  DATE,
+	end_date     					DATE,
+	discount							FLOAT,
 	ID						INT NOT NULL,
 	CONSTRAINT pk_Make_Reservation PRIMARY KEY (reserve_num),
 	CONSTRAINT fk_Make_Reservation FOREIGN KEY (ID) REFERENCES Guest(ID)
@@ -175,26 +176,26 @@ VALUES	(13424149,5000);
 
 
 INSERT
-INTO		Make_Reservation(reserve_num, number_of_guest, staying_period, discount, ID)
-VALUES	(12345,2,'1 day',100,52033688);
+INTO		Make_Reservation(reserve_num, number_of_guest, start_date, end_date, discount, ID)
+VALUES	(12345,2,'2005-10-24', '2005-10-25',100,52033688);
 INSERT
-INTO		Make_Reservation(reserve_num, number_of_guest, staying_period, discount, ID)
-VALUES	(12346,4,'30 day',10000,52033688);
+INTO		Make_Reservation(reserve_num, number_of_guest, start_date, end_date, discount, ID)
+VALUES	(12346,4,'2010-08-14', '2005-08-16',10000,52033688);
 INSERT
-INTO		Make_Reservation(reserve_num, number_of_guest, staying_period, discount, ID)
-VALUES	(12347,1,'1 day',0.1,19387981);
+INTO		Make_Reservation(reserve_num, number_of_guest, start_date, end_date, discount, ID)
+VALUES	(12347,1,'2011-12-31', '2012-01-01',50,19387981);
 INSERT
-INTO		Make_Reservation(reserve_num, number_of_guest, staying_period, discount, ID)
-VALUES	(54321,2,'2 days',90,57483960);
+INTO		Make_Reservation(reserve_num, number_of_guest, start_date, end_date, discount, ID)
+VALUES	(54321,2,'2014-13-14', '2014-13-18',90,57483960);
 INSERT
-INTO		Make_Reservation(reserve_num, number_of_guest, staying_period, discount, ID)
-VALUES	(99873,2,'3 days',0,58395748);
+INTO		Make_Reservation(reserve_num, number_of_guest, start_date, end_date, discount, ID)
+VALUES	(99873,2,'2015-05-24', '2015-06-01',0,58395748);
 INSERT
-INTO		Make_Reservation(reserve_num, number_of_guest, staying_period, discount, ID)
-VALUES	(19283,3,'3 days',0,67583920);
+INTO		Make_Reservation(reserve_num, number_of_guest, start_date, end_date, discount, ID)
+VALUES	(19283,3,'2016-11-11', '2016-11-27',0,67583920);
 INSERT
-INTO		Make_Reservation(reserve_num, number_of_guest, staying_period, discount, ID)
-VALUES	(28493,2,'5 days',0,58492049);
+INTO		Make_Reservation(reserve_num, number_of_guest, start_date, end_date, discount, ID)
+VALUES	(28493,2,'2017-02-14', '2017-02-30',0,58492049);
 
 
 INSERT
