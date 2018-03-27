@@ -7,6 +7,7 @@ public class GuestInfoWindow extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private static GuestInfoWindow dialog = new GuestInfoWindow();
 
     public GuestInfoWindow() {
         setContentPane(contentPane);
@@ -51,8 +52,8 @@ public class GuestInfoWindow extends JDialog {
         dispose();
     }
 
-    public static void main(String[] args) {
-        GuestInfoWindow dialog = new GuestInfoWindow();
+    public static void run() {
+
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);

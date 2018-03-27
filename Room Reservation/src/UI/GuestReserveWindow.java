@@ -7,6 +7,7 @@ public class GuestReserveWindow extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private static GuestReserveWindow dialog = new GuestReserveWindow();
 
     public GuestReserveWindow() {
         setContentPane(contentPane);
@@ -51,8 +52,7 @@ public class GuestReserveWindow extends JDialog {
         dispose();
     }
 
-    public static void main(String[] args) {
-        GuestReserveWindow dialog = new GuestReserveWindow();
+    public static void run() {
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);

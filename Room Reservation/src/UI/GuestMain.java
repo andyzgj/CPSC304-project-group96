@@ -39,6 +39,24 @@ public class GuestMain {
             guest = gm.getGuestByPhoneNumber(id);
         }
         nameTxt.setText("Welcome, "+guest.getName()+ " !");
+        reserveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GuestReserveWindow.run();
+            }
+        });
+        ResButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GuestReservationView.run();
+            }
+        });
+        InfoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GuestInfoWindow.run();
+            }
+        });
     }
 
     public static void run(long id,int type) {

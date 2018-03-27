@@ -3,12 +3,13 @@ package UI;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class GuestReservaionView extends JDialog {
+public class GuestReservationView extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private static GuestReservationView dialog = new GuestReservationView();
 
-    public GuestReservaionView() {
+    public GuestReservationView() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -51,8 +52,8 @@ public class GuestReservaionView extends JDialog {
         dispose();
     }
 
-    public static void main(String[] args) {
-        GuestReservaionView dialog = new GuestReservaionView();
+    public static void run() {
+
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);

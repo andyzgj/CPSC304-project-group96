@@ -7,6 +7,7 @@ public class GuestInfoEdit extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private static GuestInfoEdit dialog = new GuestInfoEdit();
 
     public GuestInfoEdit() {
         setContentPane(contentPane);
@@ -51,8 +52,8 @@ public class GuestInfoEdit extends JDialog {
         dispose();
     }
 
-    public static void main(String[] args) {
-        GuestInfoEdit dialog = new GuestInfoEdit();
+    public static void run() {
+
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
