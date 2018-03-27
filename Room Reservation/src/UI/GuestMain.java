@@ -8,52 +8,44 @@ import Object.GuestInfo;
 
 
 public class GuestMain {
-    private JButton button1;
+
     private JPanel mainPanel;
+    private JButton ResButton;
+    private JButton InfoButton;
+    private JPanel topPanel;
+    private JLabel nameTxt;
+    private JPanel infoButtonPanel;
+    private JPanel viewPanel;
+    private JPanel filterPanel;
+    private JList roomList;
+    private JButton reserveButton;
+    private JLabel typeTxt;
+    private JLabel priceTxt;
+    private JLabel priceField;
+    private JLabel typeField;
+    private JTextField textField1;
+    private JButton applyButton;
+    private JPanel infoPanel;
+    private JLabel rlTitle;
     private OraGuest gm = new OraGuest();
     private GuestInfo guest;
+    private static JFrame frame = new JFrame("GuestMain");
 
-    public GuestMain(int id,int type) {
+    private GuestMain(long id,int type) {
         if(type == 0){
-           guest = gm.getGuestById(id);
+            guest = gm.getGuestById((int)id);
         }
         else{
             guest = gm.getGuestByPhoneNumber(id);
         }
-        button1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
+        nameTxt.setText("Welcome, "+guest.getName()+ " !");
     }
 
-    public GuestMain(long phone_num,int type) {
-
-            guest = gm.getGuestByPhoneNumber(phone_num);
-
-        button1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-    }
-    public static void run(int id,int type) {
-
-        JFrame frame = new JFrame("GuestMain");
+    public static void run(long id,int type) {
         frame.setContentPane(new GuestMain(id,type).mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
 
-    public static void run(long phone_num,int type) {
-
-        JFrame frame = new JFrame("GuestMain");
-        frame.setContentPane(new GuestMain(phone_num,type).mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
 }

@@ -26,7 +26,7 @@ public class EmpLogin{
                     }else{
                         JOptionPane.showMessageDialog(frame, "Employee ID does not exist!");
                     }
-                }catch(Exception exp){JOptionPane.showMessageDialog(frame, "Input is not VALID!");}
+                }catch(Exception exp){JOptionPane.showMessageDialog(frame, "Input is INVALID!");}
 
             }
         });

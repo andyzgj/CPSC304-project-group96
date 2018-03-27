@@ -1,6 +1,7 @@
 package UI;
 
 import Oracle.OraGuest;
+import Oracle.OraVIP;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -23,9 +24,9 @@ public class GuestRegister extends JDialog {
     private JLabel cardtxt;
     private JTextField name;
     private JLabel nametxt;
-    private  int id;
     private static JFrame frame = new JFrame("GuestRegister");
     OraGuest gm = new OraGuest();
+    OraVIP vm = new OraVIP();
 
     public static void run() {
 
@@ -77,8 +78,19 @@ public class GuestRegister extends JDialog {
             int d = 1+date.getSelectedIndex();
             long ph = Long.parseLong(phone.getText());
             long cr = Long.parseLong(credit.getText());
-            id = gm.InsertGuest(name.getText(),new Date(y,m,d),ph,cr);
-            JOptionPane.showMessageDialog(frame, "guest info check - birthday: "+y+" "+m+" "+d+" Name: "+name.getText()+" id: "+id+" phone: "+ph+" Card: "+cr);
+            if(ph<1000000000L||ph>9999999999L){
+                JOptionPane.showMessageDialog(frame, "INVALID Phone Number!");
+                return;
+            }
+            if(cr<1000000000000000L||ph>9999999999999999L){
+                JOptionPane.showMessageDialog(frame, "INVALID Credit Card Number!");
+                return;
+            }
+            gm.InsertGuest(name.getText(),new Date(y,m,d),ph,cr);
+            JOptionPane.showMessageDialog(frame, "guest info check - birthday: "+(1900+y)+"-"+(m+1)+"-"+d+" Name: "+name.getText()+" Phone: "+ph+" Card: "+cr);
+            if(registerAsVIPCheckBox.isSelected()){
+                vm.BeAVip(gm.getGuestByPhoneNumber(ph).getID());
+            }
             frame.dispose();
         }catch(Exception e){
             JOptionPane.showMessageDialog(frame, "INVALID Phone Number or Credit Card Number!");
