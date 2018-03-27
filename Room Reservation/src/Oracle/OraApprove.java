@@ -68,4 +68,19 @@ public class OraApprove {
 
     }
 
+    //update VIP points if VIPs' reservation is approved
+    /*public void update() {
+        String ename = null;
+        try {
+            Statement st = con.createStatement();
+            String query = "select * from Approve";
+            ResultSet rs = st.executeQuery(query);
+            if (rs.next())
+                ename = rs.getString("ename");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ename;
+    }
+*/
 }

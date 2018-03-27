@@ -72,9 +72,9 @@ public class GuestRegister extends JDialog {
     private void onOK() {
         // add your code here
         try{
-            int y = 1900 + year.getSelectedIndex();
-            int m = 1 + month.getSelectedIndex();
-            int d = 1 + date.getSelectedIndex();
+            int y = year.getSelectedIndex();
+            int m = month.getSelectedIndex();
+            int d = 1+date.getSelectedIndex();
             long ph = Long.parseLong(phone.getText());
             long cr = Long.parseLong(credit.getText());
             id = gm.InsertGuest(name.getText(),new Date(y,m,d),ph,cr);  //TODO: wait for PH an CR type in InsertGuest to change to LONG!!!!
