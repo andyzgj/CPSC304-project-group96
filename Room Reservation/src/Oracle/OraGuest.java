@@ -91,7 +91,7 @@ public class OraGuest {
         public boolean isValidPhoneNumber(long phone_num) {
         try {
             Statement st = c.createStatement();
-            String query = "select 1 from Guest where phone_num = " + phone_num;
+            String query = "select * from Guest where phone_num = " + phone_num;
             ResultSet rs = st.executeQuery(query);
             if (!rs.next()) return false; //when there are no more guest id in the result set
         } catch (SQLException e) {

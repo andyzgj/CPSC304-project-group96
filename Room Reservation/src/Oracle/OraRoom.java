@@ -68,37 +68,15 @@ public class OraRoom {
         return num;
     }
 
-    //select type from Room where price < p, and return the corresponding room information
-    //reflects select and projection query
-    public List<RoomInfo> getRoomInfo(String t,double p) {
-        List<RoomInfo> rooms = new ArrayList<>();
-
-        try {
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select t from Room");
-
-            while(rs.next()) {
-                int room_num = rs.getInt("room_num");
-                String type = rs.getString("type");
-                double price = rs.getDouble("price");
-
-                RoomInfo r = new RoomInfo(room_num,type,price);
-                rooms.add(r);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return rooms;
-    }
 
     //select room number from Room where price < p, and return the corresponding room information,overload
     //reflects select and projection query
-    public List<RoomInfo> getRoomInfo(int n,double p) {
+    public List<RoomInfo> getRoomWithLowerPrice(String n, double p) {
         List<RoomInfo> rooms = new ArrayList<>();
 
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select n from Room");
+            ResultSet rs = st.executeQuery("select '" + n + "' from Room where price < " + p);
 
             while(rs.next()) {
                 int room_num = rs.getInt("room_num");
