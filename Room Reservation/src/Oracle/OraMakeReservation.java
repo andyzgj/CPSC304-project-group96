@@ -26,11 +26,12 @@ public class OraMakeReservation {
             while (rs.next()) {
                 int reserve_num = rs.getInt("reserve_num");
                 int number_of_guest = rs.getInt("number_of_guest");
-                String staying_period = rs.getString("staying_period");
+                Date start_date = rs.getDate("start_date");
+                Date end_date = rs.getDate("end_date");
                 double discount = rs.getDouble("discount");
                 int ID = rs.getInt("ID");
 
-                MakeReservationInfo gi = new MakeReservationInfo(reserve_num, number_of_guest, staying_period, discount, ID);
+                MakeReservationInfo gi = new MakeReservationInfo(reserve_num, number_of_guest, start_date, end_date, discount, ID);
                 reservation.add(gi);
             }
 
@@ -41,25 +42,26 @@ public class OraMakeReservation {
         return reservation;
     }
 
-    public void InsertReservation(int number_of_guest, String staying_period , double discount, int ID) {
+    public void InsertReservation(int number_of_guest, Date start_date, Date end_date, double discount, int ID) {
         PreparedStatement ps;
 
         try {
             int reserve_num = generateReserveNum();
-            ps = con.prepareStatement("INSERT INTO Make_Reservation VALUES (?,?,?,?,?)");
+            ps = con.prepareStatement("INSERT INTO Make_Reservation VALUES (?,?,?,?,?,?)");
             ps.setInt(1, reserve_num);
 
             ps.setInt(2, number_of_guest);
+            ps.setDate(3, start_date);
+            ps.setDate(4, end_date);
 
-            ps.setString(3, staying_period);
 
             if (discount == 0) {
-                ps.setNull(4, Types.DOUBLE);
+                ps.setNull(5, Types.DOUBLE);
             } else {
-                ps.setDouble(4, discount);
+                ps.setDouble(5, discount);
             }
 
-            ps.setInt(5, ID);
+            ps.setInt(6, ID);
 
             ps.executeUpdate();
             con.commit();
@@ -95,7 +97,7 @@ public class OraMakeReservation {
 
     public int generateReserveNum() {
         rand = new Random();
-        int tid = rand.nextInt(99999);
+        int tid = rand.nextInt(89999) + 10000;
         if(isInValidNum(tid))
             generateReserveNum();
         return tid;
@@ -104,7 +106,7 @@ public class OraMakeReservation {
     public boolean isInValidNum(int num) {
         try {
             Statement st = con.createStatement();
-            String query = "select 1 from Make_Reservation where reserve_num = " + num;
+            String query = "select * from Make_Reservation where reserve_num = " + num;
             ResultSet rs = st.executeQuery(query);
             if (!rs.next()) return false;
         } catch (SQLException e) {
@@ -119,17 +121,18 @@ public class OraMakeReservation {
 
         try {
             Statement st = con.createStatement();
-            String query = "select reserve_num, number_of_guest, staying_period, discount, ID from reserve_with_employee where employee_ID = " + employee_id;
+            String query = "select reserve_num, number_of_guest, start_date, end_date, discount, ID from reserve_with_employee where employee_ID = " + employee_id;
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
                 int reserve_num = rs.getInt("reserve_num");
                 int number_of_guest = rs.getInt("number_of_guest");
-                String staying_period = rs.getString("staying_period");
+                Date start_date = rs.getDate("start_date");
+                Date end_date = rs.getDate("end_date");
                 double discount = rs.getDouble("discount");
                 int id = rs.getInt("ID");
 
-                MakeReservationInfo m = new MakeReservationInfo(reserve_num, number_of_guest, staying_period, discount, id);
+                MakeReservationInfo m = new MakeReservationInfo(reserve_num, number_of_guest, start_date, end_date, discount, id);
                 ret.add(m);
             }
             dropReservationWithEmployee();
@@ -147,7 +150,7 @@ public class OraMakeReservation {
             Statement st = con.createStatement();
             String query = "create view reserve_with_employee as "
                     + "select Employee.ename, Employee.employee_ID, Employee.phone_num, "
-                    + "Make_Reservation.reserve_num, Make_Reservation.number_of_guest, Make_Reservation.staying_period, Make_Reservation.discount, Make_Reservation.ID "
+                    + "Make_Reservation.reserve_num, Make_Reservation.number_of_guest, Make_Reservation.start_date,Make_Reservation.end_date, Make_Reservation.discount, Make_Reservation.ID "
                     + "from Employee join Approve on Employee.employee_ID = Approve.employee_ID"
                     + " join Make_Reservation on Make_Reservation.reserve_num = Approve.reserve_num";
             st.executeQuery(query);
