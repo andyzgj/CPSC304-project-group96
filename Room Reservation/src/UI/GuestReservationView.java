@@ -56,6 +56,6 @@ public class GuestReservationView extends JDialog {
 
         dialog.pack();
         dialog.setVisible(true);
-        System.exit(0);
+
     }
 }

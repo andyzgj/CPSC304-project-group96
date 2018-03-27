@@ -55,6 +55,5 @@ public class EmpInfoWindow extends JDialog {
         EmpInfoWindow dialog = new EmpInfoWindow();
         dialog.pack();
         dialog.setVisible(true);
-        System.exit(0);
     }
 }

@@ -53,9 +53,7 @@ public class GuestInfoEdit extends JDialog {
     }
 
     public static void run() {
-
         dialog.pack();
         dialog.setVisible(true);
-        System.exit(0);
     }
 }

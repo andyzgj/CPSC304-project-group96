@@ -23,10 +23,17 @@ public class GuestMain {
     private JLabel priceTxt;
     private JLabel priceField;
     private JLabel typeField;
-    private JTextField textField1;
-    private JButton applyButton;
+    private JButton searchButton;
     private JPanel infoPanel;
     private JLabel rlTitle;
+    private JComboBox typeComboBox;
+    private JCheckBox searchRoomWithPriceCheckBox;
+    private JCheckBox searchRoomByTypeCheckBox;
+    private JRadioButton searchByUsingFilterRadioButton;
+    private JRadioButton directSearchByRoomRadioButton;
+    private JTextField rmNumField;
+    private JButton resetButton;
+    private JTextField priceTxtField;
     private OraGuest gm = new OraGuest();
     private GuestInfo guest;
     private static JFrame frame = new JFrame("GuestMain");
@@ -55,6 +62,27 @@ public class GuestMain {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GuestInfoWindow.run();
+            }
+        });
+        searchByUsingFilterRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                searchRoomByTypeCheckBox.setEnabled(true);
+                searchRoomWithPriceCheckBox.setEnabled(true);
+                priceTxtField.setEnabled(true);
+                typeComboBox.setEnabled(true);
+                rmNumField.setEnabled(false);
+
+            }
+        });
+        directSearchByRoomRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                searchRoomByTypeCheckBox.setEnabled(false);
+                searchRoomWithPriceCheckBox.setEnabled(false);
+                priceTxtField.setEnabled(false);
+                typeComboBox.setEnabled(false);
+                rmNumField.setEnabled(true);
             }
         });
     }

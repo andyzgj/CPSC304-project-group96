@@ -44,17 +44,17 @@ public class GuestReserveWindow extends JDialog {
 
     private void onOK() {
         // add your code here
-        dispose();
+        dialog.dispose();
     }
 
     private void onCancel() {
         // add your code here if necessary
-        dispose();
+        dialog.dispose();
     }
 
     public static void run() {
         dialog.pack();
         dialog.setVisible(true);
-        System.exit(0);
+
     }
 }
