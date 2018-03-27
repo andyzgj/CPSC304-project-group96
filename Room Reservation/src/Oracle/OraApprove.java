@@ -69,18 +69,49 @@ public class OraApprove {
     }
 
     //update VIP points if VIPs' reservation is approved
-    /*public void update() {
-        String ename = null;
+    public void VIP_by_employee() {
+
         try {
             Statement st = con.createStatement();
-            String query = "select * from Approve";
-            ResultSet rs = st.executeQuery(query);
-            if (rs.next())
-                ename = rs.getString("ename");
+            String query = "create view VIP_by_employees as "
+                    +"select VIP.points,Make_Reservation.price, VIP.ID"
+                    +"from VIP join Make_Reservation on VIP.ID = Make_Reservation.ID,"
+                    +"join Approve on Approve.reserve_num = Make_Reservation.reserve_num";
+             st.executeQuery(query);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return ename;
     }
-*/
+
+    public void update(){
+        try{
+            OraVIP VIP = new OraVIP();
+            Statement st = con.createStatement();
+            VIP_by_employee();
+            String query = "select * from VIP_by_employee";
+            ResultSet rs = st.executeQuery(query);
+
+            double points = rs.getDouble("points");
+            double price = rs.getDouble("price");
+            int id = rs.getInt("ID");
+            points = points + price * 0.1;
+            VIP.updateVIP(id,points);
+            dropReservationWithEmployee();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+
+    private void dropReservationWithEmployee() {
+        try {
+            Statement st = con.createStatement();
+            st.executeQuery("drop view VIP_by_employees");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
