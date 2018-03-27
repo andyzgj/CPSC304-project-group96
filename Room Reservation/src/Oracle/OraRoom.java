@@ -68,27 +68,78 @@ public class OraRoom {
         return num;
     }
 
-
-    //select room number from Room where price < p, and return the corresponding room information,overload
-    //reflects select and projection query
-    public List<RoomInfo> getRoomWithLowerPrice(String n, double p) {
-        List<RoomInfo> rooms = new ArrayList<>();
-
+    public RoomInfo getRoomByRoomNum(int room_num) {
+        RoomInfo room;
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select '" + n + "' from Room where price < " + p);
+            String query = "select * from Room where room_num = " + room_num;
+            ResultSet rs = st.executeQuery(query);
+            if (rs.next()) {
+                String type = rs.getString("type");
+                double price = rs.getDouble("price");
+                room = new RoomInfo(room_num, type, price);
+                return room;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public List<RoomInfo> getAllRoomWithLowerPrice(double p) {
+        List<RoomInfo> rooms = new ArrayList<>();
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select * from Room where price < " + p);
 
             while(rs.next()) {
                 int room_num = rs.getInt("room_num");
                 String type = rs.getString("type");
                 double price = rs.getDouble("price");
-
-                RoomInfo r = new RoomInfo(room_num,type,price);
-                rooms.add(r);
+                RoomInfo room = new RoomInfo(room_num, type, price);
+                rooms.add(room);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return rooms;
+    }
+    //select room number from Room where price < p, and return the corresponding room information,overload
+    //reflects select and projection query
+    public List<Integer> getRoomNumWithLowerPrice(double p) {
+        List<Integer> roomsNum = new ArrayList<>();
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select DISTINCT room_num from Room where price < " + p);
+
+            while(rs.next()) {
+                    int room_num = rs.getInt("room_num");
+                    roomsNum.add(room_num);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return roomsNum;
+    }
+
+    public List<String> getRoomTypeWithLowerPrice(double p) {
+
+        List<String> roomType = new ArrayList<>();
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select DISTINCT type from Room where price < " + p);
+
+            while(rs.next()) {
+                    String type = rs.getString("type");
+                    roomType.add(type);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return roomType;
     }
 }
