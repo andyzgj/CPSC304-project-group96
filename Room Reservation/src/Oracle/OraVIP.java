@@ -29,7 +29,7 @@ public class OraVIP {
              //   Date birthday = rs.getDate("birthday");
                // int phone = rs.getInt("phone_num");
               //  int credit = rs.getInt("credit_card_num");
-                int points = rs.getInt("points");
+                double points = rs.getDouble("points");
 
                 VIPInfo vipInfo = new VIPInfo(id,points);
                 vip.add(vipInfo);
@@ -51,7 +51,7 @@ public class OraVIP {
               //  Date birthday = rs.getDate("birthday");
                // int phone = rs.getInt("phone_num");
                // int credit = rs.getInt("credit_card_num");
-                int points = rs.getInt("points");
+                double points = rs.getDouble("points");
 
                 return new VIPInfo(id, points);
 
@@ -61,6 +61,25 @@ public class OraVIP {
         }
 
         return null;
+    }
+
+    public double getVipPoints(int id) {
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select points from VIP where id = " + id);
+
+            if(rs.next()) {
+
+                double points = rs.getDouble("points");
+
+                return points;
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
     }
 
     public void deleteVIP(int id) {

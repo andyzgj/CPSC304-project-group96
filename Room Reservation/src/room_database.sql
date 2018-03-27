@@ -37,7 +37,7 @@ grant select on Guest to public;
 
 CREATE TABLE VIP(
 	ID					INT,
-	points 				INT,
+	points 				double,
 	CONSTRAINT pk_VIP PRIMARY KEY (ID),
 	CONSTRAINT fk_VIP FOREIGN KEY (ID) REFERENCES Guest(ID)
 	ON DELETE CASCADE
