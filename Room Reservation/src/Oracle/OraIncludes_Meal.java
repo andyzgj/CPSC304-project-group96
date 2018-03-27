@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import Object.Includes_MealInfo;
-
+import Object.MakeReservationInfo;
 
 public class OraIncludes_Meal {
     Omanager manager;
@@ -68,6 +68,41 @@ public class OraIncludes_Meal {
         }
 
     }
+
+    public List<String> getPopularMeals(){
+
+        List<String> meals = new ArrayList<>();
+
+        try {
+
+            Statement st = con.createStatement();
+            String query = "select mname " +
+                           "from Includes_Meal i " +
+                           "where NOT EXISTS " +
+                                   "(select m.reserve_num " +
+                                    "from Make_Reservation m" +
+                                    "MINUS select im.reserve_num " +
+                                    "from Includes_Meal im " +
+                                    "where im.mname = i.mname)";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                String meal = rs.getString("mname");
+                meals.add(meal);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return meals;
+
+    }
+
+
+
+
+
+
 
     public boolean deleteMeal(int reserve_num, double price, String name, Date time) {
         manager.getConnection();
