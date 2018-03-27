@@ -77,7 +77,7 @@ public class GuestRegister extends JDialog {
             int d = 1+date.getSelectedIndex();
             long ph = Long.parseLong(phone.getText());
             long cr = Long.parseLong(credit.getText());
-            id = gm.InsertGuest(name.getText(),new Date(y,m,d),ph,cr);  //TODO: wait for PH an CR type in InsertGuest to change to LONG!!!!
+            id = gm.InsertGuest(name.getText(),new Date(y,m,d),ph,cr);
             JOptionPane.showMessageDialog(frame, "guest info check - birthday: "+y+" "+m+" "+d+" Name: "+name.getText()+" id: "+id+" phone: "+ph+" Card: "+cr);
             frame.dispose();
         }catch(Exception e){

@@ -77,9 +77,9 @@ CREATE TABLE Booked_At(
 grant select on Booked_At to public;
 
 CREATE TABLE Employee(
-	ename			VARCHAR(20),
+	ename					VARCHAR(20),
 	employee_ID		INT,
-	phone_num		INT,
+	phone_num			INT,
 	CONSTRAINT pk_Employee PRIMARY KEY (employee_ID)
 );
 grant select on Employee to public;
