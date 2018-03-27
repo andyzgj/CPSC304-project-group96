@@ -28,6 +28,7 @@ public class GuestMain {
         });
     }
     public static void run(int id,int type) {
+
         JFrame frame = new JFrame("GuestMain");
         frame.setContentPane(new GuestMain(id,type).mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

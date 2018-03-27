@@ -13,8 +13,7 @@ public class GuestLogin{
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //go to register window
-                // TODO
+
                 GuestRegister.run();
             }
         });
