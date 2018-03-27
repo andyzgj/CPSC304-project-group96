@@ -78,7 +78,7 @@ public class GuestRegister extends JDialog {
             int d = 1+date.getSelectedIndex();
             long ph = Long.parseLong(phone.getText());
             long cr = Long.parseLong(credit.getText());
-            if(ph<1000000000L||ph>9999999999L){
+            if(ph<1000000000L||ph>9999999999L||gm.isValidPhoneNumber(ph)){
                 JOptionPane.showMessageDialog(frame, "INVALID Phone Number!");
                 return;
             }
