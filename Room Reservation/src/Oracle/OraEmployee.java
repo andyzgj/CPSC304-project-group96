@@ -30,7 +30,7 @@ public class OraEmployee {
             while(rs.next()) {
                 String ename = rs.getString("ename");
                 int employee_id = rs.getInt("employee_ID");
-                int phone_num = rs.getInt("phone_num");
+                long phone_num = rs.getLong("phone_num");
 
                 EmployeeInfo employeeInfo = new EmployeeInfo(ename,employee_id,phone_num);
                 employees.add(employeeInfo);
@@ -43,7 +43,7 @@ public class OraEmployee {
     }
 
     //insert a new employee information
-    public void insertEmployee(String ename, int phone_num) {
+    public void insertEmployee(String ename, long phone_num) {
         rand = new Random();
         int employee_ID = rand.nextInt(9999); //randomly generate a number between 0 and 9999
         if (!isValidEID(employee_ID)) {
@@ -51,7 +51,7 @@ public class OraEmployee {
                 PreparedStatement ps = con.prepareStatement("insert into Employee values (?,?,?)");
                 ps.setInt(1,employee_ID);
                 ps.setString(2, ename);
-                ps.setInt(3, phone_num);
+                ps.setLong(3, phone_num);
                 ps.executeUpdate();
                 con.commit();
                 ps.close();
@@ -88,7 +88,20 @@ public class OraEmployee {
         return ename;
     }
 
-
+    public boolean updateEmployeeInfo(String ename , int employee_id, long phone_num, long credit_card_num) {
+        manager.getConnection();
+        int rowCount = manager.execute("UPDATE Employee SET ename = '"
+                + ename
+                + ", phone_num = "
+                + phone_num
+                + " WHERE employee_ID = "
+                + employee_id);
+        manager.disconnect();
+        if (rowCount == 1)
+            return true;
+        else
+            return false;
+    }
 
 
     public void deleteEmployeeInfo(int employee_ID) {

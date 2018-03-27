@@ -26,7 +26,7 @@ public class OraGuest {
                 ResultSet rs = st.executeQuery("select * from Guest");
 
                 while (rs.next()) {
-                    int id = rs.getInt("id");
+                    int id = rs.getInt("ID");
                     String name = rs.getString("gname");
                     Date birthday = rs.getDate("birthday");
                     long phone = rs.getLong("phone_num");
@@ -106,11 +106,11 @@ public class OraGuest {
                     + name
                     + " , birthday = "
                     + birthday
-                    + ", phone = "
+                    + ", phone_num = "
                     + phone
                     + ", credit_card_num = "
                     + credit_card_num
-                    + " WHERE id = "
+                    + " WHERE ID = "
                     + id);
             manager.disconnect();
             if (rowCount == 1)
