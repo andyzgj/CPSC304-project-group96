@@ -143,7 +143,49 @@ public class OraRoom {
         return roomType;
     }
 
+    //select room_num, type, max(price) from Room
+    //reflect aggregation
+    public List<RoomInfo> getRoomWithMaxPrice(){
+        List<RoomInfo> rooms = new ArrayList<>();
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select room_num,type,MAX(price) from Room");
 
+            while(rs.next()) {
+                int room_num = rs.getInt("room_num");
+                String type = rs.getString("type");
+                double price = rs.getDouble("price");
+
+                RoomInfo r = new RoomInfo(room_num,type,price);
+                rooms.add(r);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rooms;
+    }
+
+    //select room_num, type, max(price) from Room
+    //reflect aggregation
+    public List<RoomInfo> getRoomWithMinPrice(){
+        List<RoomInfo> rooms = new ArrayList<>();
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select room_num,type,MIN(price) from Room");
+
+            while(rs.next()) {
+                int room_num = rs.getInt("room_num");
+                String type = rs.getString("type");
+                double price = rs.getDouble("price");
+
+                RoomInfo r = new RoomInfo(room_num,type,price);
+                rooms.add(r);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rooms;
+    }
 
 
 
