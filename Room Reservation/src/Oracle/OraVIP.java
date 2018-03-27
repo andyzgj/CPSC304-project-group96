@@ -63,6 +63,26 @@ public class OraVIP {
         return null;
     }
 
+    //register a guest to be a VIP and initialize the points with 0
+    public void BeAVip(int id) {
+
+        double points = 0;
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement("INSERT INTO VIP VALUES (?,?)");
+            ps.setInt(1, id);
+            ps.setDouble(2, points);
+
+            ps.executeUpdate();
+            con.commit();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
     public double getVipPoints(int id) {
         try {
             Statement st = con.createStatement();
