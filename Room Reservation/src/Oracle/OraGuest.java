@@ -161,7 +161,8 @@ public class OraGuest {
         return gi;
 
     }
-
+        //delete guest Id(cause cascade)
+        //reflect delete operation
         public void deleteGuest(int id) {
         try {
             PreparedStatement ps = c.prepareStatement("DELETE from Guest WHERE ID = " + id);
@@ -172,5 +173,19 @@ public class OraGuest {
             e.printStackTrace();
         }
     }
+
+        //delete credit card number(doesn't cause cascade)
+        //reflect delete operation
+        public void deleteGuest(long ccn) {
+        try {
+            PreparedStatement ps = c.prepareStatement("DELETE from Guest WHERE credit_card_num = " + ccn);
+            ps.executeUpdate();
+            c.commit();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
