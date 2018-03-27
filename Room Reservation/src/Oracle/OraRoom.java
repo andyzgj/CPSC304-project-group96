@@ -143,6 +143,25 @@ public class OraRoom {
         return roomType;
     }
 
+    // get all room with the given type and the price
+    public List<Integer> getRoomWithTypeAndLowerPrice(String type, double p) {
+
+        List<Integer> roomNum = new ArrayList<>();
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select room_num from Room where type = " + type + " and price < " + p);
+
+            while(rs.next()) {
+                int room_num = rs.getInt("room_num");
+                roomNum.add(room_num);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return roomNum;
+    }
+
     //select room_num, type, max(price) from Room
     //reflect aggregation
     public List<RoomInfo> getRoomWithMaxPrice(){

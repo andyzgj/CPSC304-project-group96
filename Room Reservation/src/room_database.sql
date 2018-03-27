@@ -37,7 +37,7 @@ grant select on Guest to public;
 
 CREATE TABLE VIP(
 	ID					INT,
-	points 				double,
+	points 				INT,
 	CONSTRAINT pk_VIP PRIMARY KEY (ID),
 	CONSTRAINT fk_VIP FOREIGN KEY (ID) REFERENCES Guest(ID)
 	ON DELETE CASCADE
@@ -203,34 +203,34 @@ INTO		Room(room_num, type, price)
 VALUES	(103,'Single Room',150);
 INSERT
 INTO		Room(room_num, type, price)
-VALUES	(105,'Single Room',150);
+VALUES	(105,'Single Room',170);
 INSERT
 INTO		Room(room_num, type, price)
-VALUES	(108,'Single Room',150);
+VALUES	(108,'Single Room',180);
 INSERT
 INTO		Room(room_num, type, price)
 VALUES	(204,'Double Room',250);
 INSERT
 INTO		Room(room_num, type, price)
-VALUES	(206,'Double Room',250);
+VALUES	(206,'Double Room',270);
 INSERT
 INTO		Room(room_num, type, price)
-VALUES	(208,'Double Room',250);
+VALUES	(208,'Double Room',290);
 INSERT
 INTO		Room(room_num, type, price)
-VALUES	(304,'Executive Room',400);
+VALUES	(304,'Executive Room',420);
 INSERT
 INTO		Room(room_num, type, price)
-VALUES	(306,'Executive Room',400);
+VALUES	(306,'Executive Room',450);
 INSERT
 INTO		Room(room_num, type, price)
-VALUES	(308,'Executive Room',400);
+VALUES	(308,'Executive Room',480);
 INSERT
 INTO		Room(room_num, type, price)
-VALUES	(507,'Deluxe Suite',500);
+VALUES	(507,'Deluxe Suite',800);
 INSERT
 INTO		Room(room_num, type, price)
-VALUES	(909,'Presidential Suite',800);
+VALUES	(909,'Presidential Suite',2000);
 
 
 INSERT
