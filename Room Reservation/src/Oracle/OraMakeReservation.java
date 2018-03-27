@@ -120,6 +120,7 @@ public class OraMakeReservation {
         List<MakeReservationInfo> ret = new ArrayList<>();
 
         try {
+            createReservationWithEmployee();
             Statement st = con.createStatement();
             String query = "select reserve_num, number_of_guest, start_date, end_date, discount, ID from reserve_with_employee where employee_ID = " + employee_id;
             ResultSet rs = st.executeQuery(query);
