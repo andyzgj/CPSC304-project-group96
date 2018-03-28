@@ -118,11 +118,9 @@ public class OraApprove {
         List<Integer> unApprove = new ArrayList<>();
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select m.reserve_num from Make_Reservation m" +
-                    " MINUS select a.reserve_num from Approve a");
-
-
-
+            String query = "select m.reserve_num from Make_Reservation m" +
+                    " MINUS select a.reserve_num from Approve a";
+            ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
 
