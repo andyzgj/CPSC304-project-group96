@@ -6,15 +6,15 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GuestLogin{
+public class LoginGuest {
 
-    public GuestLogin(){
+    public LoginGuest(){
 
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                GuestRegister.run();
+                RegisterGuest.run();
             }
         });
         loginButton.addActionListener(new ActionListener() {
@@ -26,7 +26,7 @@ public class GuestLogin{
                     if(selectID == false){
                         long a = Long.parseLong(selectLogInTypeTextField.getText());
                         if(gm.isValidPhoneNumber(a)){
-                            GuestMain.run(a,1);
+                            RoomView.run(a,1);
                             frame.dispose();
                         }
                         else{
@@ -37,7 +37,7 @@ public class GuestLogin{
                     else if(selectID == true){
                         int a = Integer.parseInt(selectLogInTypeTextField.getText());
                         if(gm.isValidID(a)){
-                            GuestMain.run(a,0);
+                            RoomView.run(a,0);
                             frame.dispose();
                         }
                         else{
@@ -79,8 +79,8 @@ public class GuestLogin{
     private OraGuest gm = new OraGuest();
     private boolean selectID = guestIDRadioButton.isSelected();
     public static void run() {
-        frame = new JFrame("GuestLogin");
-        frame.setContentPane(new GuestLogin().mainPanel);
+        frame = new JFrame("LoginGuest");
+        frame.setContentPane(new LoginGuest().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
