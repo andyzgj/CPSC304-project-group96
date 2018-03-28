@@ -94,7 +94,8 @@ public class InfoEditGuest extends JDialog {
             }
             //TODO:DEBUG THE UPDATE FUNCTION
             JOptionPane.showMessageDialog(dialog, "guest info check birthday: "+(1900+y)+"-"+(m+1)+"-"+d+" Name: "+name.getText()+" Phone: "+ph+" Card: "+cr);
-            gm.updatePhone(ph,guest.getID());
+            gm.updateGuestInfo(guest.getID(), name.getText(), new Date(y,m,d), ph, cr);
+           // gm.updatePhone(ph,guest.getID());
             dialog.dispose();
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(dialog, "INVALID Phone Number or Credit Card Number!");

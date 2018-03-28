@@ -100,23 +100,24 @@ public class OraGuest {
         return true;
     }
 
-        public boolean updateGuestInfo( int id , String name , Date birthday, long phone, long credit_card_num) {
-            manager.getConnection();
-            int rowCount = manager.execute("UPDATE Guest SET gname = "
-                    + name
-                    + " , birthday = "
-                    + birthday
-                    + ", phone_num = "
-                    + phone
-                    + ", credit_card_num = "
-                    + credit_card_num
-                    + " WHERE ID = "
-                    + id);
-            manager.disconnect();
-            if (rowCount == 1)
-                return true;
-            else
-                return false;
+        public void updateGuestInfo( int id , String name , Date birthday, long phone, long credit_card_num) {
+            try{
+
+                PreparedStatement ps = c.prepareStatement("update Guest set gname = ?, birthday = ?, phone_num = ?, credit_card_num = ?  where ID = ?");
+                ps.setString(1, name);
+                ps.setDate(2, birthday);
+                ps.setLong(3, phone);
+                ps.setLong(4, credit_card_num);
+                ps.setInt(5,id);
+                ps.executeUpdate();
+                c.commit();
+                ps.close();
+
+            }
+            catch(SQLException e){
+                e.printStackTrace();
+            }
+
         }
 
         public GuestInfo getGuestById(int id) {
