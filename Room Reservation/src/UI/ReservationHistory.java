@@ -1,9 +1,12 @@
 package UI;
 
+import Oracle.OraGuest;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.*;
+import Object.GuestInfo;
 
 public class ReservationHistory extends JDialog {
     private JPanel contentPane;
@@ -21,9 +24,14 @@ public class ReservationHistory extends JDialog {
     private JLabel roomNumberLabel;
     private JLabel parkingLabel;
     private JPanel mainPanel;
-    private static ReservationHistory dialog = new ReservationHistory();
+    private static ReservationHistory dialog;
+    GuestInfo guest;
+    OraGuest gm = new OraGuest();
 
-    public ReservationHistory() {
+
+    public ReservationHistory(int a ) {
+        guest = gm.getGuestById(a);
+
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -72,8 +80,8 @@ public class ReservationHistory extends JDialog {
         dispose();
     }
 
-    public static void run() {
-
+    public static void run(int id) {
+        dialog = new ReservationHistory(id);
         dialog.pack();
         dialog.setVisible(true);
 

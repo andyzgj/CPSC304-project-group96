@@ -73,13 +73,13 @@ public class RoomView {
         ResButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ReservationHistory.run();
+                ReservationHistory.run(guest.getID());
             }
         });
         InfoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InfoGuest.run();
+                InfoGuest.run(guest.getID());
             }
         });
         searchByUsingFilterRadioButton.addActionListener(new ActionListener() {
@@ -128,7 +128,6 @@ public class RoomView {
         resetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO: RESET BUTTON
                 searchByUsingFilterRadioButton.setSelected(true);
                 
                 searchRoomByTypeCheckBox.setEnabled(true);
@@ -147,14 +146,20 @@ public class RoomView {
                 if(searchByUsingFilterRadioButton.isSelected()){
                     if(searchRoomByTypeCheckBox.isSelected()&&searchRoomWithPriceCheckBox.isSelected()){
                         //TODO: use both filter field to get a room table
-                        roomNumList.clear();
-                        if (rm.getRoomWithTypeAndLowerPrice(typeComboBox.getSelectedItem().toString(),Double.parseDouble(priceTxtField.getText()))==null)
-                        {JOptionPane.showMessageDialog(frame, "Price too low!");
+                        try{
+                            roomNumList.clear();
+                            if (rm.getRoomWithTypeAndLowerPrice(typeComboBox.getSelectedItem().toString(),Double.parseDouble(priceTxtField.getText())).size()==0) {
+                                JOptionPane.showMessageDialog(frame, "Price too low!");
+                                return;
+                            }
+                            else {
+                                roomNumList.addAll(rm.getRoomWithTypeAndLowerPrice(typeComboBox.getSelectedItem().toString(),Double.parseDouble(priceTxtField.getText())));
+                                roomList.setListData(roomNumList.toArray());
+                            }
+
+                        }catch(Exception exp){
+                            JOptionPane.showMessageDialog(frame, "Invalid Price Number");
                             return;
-                        }
-                        else {
-                            roomNumList.addAll(rm.getRoomWithTypeAndLowerPrice(typeComboBox.getSelectedItem().toString(),Double.parseDouble(priceTxtField.getText())));
-                            roomList.setListData(roomNumList.toArray());
                         }
                     }else if(searchRoomByTypeCheckBox.isSelected()){
 
@@ -208,7 +213,6 @@ public class RoomView {
         roomList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                //TODO:
                 Integer tempRm = (int)roomList.getSelectedValue();
                 typeField.setText(rm.getRoomByRoomNum(tempRm).getType());
                 priceField.setText(""+rm.getRoomByRoomNum(tempRm).getPrice());

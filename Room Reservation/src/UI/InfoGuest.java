@@ -1,5 +1,7 @@
 package UI;
 
+import Oracle.OraGuest;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -7,9 +9,12 @@ public class InfoGuest extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private static InfoGuest dialog = new InfoGuest();
+    private static InfoGuest dialog;
+    OraGuest gm = new OraGuest();
+    int id;
 
-    public InfoGuest() {
+    public InfoGuest(int a) {
+        id = a;
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -52,7 +57,8 @@ public class InfoGuest extends JDialog {
         dispose();
     }
 
-    public static void run() {
+    public static void run(int id) {
+        dialog = new InfoGuest(id);
         dialog.pack();
         dialog.setVisible(true);
     }
