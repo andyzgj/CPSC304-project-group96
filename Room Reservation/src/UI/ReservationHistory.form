@@ -97,7 +97,7 @@
                 </constraints>
                 <properties>
                   <font size="16"/>
-                  <text value=""/>
+                  <text value="XXXXXX"/>
                 </properties>
               </component>
               <component id="a0ccd" class="javax.swing.JLabel" binding="checkOutLabel">
@@ -107,7 +107,7 @@
                 </constraints>
                 <properties>
                   <font size="16"/>
-                  <text value=""/>
+                  <text value="XXXXXX"/>
                 </properties>
               </component>
               <component id="96d07" class="javax.swing.JLabel">
@@ -127,7 +127,7 @@
                 </constraints>
                 <properties>
                   <font size="16"/>
-                  <text value=""/>
+                  <text value="XXXXXX"/>
                 </properties>
               </component>
               <component id="6dfc0" class="javax.swing.JLabel">
@@ -167,7 +167,7 @@
                 </constraints>
                 <properties>
                   <font size="16"/>
-                  <text value=""/>
+                  <text value="XXXXXX"/>
                 </properties>
               </component>
               <component id="62c" class="javax.swing.JLabel" binding="discountLabel">
@@ -177,7 +177,7 @@
                 </constraints>
                 <properties>
                   <font size="16"/>
-                  <text value=""/>
+                  <text value="XXXXXX"/>
                 </properties>
               </component>
               <component id="ed0af" class="javax.swing.JLabel" binding="mealLabel">
@@ -187,7 +187,7 @@
                 </constraints>
                 <properties>
                   <font size="16"/>
-                  <text value=""/>
+                  <text value="XXXXXX"/>
                 </properties>
               </component>
               <component id="4703b" class="javax.swing.JLabel">
@@ -227,7 +227,7 @@
                 </constraints>
                 <properties>
                   <font size="18"/>
-                  <text value="Label"/>
+                  <text value="XXXXXX"/>
                 </properties>
               </component>
               <hspacer id="4cdc5">
@@ -273,7 +273,7 @@
                 </constraints>
                 <properties>
                   <font size="16"/>
-                  <text value=""/>
+                  <text value="XXXXXXZXXXXXXXZXXXXXX"/>
                 </properties>
               </component>
               <component id="9b49e" class="javax.swing.JLabel">

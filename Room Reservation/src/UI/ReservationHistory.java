@@ -1,12 +1,14 @@
 package UI;
 
-import Oracle.OraGuest;
+import Oracle.*;
+import Object.*;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.*;
-import Object.GuestInfo;
+import java.util.List;
+
 
 public class ReservationHistory extends JDialog {
     private JPanel contentPane;
@@ -26,8 +28,16 @@ public class ReservationHistory extends JDialog {
     private JPanel mainPanel;
     private static ReservationHistory dialog;
     GuestInfo guest;
-    OraGuest gm = new OraGuest();
 
+    OraGuest gm = new OraGuest();
+    OraMakeReservation resm=new OraMakeReservation();
+    OraApprove apm = new OraApprove();
+    OraRoom rm = new OraRoom();
+    OraIncludes_Meal mm = new OraIncludes_Meal();
+    OraProvides pm = new OraProvides();
+    OraBooked_At bm = new OraBooked_At();
+
+    private List<Integer> resNumList;
 
     public ReservationHistory(int a ) {
         guest = gm.getGuestById(a);
@@ -35,14 +45,13 @@ public class ReservationHistory extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        //TODO:set reservation list
+        
+
+
+
 
         buttonOK.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
-
-        buttonCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
             }
@@ -65,14 +74,30 @@ public class ReservationHistory extends JDialog {
         ResList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
+                //todo show detail on right side correspond to the selection in the list
 
+/*
+                checkInLabel.setText();
+                checkOutLabel.setText();
+                guestNumberLabel.setText();
+                roomTypeLabel.setText();
+
+                discountLabel.setText();
+
+                if(){
+                    mealLabel.setText();
+                }else{
+                    mealLabel.setText();
+                }
+
+                if(){
+                    parkingLabel.setText();
+                }else{
+                    parkingLabel.setText();
+                }
+                */
             }
         });
-    }
-
-    private void onOK() {
-        // add your code here
-        dispose();
     }
 
     private void onCancel() {

@@ -72,7 +72,7 @@
               <font size="60" style="1"/>
               <horizontalAlignment value="10"/>
               <text value=""/>
-              <toolTipText value="inout your Account ID or phone number"/>
+              <toolTipText value="Employee ID here"/>
             </properties>
           </component>
         </children>

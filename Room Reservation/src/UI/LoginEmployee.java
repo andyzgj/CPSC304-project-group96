@@ -15,12 +15,14 @@ public class LoginEmployee {
     private static JFrame frame = new JFrame("LoginEmployee");
     private OraEmployee em = new OraEmployee();
     public LoginEmployee() {
+
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 try{
+
                     int id = Integer.parseInt(employeeIDTextField.getText());
+                    //JOptionPane.showMessageDialog(frame, "Employee ID "+id);
                     if(em.isValidEID(id)){
                         ManagementHUB.run(id);
                         frame.dispose();
