@@ -113,17 +113,19 @@ public class OraVIP {
         }
     }
 
-    public boolean updateVIP( int id , double points) {
-        manager.getConnection();
-        int rowCount = manager.execute("UPDATE VIP SET points = "
-                + points
-                + " WHERE id = "
-                + id);
-        manager.disconnect();
-        if (rowCount == 1)
-            return true;
-        else
-            return false;
+    public void updateVIP( int id , double points) {
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE VIPt SET points = ? WHERE ID = ?");
+            ps.setDouble(1, points);
+            ps.setInt(2, id);
+
+            ps.executeUpdate();
+            con.commit();
+            ps.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

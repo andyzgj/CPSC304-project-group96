@@ -220,18 +220,18 @@ public class OraMakeReservation {
         try {
 
             Statement st = con.createStatement();
-            String query = "select * from Make_Reservatio where reserve_num = " + reserve_num;
+            String query = "select * from Make_Reservation where reserve_num = " + reserve_num;
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                int rn = rs.getInt("reserve_num");
+
                 int number_of_guest = rs.getInt("number_of_guest");
                 Date start_date = rs.getDate("start_date");
                 Date end_date = rs.getDate("end_date");
                 double discount = rs.getDouble("discount");
                 int ID = rs.getInt("ID");
 
-                mr = new MakeReservationInfo(rn, number_of_guest,start_date,end_date,discount,ID);
+                mr = new MakeReservationInfo(reserve_num, number_of_guest,start_date,end_date,discount,ID);
             }
 
 

@@ -114,5 +114,27 @@ public class OraApprove {
         }
     }
 
-  //  public List<Integer> getUnApproveReserveNUm()
+    public List<Integer> getUnApproveReserveNUm(){
+        List<Integer> unApprove = new ArrayList<>();
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select m.reserve_num from Make_Reservation m" +
+                    " MINUS select a.reserve_num from Approve a");
+
+
+
+
+            while (rs.next()) {
+
+                int ai = rs.getInt("reserve_num");;
+                unApprove.add(ai);
+            }
+
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return unApprove;
+
+    }
 }
