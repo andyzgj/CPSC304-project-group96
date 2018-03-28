@@ -97,7 +97,27 @@ public class OraIncludes_Meal {
     }
 
 
+    public List<Includes_MealInfo> getMealWithReserveNum(int reserve_num){
+        List<Includes_MealInfo> im = new ArrayList<>();
+        try {
 
+            Statement st = con.createStatement();
+            String query = "select * from Includes_Meal where reserve_num = " + reserve_num;
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                double price = rs.getDouble("price");
+                String name = rs.getString("mname");
+                im.add(new Includes_MealInfo(reserve_num,price,name));
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return im;
+
+    }
 
 
 
