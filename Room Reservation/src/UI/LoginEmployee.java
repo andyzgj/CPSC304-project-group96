@@ -18,6 +18,7 @@ public class LoginEmployee {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 try{
                     int id = Integer.parseInt(employeeIDTextField.getText());
                     if(em.isValidEID(id)){

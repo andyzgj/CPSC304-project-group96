@@ -17,8 +17,7 @@ public class InfoEmployee extends JDialog {
     private static EmployeeInfo employee;
 
     public InfoEmployee(int id) {
-        //TODO:WAIT FOR GETTER TO BE FINISHED
-        //employee = em.getEmployeeByID(id);
+        employee = em.getEmployeeById(id);
         idLabel.setText(""+employee.getID());
         phoneLabel.setText(employee.getPhoneNum()+"");
         nameLAbel.setText(employee.getName());
