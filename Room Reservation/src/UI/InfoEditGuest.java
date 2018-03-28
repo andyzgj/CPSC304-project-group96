@@ -3,36 +3,13 @@ package UI;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class GuestReserveWindow extends JDialog {
+public class InfoEditGuest extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JPanel infoPanel;
-    private JLabel rmnumtxt;
-    private JLabel guestnumtxt;
-    private JLabel chkouttxt;
-    private JLabel chkintxt;
-    private JLabel rmtptxt;
-    private JLabel roomNumberLabel;
-    private JComboBox inYear;
-    private JComboBox inMonth;
-    private JComboBox inDate;
-    private JCheckBox mealCheckBox;
-    private JComboBox outYear;
-    private JComboBox outMonth;
-    private JComboBox outDate;
-    private JCheckBox parkingCheckBox;
-    private JTextField textField1;
-    private JLabel priceLable;
-    private JLabel roomTypeLabel;
-    private JComboBox comboBox1;
-    private JSlider slider1;
-    private JLabel guestNumLabel;
-    private JCheckBox showOnlyPopularMealCheckBox;
-    private static GuestReserveWindow dialog = new GuestReserveWindow();
-    private static int roomNum;
+    private static InfoEditGuest dialog = new InfoEditGuest();
 
-    public GuestReserveWindow() {
+    public InfoEditGuest() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -67,16 +44,15 @@ public class GuestReserveWindow extends JDialog {
 
     private void onOK() {
         // add your code here
-        dialog.dispose();
+        dispose();
     }
 
     private void onCancel() {
         // add your code here if necessary
-        dialog.dispose();
+        dispose();
     }
 
-    public static void run(int rmNum) {
-        roomNum = rmNum;
+    public static void run() {
         dialog.pack();
         dialog.setVisible(true);
     }

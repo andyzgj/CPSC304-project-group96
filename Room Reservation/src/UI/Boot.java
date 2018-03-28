@@ -18,7 +18,7 @@ public class Boot{
         guestButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GuestLogin.run();
+                LoginGuest.run();
                 bFrame.dispose();
 
             }
@@ -27,7 +27,7 @@ public class Boot{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                EmpLogin.run();
+                LoginEmployee.run();
                 bFrame.dispose();
             }
         });

@@ -1,9 +1,11 @@
 package UI;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.event.*;
 
-public class EmpReservationEdit extends JDialog {
+public class ReservationHistory extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
@@ -12,22 +14,16 @@ public class EmpReservationEdit extends JDialog {
     private JPanel infoPanel;
     private JLabel checkInLabel;
     private JLabel checkOutLabel;
-    private JLabel rmnumtxt;
     private JLabel guestNumberLabel;
-    private JLabel guestnumtxt;
-    private JLabel chkouttxt;
-    private JLabel chkintxt;
     private JLabel roomTypeLabel;
     private JLabel discountLabel;
     private JLabel mealLabel;
-    private JLabel rmtptxt;
-    private JLabel dscttxt;
-    private JLabel mealtxt;
     private JLabel roomNumberLabel;
     private JLabel parkingLabel;
-    private JLabel Parkingtxt;
+    private JPanel mainPanel;
+    private static ReservationHistory dialog = new ReservationHistory();
 
-    public EmpReservationEdit() {
+    public ReservationHistory() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -58,6 +54,12 @@ public class EmpReservationEdit extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        ResList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+
+            }
+        });
     }
 
     private void onOK() {
@@ -70,10 +72,11 @@ public class EmpReservationEdit extends JDialog {
         dispose();
     }
 
-    public static void main(String[] args) {
-        EmpReservationEdit dialog = new EmpReservationEdit();
+    public static void run() {
+
         dialog.pack();
         dialog.setVisible(true);
-        System.exit(0);
+
     }
+
 }

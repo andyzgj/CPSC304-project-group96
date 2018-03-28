@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.sql.Date;
 
-public class GuestRegister extends JDialog {
+public class RegisterGuest extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
@@ -24,19 +24,19 @@ public class GuestRegister extends JDialog {
     private JLabel cardtxt;
     private JTextField name;
     private JLabel nametxt;
-    private static JFrame frame = new JFrame("GuestRegister");
+    private static JFrame frame = new JFrame("RegisterGuest");
     OraGuest gm = new OraGuest();
     OraVIP vm = new OraVIP();
 
     public static void run() {
 
-        frame.setContentPane(new GuestRegister().contentPane);
+        frame.setContentPane(new RegisterGuest().contentPane);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
 
-    public GuestRegister() {
+    public RegisterGuest() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);

@@ -11,7 +11,7 @@ import Object.GuestInfo;
 import Oracle.OraRoom;
 
 
-public class GuestMain {
+public class RoomView {
 
     private JPanel mainPanel;
     private JButton ResButton;
@@ -40,11 +40,11 @@ public class GuestMain {
     private JTextField priceTxtField;
     private OraGuest gm = new OraGuest();
     private GuestInfo guest;
-    private static JFrame frame = new JFrame("GuestMain");
+    private static JFrame frame = new JFrame("RoomView");
     private OraRoom rm = new OraRoom();
     private List<Integer> roomNumList = rm.getRoomNumWithLowerPrice(100000000);
 
-    private GuestMain(long id,int type) {
+    private RoomView(long id, int type) {
         roomList.setListData(roomNumList.toArray());
         searchRoomByTypeCheckBox.setEnabled(true);
         searchRoomWithPriceCheckBox.setEnabled(true);
@@ -64,7 +64,7 @@ public class GuestMain {
             public void actionPerformed(ActionEvent e) {
                 if(roomList.getSelectedValue() != null){
                     int tempRm = (int)roomList.getSelectedValue();
-                    GuestReserveWindow.run(tempRm);
+                    ReservationForm.run(tempRm);
                 }else{
                     JOptionPane.showMessageDialog(frame, "Select a room from room list!");
                 }
@@ -73,13 +73,13 @@ public class GuestMain {
         ResButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GuestReservationView.run();
+                ReservationHistory.run();
             }
         });
         InfoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GuestInfoWindow.run();
+                InfoGuest.run();
             }
         });
         searchByUsingFilterRadioButton.addActionListener(new ActionListener() {
@@ -210,7 +210,7 @@ public class GuestMain {
     }
 
     public static void run(long id,int type) {
-        frame.setContentPane(new GuestMain(id,type).mainPanel);
+        frame.setContentPane(new RoomView(id,type).mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

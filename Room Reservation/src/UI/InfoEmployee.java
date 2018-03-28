@@ -3,12 +3,12 @@ package UI;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class EmpInfoWindow extends JDialog {
+public class InfoEmployee extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
 
-    public EmpInfoWindow() {
+    public InfoEmployee() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -52,7 +52,7 @@ public class EmpInfoWindow extends JDialog {
     }
 
     public static void main(String[] args) {
-        EmpInfoWindow dialog = new EmpInfoWindow();
+        InfoEmployee dialog = new InfoEmployee();
         dialog.pack();
         dialog.setVisible(true);
     }

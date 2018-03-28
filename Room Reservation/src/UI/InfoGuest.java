@@ -3,13 +3,13 @@ package UI;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class GuestInfoWindow extends JDialog {
+public class InfoGuest extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private static GuestInfoWindow dialog = new GuestInfoWindow();
+    private static InfoGuest dialog = new InfoGuest();
 
-    public GuestInfoWindow() {
+    public InfoGuest() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
