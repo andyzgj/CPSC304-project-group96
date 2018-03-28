@@ -63,7 +63,7 @@ public class RoomView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(roomList.getSelectedValue() != null){
-                    int tempRm = roomNumList.get(roomList.getSelectedIndex());
+                    Integer tempRm = (int)roomList.getSelectedValue();
                     ReservationForm.run(tempRm);
                 }else{
                     JOptionPane.showMessageDialog(frame, "Select a room from room list!");

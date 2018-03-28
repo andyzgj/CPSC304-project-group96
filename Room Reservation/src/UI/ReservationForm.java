@@ -1,7 +1,7 @@
 package UI;
 
-import Oracle.OraRoom;
-import Object.RoomInfo;
+import Oracle.*;
+import Object.*;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -30,12 +30,13 @@ public class ReservationForm extends JDialog {
     private JCheckBox showOnlyPopularMealCheckBox;
     private JSpinner guestSpinner;
     private static ReservationForm dialog;
-    private static int roomNum;
     private OraRoom rm = new OraRoom();
+    private RoomInfo room;
 
-    public ReservationForm() {
+
+    public ReservationForm(int roomNum) {
         roomNumberLabel.setText(""+roomNum);
-        RoomInfo room = rm.getRoomByRoomNum(roomNum);
+        room = rm.getRoomByRoomNum(roomNum);
         roomTypeLabel.setText(room.getType());
         priceLable.setText("$"+room.getPrice());
         plateField.setEnabled(false);
@@ -118,8 +119,7 @@ public class ReservationForm extends JDialog {
     }
 
     public static void run(int rmNum) {
-        dialog = new ReservationForm();
-        roomNum = rmNum;
+        dialog = new ReservationForm(rmNum);
         dialog.pack();
         dialog.setVisible(true);
     }
