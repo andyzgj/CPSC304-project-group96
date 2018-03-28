@@ -196,7 +196,7 @@ public class OraGuest {
                     +"WHERE ID = "
                     + id);
             manager.disconnect();
-            if (rowCount == 1)
+            if (rowCount >= 1)
                 return true;
             else
                 return false;

@@ -99,8 +99,7 @@ CREATE TABLE Includes_Meal(
 	reserve_num		INT NOT NULL,
 	price			FLOAT,
 	mname			VARCHAR(20),
-	time			DATE,
-	CONSTRAINT pk_Includes_Meal PRIMARY KEY (reserve_num, mname, time),
+	CONSTRAINT pk_Includes_Meal PRIMARY KEY (reserve_num, mname),
 	CONSTRAINT fk_Includes_Meal FOREIGN KEY(reserve_num) REFERENCES Make_Reservation(reserve_num)
 	  ON DELETE CASCADE
 );
@@ -263,7 +262,7 @@ INTO		Room(room_num, type, price)
 VALUES	(910,'Presidential Suite',2000);
 INSERT
 INTO		Room(room_num, type, price)
-VALUES	(911,'Super Presidential Suite',20000);
+VALUES	(911,'Presidential Suite',20000);
 
 
 INSERT
@@ -316,29 +315,29 @@ VALUES	(54321,6666);
 
 
 INSERT
-INTO		Includes_Meal(reserve_num, price, mname, time)
-VALUES	(12345,10,'dumplings',TO_DATE('2010-12-12 6:00:00pm','YYYY-MM-DD hh:mi:sspm'));
+INTO		Includes_Meal(reserve_num, price, mname)
+VALUES	(12345,10,'dumplings');
 INSERT
-INTO		Includes_Meal(reserve_num, price, mname, time)
-VALUES	(12345,23,'pizza',TO_DATE('2013-10-10 12:00:00','YYYY-MM-DD hh:mi:sspm'));
+INTO		Includes_Meal(reserve_num, price, mname)
+VALUES	(12345,23,'pizza');
 INSERT
-INTO		Includes_Meal(reserve_num, price, mname, time)
-VALUES	(12346,10,'dumplings',TO_DATE('2015-1-1 7:00:12','YYYY-MM-DD hh:mi:sspm'));
+INTO		Includes_Meal(reserve_num, price, mname)
+VALUES	(12346,10,'dumplings');
 INSERT
-INTO		Includes_Meal(reserve_num, price, mname, time)
-VALUES	(54321,10,'dumplings',TO_DATE('2013-10-10 11:00:00','YYYY-MM-DD hh:mi:ssam'));
+INTO		Includes_Meal(reserve_num, price, mname)
+VALUES	(54321,10,'dumplings');
 INSERT
-INTO		Includes_Meal(reserve_num, price, mname, time)
-VALUES	(12346,31,'steak',TO_DATE('2015-1-1 7:00:12','YYYY-MM-DD hh:mi:sspm'));
+INTO		Includes_Meal(reserve_num, price, mname)
+VALUES	(12346,31,'steak');
 INSERT
-INTO		Includes_Meal(reserve_num, price, mname, time)
-VALUES	(12346,23,'pizza',TO_DATE('2015-1-1 7:00:12','YYYY-MM-DD hh:mi:sspm'));
+INTO		Includes_Meal(reserve_num, price, mname)
+VALUES	(12346,23,'pizza');
 INSERT
-INTO		Includes_Meal(reserve_num, price, mname, time)
-VALUES	(12346,450,'King Crab',TO_DATE('2017-4-6 7:00:23','YYYY-MM-DD hh:mi:sspm'));
+INTO		Includes_Meal(reserve_num, price, mname)
+VALUES	(12346,450,'King Crab');
 INSERT
-INTO		Includes_Meal(reserve_num, price, mname, time)
-VALUES	(54321,15,'mashed potatoes',TO_DATE('2013-10-10 11:00:00','YYYY-MM-DD hh:mi:ssam'));
+INTO		Includes_Meal(reserve_num, price, mname)
+VALUES	(54321,15,'mashed potatoes');
 
 INSERT
 INTO		Parking_Space(plate_num, stall_num)

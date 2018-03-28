@@ -35,7 +35,7 @@ public class GuestInfo {
     }
 
     public long getCredit_card_num(){
-        return phone_num;
+        return credit_card_num;
     }
 
 }
