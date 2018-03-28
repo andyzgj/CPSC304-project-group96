@@ -115,7 +115,7 @@ public class OraMakeReservation {
         return true;
     }
 
-    public List<Integer> getAllReservationWithGuestID(int ID){
+    public List<Integer> getAllReservationNumWithGuestID(int ID){
         List<Integer> ret = new ArrayList<>();
         try {
 

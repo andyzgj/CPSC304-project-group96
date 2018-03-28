@@ -75,8 +75,8 @@ public class OraApprove {
             Statement st = con.createStatement();
             String query = "create view VIP_by_employees as "
                     +"select VIP.points,Make_Reservation.price, VIP.ID"
-                    +"from VIP join Make_Reservation on VIP.ID = Make_Reservation.ID,"
-                    +"join Approve on Approve.reserve_num = Make_Reservation.reserve_num";
+                    +" from VIP join Make_Reservation on VIP.ID = Make_Reservation.ID"
+                    +" join Approve on Approve.reserve_num = Make_Reservation.reserve_num";
              st.executeQuery(query);
 
         } catch (SQLException e) {
