@@ -115,24 +115,18 @@ public class OraMakeReservation {
         return true;
     }
 
-    public List<MakeReservationInfo> getAllReservationWithGuestID(int ID){
-        List<MakeReservationInfo> ret = new ArrayList<>();
+    public List<Integer> getAllReservationWithGuestID(int ID){
+        List<Integer> ret = new ArrayList<>();
         try {
 
             Statement st = con.createStatement();
-            String query = "select * from Make_Reservation where ID = " + ID;
+            String query = "select reserve_num from Make_Reservation where ID = " + ID;
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
                 int reserve_num = rs.getInt("reserve_num");
-                int number_of_guest = rs.getInt("number_of_guest");
-                Date start_date = rs.getDate("start_date");
-                Date end_date = rs.getDate("end_date");
-                double discount = rs.getDouble("discount");
 
-
-                MakeReservationInfo m = new MakeReservationInfo(reserve_num, number_of_guest, start_date, end_date, discount, ID);
-                ret.add(m);
+                ret.add(reserve_num);
             }
 
 
