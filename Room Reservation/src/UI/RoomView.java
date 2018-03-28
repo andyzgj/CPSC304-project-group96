@@ -148,12 +148,12 @@ public class RoomView {
                     if(searchRoomByTypeCheckBox.isSelected()&&searchRoomWithPriceCheckBox.isSelected()){
                         //TODO: use both filter field to get a room table
                         roomNumList.clear();
-                        if (rm.getRoomWithTypeAndLowerPrice(typeComboBox.getSelectedItem().toString(),Integer.parseInt(priceTxtField.getText()))==null)
+                        if (rm.getRoomWithTypeAndLowerPrice(typeComboBox.getSelectedItem().toString(),Double.parseDouble(priceTxtField.getText()))==null)
                         {JOptionPane.showMessageDialog(frame, "Price too low!");
                             return;
                         }
                         else {
-                            roomNumList.addAll(rm.getRoomWithTypeAndLowerPrice(typeComboBox.getSelectedItem().toString(),Integer.parseInt(priceTxtField.getText())));
+                            roomNumList.addAll(rm.getRoomWithTypeAndLowerPrice(typeComboBox.getSelectedItem().toString(),Double.parseDouble(priceTxtField.getText())));
                             roomList.setListData(roomNumList.toArray());
                         }
                     }else if(searchRoomByTypeCheckBox.isSelected()){
@@ -166,11 +166,11 @@ public class RoomView {
 
                         try{
                             roomNumList.clear();
-                            if(rm.getRoomNumWithLowerPrice(Integer.parseInt(priceTxtField.getText())) == null){
+                            if(rm.getRoomNumWithLowerPrice(Double.parseDouble(priceTxtField.getText())) == null){
                                 JOptionPane.showMessageDialog(frame, "Price too low!");
                                 return;
                             }else {
-                                roomNumList.addAll(rm.getRoomNumWithLowerPrice(Integer.parseInt(priceTxtField.getText())));
+                                roomNumList.addAll(rm.getRoomNumWithLowerPrice(Double.parseDouble(priceTxtField.getText())));
                                 roomList.setListData(roomNumList.toArray());
                             }
 

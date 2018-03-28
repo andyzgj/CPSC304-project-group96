@@ -149,7 +149,7 @@ public class OraRoom {
         List<Integer> roomNum = new ArrayList<>();
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select room_num from Room where type = " + type + " and price < " + p);
+            ResultSet rs = st.executeQuery("select room_num from Room where type = '" + type + "' and price < " + p);
 
             while(rs.next()) {
                 int room_num = rs.getInt("room_num");
