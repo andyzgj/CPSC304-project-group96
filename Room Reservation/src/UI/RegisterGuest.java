@@ -82,7 +82,7 @@ public class RegisterGuest extends JDialog {
                 JOptionPane.showMessageDialog(frame, "INVALID Phone Number!");
                 return;
             }
-            if(cr<1000000000000000L||ph>9999999999999999L){
+            if(cr<1000000000000000L||cr>9999999999999999L){
                 JOptionPane.showMessageDialog(frame, "INVALID Credit Card Number!");
                 return;
             }

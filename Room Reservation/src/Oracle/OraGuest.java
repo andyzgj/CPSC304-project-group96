@@ -189,7 +189,7 @@ public class OraGuest {
 
         // guest can update their phone numbers if the numbers have 10 digits, otherwise can't update
         // reflect update operation
-        public boolean updatePhone(int phone_num,int id){
+        public boolean updatePhone(long phone_num,int id){
             manager.getConnection();
             int rowCount = manager.execute("UPDATE Guest SET phone_num = "
                     + phone_num
