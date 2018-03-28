@@ -23,9 +23,11 @@ public class Omanager {
             if (c == null) {
                 try {
                    DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
-                  //  c = DriverManager.getConnection("jdbc:oracle:thin:@dbhost.ugrad.cs.ubc.ca:1522:ug", "ora_w4u0b", "a30425169");
-                    //c = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1522:ug", "ora_v4l0b", "a26821158");
-                    c = DriverManager.getConnection("jdbc:oracle:thin:@dbhost.ugrad.cs.ubc.ca:1522:ug", "ora_x2x0b", "a13571154");
+                    c = DriverManager.getConnection("jdbc:oracle:thin:@dbhost.ugrad.cs.ubc.ca:1522:ug", "ora_v4l0b", "a26821158");
+                 //   c = DriverManager.getConnection("jdbc:oracle:thin:@dbhost.ugrad.cs.ubc.ca:1522:ug", "ora_x2x0b", "a13571154");
+
+                    //  c = DriverManager.getConnection("jdbc:oracle:thin:@dbhost.ugrad.cs.ubc.ca:1522:ug", "ora_w4u0b", "a30425169");
+                  //  c = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1522:ug", "ora_v4l0b", "a26821158");
                     System.out.println("Connection succeeded");
                 } catch (SQLException e) {
                     e.printStackTrace();
