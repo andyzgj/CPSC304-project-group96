@@ -200,6 +200,9 @@ VALUES	(28493,2,'2017-02-14', '2017-02-28',0,58492049);
 
 INSERT
 INTO		Room(room_num, type, price)
+VALUES	(101,'Single Room',150);
+INSERT
+INTO		Room(room_num, type, price)
 VALUES	(103,'Single Room',150);
 INSERT
 INTO		Room(room_num, type, price)
@@ -207,6 +210,15 @@ VALUES	(105,'Single Room',170);
 INSERT
 INTO		Room(room_num, type, price)
 VALUES	(108,'Single Room',180);
+INSERT
+INTO		Room(room_num, type, price)
+VALUES	(110,'Single Room',180);
+INSERT
+INTO		Room(room_num, type, price)
+VALUES	(200,'Double Room',250);
+INSERT
+INTO		Room(room_num, type, price)
+VALUES	(202,'Double Room',250);
 INSERT
 INTO		Room(room_num, type, price)
 VALUES	(204,'Double Room',250);
@@ -218,6 +230,15 @@ INTO		Room(room_num, type, price)
 VALUES	(208,'Double Room',290);
 INSERT
 INTO		Room(room_num, type, price)
+VALUES	(210,'Double Room',290);
+INSERT
+INTO		Room(room_num, type, price)
+VALUES	(212,'Double Room',310);
+INSERT
+INTO		Room(room_num, type, price)
+VALUES	(302,'Executive Room',420);
+INSERT
+INTO		Room(room_num, type, price)
 VALUES	(304,'Executive Room',420);
 INSERT
 INTO		Room(room_num, type, price)
@@ -227,10 +248,22 @@ INTO		Room(room_num, type, price)
 VALUES	(308,'Executive Room',480);
 INSERT
 INTO		Room(room_num, type, price)
+VALUES	(310,'Executive Room',480);
+INSERT
+INTO		Room(room_num, type, price)
 VALUES	(507,'Deluxe Suite',800);
 INSERT
 INTO		Room(room_num, type, price)
+VALUES	(509,'Deluxe Suite',1000);
+INSERT
+INTO		Room(room_num, type, price)
 VALUES	(909,'Presidential Suite',2000);
+INSERT
+INTO		Room(room_num, type, price)
+VALUES	(910,'Presidential Suite',2000);
+INSERT
+INTO		Room(room_num, type, price)
+VALUES	(911,'Super Presidential Suite',20000);
 
 
 INSERT
@@ -290,7 +323,16 @@ INTO		Includes_Meal(reserve_num, price, mname, time)
 VALUES	(12345,23,'pizza',TO_DATE('2013-10-10 12:00:00','YYYY-MM-DD hh:mi:sspm'));
 INSERT
 INTO		Includes_Meal(reserve_num, price, mname, time)
+VALUES	(12346,10,'dumplings',TO_DATE('2015-1-1 7:00:12','YYYY-MM-DD hh:mi:sspm'));
+INSERT
+INTO		Includes_Meal(reserve_num, price, mname, time)
+VALUES	(54321,10,'dumplings',TO_DATE('2013-10-10 11:00:00','YYYY-MM-DD hh:mi:ssam'));
+INSERT
+INTO		Includes_Meal(reserve_num, price, mname, time)
 VALUES	(12346,31,'steak',TO_DATE('2015-1-1 7:00:12','YYYY-MM-DD hh:mi:sspm'));
+INSERT
+INTO		Includes_Meal(reserve_num, price, mname, time)
+VALUES	(12346,23,'pizza',TO_DATE('2015-1-1 7:00:12','YYYY-MM-DD hh:mi:sspm'));
 INSERT
 INTO		Includes_Meal(reserve_num, price, mname, time)
 VALUES	(12346,450,'King Crab',TO_DATE('2017-4-6 7:00:23','YYYY-MM-DD hh:mi:sspm'));
