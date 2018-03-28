@@ -42,6 +42,25 @@ public class OraEmployee {
         return employees;
     }
 
+    public EmployeeInfo getEmployeeById(int id) {
+        EmployeeInfo ei = null;
+        try {
+            Statement st = con.createStatement();
+            String query = "select * from Employee where ID = " + id;
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()) {
+                String ename = rs.getString("ename");
+                int employee_ID = rs.getInt("employee_ID");
+                int phone_num = rs.getInt("phone_num");
+                ei = new EmployeeInfo(ename,employee_ID,phone_num);
+            }
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ei;
+    }
+
     //insert a new employee information
     public void insertEmployee(String ename, long phone_num) {
         rand = new Random();
