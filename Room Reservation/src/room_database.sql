@@ -79,7 +79,7 @@ grant select on Booked_At to public;
 CREATE TABLE Employee(
 	ename					VARCHAR(20),
 	employee_ID		INT,
-	phone_num			INT,
+	phone_num			INT CHECK (phone_num <= 9999999999 AND phone_num >=1000000000),
 	CONSTRAINT pk_Employee PRIMARY KEY (employee_ID)
 );
 grant select on Employee to public;

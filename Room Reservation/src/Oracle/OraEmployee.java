@@ -86,7 +86,7 @@ public class OraEmployee {
             Statement st = con.createStatement();
             String query = "select * from Employee where employee_ID = " + employee_ID;
             ResultSet rs = st.executeQuery(query);
-            if (!rs.next()) return false; //when there are no more employee id in the result set
+            if (!rs.next()) return false;
         } catch (SQLException e) {
             e.printStackTrace();
         }

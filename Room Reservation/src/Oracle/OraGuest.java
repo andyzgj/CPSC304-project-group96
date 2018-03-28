@@ -81,7 +81,7 @@ public class OraGuest {
             Statement st = c.createStatement();
             String query = "select * from Guest where ID = " + id;
             ResultSet rs = st.executeQuery(query);
-            if (!rs.next()) return false; //when there are no more guest id in the result set
+            if (!rs.next()) return false;
         } catch (SQLException e) {
             e.printStackTrace();
         }
