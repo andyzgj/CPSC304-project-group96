@@ -205,7 +205,26 @@ public class OraRoom {
         }
         return rooms;
     }
-//cool
+
+    public RoomInfo getRoomWithResrveNum(int reserve_num){
+        RoomInfo ri = null;
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select r.room_num, r.type, r.price from Room r, Booked_At b, Make_Reservation m where r.room_num = b.room_num and b.reserve_num = m.reserve_num");
+
+            while(rs.next()) {
+                int room_num = rs.getInt("room_num");
+                String type = rs.getString("type");
+                double price = rs.getDouble("price");
+
+                ri = new RoomInfo(room_num,type,price);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ri;
+    }
 
 
 }

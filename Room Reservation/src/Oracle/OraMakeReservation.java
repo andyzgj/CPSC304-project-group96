@@ -84,6 +84,8 @@ public class OraMakeReservation {
 
     }
 
+
+
     public void deleteReservation(int reserve_num) {
             try {
                 PreparedStatement ps = con.prepareStatement("DELETE from Make_Reservation WHERE reserve_nun = " + reserve_num);
@@ -115,6 +117,7 @@ public class OraMakeReservation {
         return true;
     }
 
+
     public List<Integer> getAllReservationNumWithGuestID(int ID){
         List<Integer> ret = new ArrayList<>();
         try {
@@ -136,6 +139,7 @@ public class OraMakeReservation {
         return ret;
     }
 
+    // Join query: get all reservation num with guests' phone number
     public List<Integer> getAllReservationNumWithGuestPhoneNum(long phone_num){
         List<Integer> ret = new ArrayList<>();
         try {
@@ -210,4 +214,33 @@ public class OraMakeReservation {
             e.printStackTrace();
         }
     }
+
+    public MakeReservationInfo getReservationInfoWithReserveNum(int reserve_num){
+        MakeReservationInfo mr = null;
+        try {
+
+            Statement st = con.createStatement();
+            String query = "select * from Make_Reservatio where reserve_num = " + reserve_num;
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                int rn = rs.getInt("reserve_num");
+                int number_of_guest = rs.getInt("number_of_guest");
+                Date start_date = rs.getDate("start_date");
+                Date end_date = rs.getDate("end_date");
+                double discount = rs.getDouble("discount");
+                int ID = rs.getInt("ID");
+
+                mr = new MakeReservationInfo(rn, number_of_guest,start_date,end_date,discount,ID);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return mr;
+
+    }
+
+
 }
