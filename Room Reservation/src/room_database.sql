@@ -180,7 +180,7 @@ INTO		Make_Reservation(reserve_num, number_of_guest, start_date, end_date, disco
 VALUES	(12345,2,'2005-10-24', '2005-10-25',100,52033688);
 INSERT
 INTO		Make_Reservation(reserve_num, number_of_guest, start_date, end_date, discount, ID)
-VALUES	(12346,4,'2010-08-14', '2005-08-16',10000,52033688);
+VALUES	(12346,4,'2010-08-14', '2005-08-16',100,52033688);
 INSERT
 INTO		Make_Reservation(reserve_num, number_of_guest, start_date, end_date, discount, ID)
 VALUES	(12347,1,'2011-12-31', '2012-01-01',50,19387981);
