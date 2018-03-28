@@ -77,7 +77,7 @@ public class OraGuest {
         }
 
         public boolean isValidID(int id) {
-        try {
+            try {
             Statement st = c.createStatement();
             String query = "select * from Guest where ID = " + id;
             ResultSet rs = st.executeQuery(query);
@@ -187,5 +187,19 @@ public class OraGuest {
         }
     }
 
+        // guest can update their phone numbers if the numbers have 10 digits, otherwise can't update
+        // reflect update operation
+        public boolean updatePhone(int phone_num,int id){
+            manager.getConnection();
+            int rowCount = manager.execute("UPDATE Guest SET phone_num = "
+                    + phone_num
+                    +"WHERE ID = "
+                    + id);
+            manager.disconnect();
+            if (rowCount == 1)
+                return true;
+            else
+                return false;
+        }
 
 }
