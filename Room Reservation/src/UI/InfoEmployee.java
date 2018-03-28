@@ -3,12 +3,12 @@ package UI;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class EmpReservationEdit extends JDialog {
+public class InfoEmployee extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
 
-    public EmpReservationEdit() {
+    public InfoEmployee() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -52,9 +52,8 @@ public class EmpReservationEdit extends JDialog {
     }
 
     public static void main(String[] args) {
-        EmpReservationEdit dialog = new EmpReservationEdit();
+        InfoEmployee dialog = new InfoEmployee();
         dialog.pack();
         dialog.setVisible(true);
-        System.exit(0);
     }
 }

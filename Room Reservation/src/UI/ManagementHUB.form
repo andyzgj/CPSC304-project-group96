@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="UI.ManagementHUB">
+  <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="583" height="400"/>
+    </constraints>
+    <properties>
+      <preferredSize width="1000" height="700"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="3fb94" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <preferredSize width="500" height="300"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="dc55e" binding="topPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="North"/>
+            <properties>
+              <background color="-16757087"/>
+              <minimumSize width="254" height="50"/>
+              <preferredSize width="254" height="50"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="78044" class="javax.swing.JLabel" binding="nameTxt">
+                <constraints border-constraint="West"/>
+                <properties>
+                  <font size="24"/>
+                  <horizontalAlignment value="2"/>
+                  <horizontalTextPosition value="2"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <grid id="1565c" binding="infoButtonPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints border-constraint="East"/>
+                <properties>
+                  <background color="-16757087"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="5b854" class="javax.swing.JButton" binding="InfoButton">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Your Info"/>
+                    </properties>
+                  </component>
+                  <hspacer id="f7a64">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                </children>
+              </grid>
+              <hspacer id="e3009">
+                <constraints border-constraint="Center"/>
+              </hspacer>
+            </children>
+          </grid>
+          <grid id="13302" binding="viewPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints border-constraint="Center"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <tabbedpane id="ed741" binding="tabbedPane1" default-binding="true">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="200" height="200"/>
+                  </grid>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <grid id="ea930" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints>
+                      <tabbedpane title="Reservation Managing"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <grid id="72df0" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints border-constraint="West"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <grid id="ed319" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints border-constraint="Center"/>
+                            <properties>
+                              <preferredSize width="120" height="200"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="5962c" class="javax.swing.JLabel" binding="rlTitle">
+                                <constraints border-constraint="North"/>
+                                <properties>
+                                  <text value="Reservation#"/>
+                                </properties>
+                              </component>
+                              <scrollpane id="5249c">
+                                <constraints border-constraint="Center"/>
+                                <properties/>
+                                <border type="none"/>
+                                <children>
+                                  <component id="147e5" class="javax.swing.JList" binding="roomList">
+                                    <constraints/>
+                                    <properties>
+                                      <font size="16"/>
+                                      <layoutOrientation value="0"/>
+                                      <model>
+                                        <item value="1"/>
+                                        <item value="2"/>
+                                        <item value="3"/>
+                                        <item value="4"/>
+                                        <item value="5"/>
+                                        <item value="6"/>
+                                        <item value="7"/>
+                                        <item value="8"/>
+                                        <item value="9"/>
+                                        <item value="0"/>
+                                        <item value="11"/>
+                                        <item value="12"/>
+                                        <item value="13"/>
+                                        <item value="14"/>
+                                      </model>
+                                      <name value=""/>
+                                      <selectionMode value="0"/>
+                                    </properties>
+                                  </component>
+                                </children>
+                              </scrollpane>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                      <grid id="c3e3d" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints border-constraint="Center"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <scrollpane id="6496">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children/>
+                          </scrollpane>
+                          <grid id="2357d" layout-manager="GridBagLayout">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="1e6d5" class="javax.swing.JRadioButton" binding="reservationNumberRadioButton" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Reservation number"/>
+                                </properties>
+                              </component>
+                              <component id="8293e" class="javax.swing.JRadioButton" binding="guestIDRadioButton" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Guest ID"/>
+                                </properties>
+                              </component>
+                              <component id="163ce" class="javax.swing.JRadioButton" binding="guestPhoneNumberRadioButton" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Guest Phone Number"/>
+                                </properties>
+                              </component>
+                              <component id="4ba8b" class="javax.swing.JTextField" default-binding="true">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="150" height="-1"/>
+                                  </grid>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties/>
+                              </component>
+                              <component id="149f7" class="javax.swing.JButton" default-binding="true">
+                                <constraints>
+                                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Search"/>
+                                </properties>
+                              </component>
+                              <hspacer id="e0e00">
+                                <constraints>
+                                  <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                              </hspacer>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <grid id="631a3" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints>
+                      <tabbedpane title="Guest Viewer"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <grid id="3f837" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints border-constraint="West"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <grid id="a6056" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints border-constraint="Center"/>
+                            <properties>
+                              <preferredSize width="120" height="200"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="2772" class="javax.swing.JLabel">
+                                <constraints border-constraint="North"/>
+                                <properties>
+                                  <text value="Guest ID"/>
+                                </properties>
+                              </component>
+                              <scrollpane id="ba738">
+                                <constraints border-constraint="Center"/>
+                                <properties/>
+                                <border type="none"/>
+                                <children>
+                                  <component id="ecf23" class="javax.swing.JList">
+                                    <constraints/>
+                                    <properties>
+                                      <font size="16"/>
+                                      <layoutOrientation value="0"/>
+                                      <model>
+                                        <item value="1"/>
+                                        <item value="2"/>
+                                        <item value="3"/>
+                                        <item value="4"/>
+                                        <item value="5"/>
+                                        <item value="6"/>
+                                        <item value="7"/>
+                                        <item value="8"/>
+                                        <item value="9"/>
+                                        <item value="0"/>
+                                        <item value="11"/>
+                                        <item value="12"/>
+                                        <item value="13"/>
+                                        <item value="14"/>
+                                      </model>
+                                      <name value=""/>
+                                      <selectionMode value="0"/>
+                                    </properties>
+                                  </component>
+                                </children>
+                              </scrollpane>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                      <grid id="c4186" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints border-constraint="Center"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <scrollpane id="e01d7">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children/>
+                          </scrollpane>
+                          <grid id="151a2" layout-manager="GridBagLayout">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="7112" class="javax.swing.JRadioButton" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Guest ID"/>
+                                </properties>
+                              </component>
+                              <component id="30e95" class="javax.swing.JRadioButton" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Guest Phone#"/>
+                                </properties>
+                              </component>
+                              <component id="6ded" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="150" height="-1"/>
+                                  </grid>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties/>
+                              </component>
+                              <component id="59096" class="javax.swing.JRadioButton" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <text value="RadioButton"/>
+                                </properties>
+                              </component>
+                              <component id="dc274" class="javax.swing.JButton" binding="button1" default-binding="true">
+                                <constraints>
+                                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Search"/>
+                                </properties>
+                              </component>
+                              <hspacer id="40a1b">
+                                <constraints>
+                                  <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                              </hspacer>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                </children>
+              </tabbedpane>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
