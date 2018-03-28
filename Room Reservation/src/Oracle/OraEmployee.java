@@ -42,11 +42,11 @@ public class OraEmployee {
         return employees;
     }
 
-    public EmployeeInfo getEmployeeById(int id) {
+    public EmployeeInfo getEmployeeById(int eid) {
         EmployeeInfo ei = null;
         try {
             Statement st = con.createStatement();
-            String query = "select * from Employee where ID = " + id;
+            String query = "select * from Employee where employee_ID = " + eid;
             ResultSet rs = st.executeQuery(query);
             while(rs.next()) {
                 String ename = rs.getString("ename");
