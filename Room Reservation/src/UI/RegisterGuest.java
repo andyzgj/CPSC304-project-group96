@@ -86,8 +86,8 @@ public class RegisterGuest extends JDialog {
                 JOptionPane.showMessageDialog(frame, "INVALID Credit Card Number!");
                 return;
             }
-            gm.InsertGuest(name.getText(),new Date(y,m,d),ph,cr);
-            JOptionPane.showMessageDialog(frame, "guest info check - birthday: "+(1900+y)+"-"+(m+1)+"-"+d+" Name: "+name.getText()+" Phone: "+ph+" Card: "+cr);
+            int id = gm.InsertGuest(name.getText(),new Date(y,m,d),ph,cr);
+            JOptionPane.showMessageDialog(frame, "guest info check - birthday: "+(1900+y)+"-"+(m+1)+"-"+d+" id: "+ id +" Name: "+name.getText()+" Phone: "+ph+" Card: "+cr);
             if(registerAsVIPCheckBox.isSelected()){
                 vm.BeAVip(gm.getGuestByPhoneNumber(ph).getID());
             }

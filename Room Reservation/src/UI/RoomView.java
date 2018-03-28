@@ -147,8 +147,15 @@ public class RoomView {
                 if(searchByUsingFilterRadioButton.isSelected()){
                     if(searchRoomByTypeCheckBox.isSelected()&&searchRoomWithPriceCheckBox.isSelected()){
                         //TODO: use both filter field to get a room table
-
-
+                        roomNumList.clear();
+                        if (rm.getRoomWithTypeAndLowerPrice(typeComboBox.getSelectedItem().toString(),Integer.parseInt(priceTxtField.getText()))==null)
+                        {JOptionPane.showMessageDialog(frame, "Price too low!");
+                            return;
+                        }
+                        else {
+                            roomNumList.addAll(rm.getRoomWithTypeAndLowerPrice(typeComboBox.getSelectedItem().toString(),Integer.parseInt(priceTxtField.getText())));
+                            roomList.setListData(roomNumList.toArray());
+                        }
                     }else if(searchRoomByTypeCheckBox.isSelected()){
 
                         roomNumList.clear();
