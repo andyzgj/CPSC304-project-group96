@@ -7,7 +7,30 @@ public class GuestReserveWindow extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JPanel infoPanel;
+    private JLabel rmnumtxt;
+    private JLabel guestnumtxt;
+    private JLabel chkouttxt;
+    private JLabel chkintxt;
+    private JLabel rmtptxt;
+    private JLabel roomNumberLabel;
+    private JComboBox inYear;
+    private JComboBox inMonth;
+    private JComboBox inDate;
+    private JCheckBox mealCheckBox;
+    private JComboBox outYear;
+    private JComboBox outMonth;
+    private JComboBox outDate;
+    private JCheckBox parkingCheckBox;
+    private JTextField textField1;
+    private JLabel priceLable;
+    private JLabel roomTypeLabel;
+    private JComboBox comboBox1;
+    private JSlider slider1;
+    private JLabel guestNumLabel;
+    private JCheckBox showOnlyPopularMealCheckBox;
     private static GuestReserveWindow dialog = new GuestReserveWindow();
+    private static int roomNum;
 
     public GuestReserveWindow() {
         setContentPane(contentPane);
@@ -52,9 +75,9 @@ public class GuestReserveWindow extends JDialog {
         dialog.dispose();
     }
 
-    public static void run() {
+    public static void run(int rmNum) {
+        roomNum = rmNum;
         dialog.pack();
         dialog.setVisible(true);
-
     }
 }

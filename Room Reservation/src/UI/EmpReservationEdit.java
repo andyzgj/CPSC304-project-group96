@@ -7,6 +7,25 @@ public class EmpReservationEdit extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JList ResList;
+    private JLabel rlTitle;
+    private JPanel infoPanel;
+    private JLabel checkInLabel;
+    private JLabel checkOutLabel;
+    private JLabel rmnumtxt;
+    private JLabel guestNumberLabel;
+    private JLabel guestnumtxt;
+    private JLabel chkouttxt;
+    private JLabel chkintxt;
+    private JLabel roomTypeLabel;
+    private JLabel discountLabel;
+    private JLabel mealLabel;
+    private JLabel rmtptxt;
+    private JLabel dscttxt;
+    private JLabel mealtxt;
+    private JLabel roomNumberLabel;
+    private JLabel parkingLabel;
+    private JLabel Parkingtxt;
 
     public EmpReservationEdit() {
         setContentPane(contentPane);
