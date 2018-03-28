@@ -71,7 +71,7 @@
               <background color="-2502201"/>
               <font size="60" style="1"/>
               <horizontalAlignment value="10"/>
-              <text value="Employee ID"/>
+              <text value=""/>
               <toolTipText value="inout your Account ID or phone number"/>
             </properties>
           </component>

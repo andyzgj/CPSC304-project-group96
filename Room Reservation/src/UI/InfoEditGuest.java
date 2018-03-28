@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.sql.Date;
 
+
 public class InfoEditGuest extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
@@ -30,8 +31,8 @@ public class InfoEditGuest extends JDialog {
     public InfoEditGuest(int id) {
         guest = gm.getGuestById(id);
         name.setText(guest.getName());
-        credit.setText(""+guest.getCredit_card_num());
-        phone.setText(""+guest.getPhoneNum());
+        credit.setText(((Long)guest.getCredit_card_num()).toString());
+        phone.setText(((Long)guest.getPhoneNum()).toString());
         int yr = guest.getBirthday().getYear();
         int mo = guest.getBirthday().getMonth();
         int da = guest.getBirthday().getDate();
@@ -78,20 +79,29 @@ public class InfoEditGuest extends JDialog {
             int d = 1+date.getSelectedIndex();
             long ph = Long.parseLong(phone.getText());
             long cr = Long.parseLong(credit.getText());
-            if(ph<1000000000L||ph>9999999999L||gm.isValidPhoneNumber(ph)){
-                JOptionPane.showMessageDialog(dialog, "INVALID Phone Number!");
-                return;
+
+
+
+            if(ph != guest.getPhoneNum()){
+                if(ph<1000000000L||ph>9999999999L||gm.isValidPhoneNumber(ph)){
+                    JOptionPane.showMessageDialog(dialog, "INVALID Phone Number!");
+                    return;
+                }
             }
-            if(cr<1000000000000000L||ph>9999999999999999L){
+            if(cr<1000000000000000L||cr>9999999999999999L){
                 JOptionPane.showMessageDialog(dialog, "INVALID Credit Card Number!");
                 return;
             }
-            gm.updateGuestInfo(guest.getID(),name.getText(),new Date(y,m,d),ph,cr);
-            JOptionPane.showMessageDialog(dialog, "guest info check - birthday: "+(1900+y)+"-"+(m+1)+"-"+d+" Name: "+name.getText()+" Phone: "+ph+" Card: "+cr);
+            //TODO:DEBUG THE UPDATE FUNCTION
+            JOptionPane.showMessageDialog(dialog, "guest info check birthday: "+(1900+y)+"-"+(m+1)+"-"+d+" Name: "+name.getText()+" Phone: "+ph+" Card: "+cr);
+            gm.updatePhone(ph,guest.getID());
             dialog.dispose();
-        }catch(Exception e){
+        }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(dialog, "INVALID Phone Number or Credit Card Number!");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(dialog, "ERROR");
         }
+
     }
 
     private void onCancel() {

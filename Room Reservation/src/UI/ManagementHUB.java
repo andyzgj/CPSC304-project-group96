@@ -23,12 +23,20 @@ public class ManagementHUB {
     private JRadioButton guestPhoneRadioButton;
     private JRadioButton guestIDRadioButton;
     private JButton searchButton;
+    private int eid;
     private static JFrame frame = new JFrame("ManagementHUB");
     public ManagementHUB(int id) {
+        eid = id;
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+            }
+        });
+        InfoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InfoEmployee.run(eid);
             }
         });
     }

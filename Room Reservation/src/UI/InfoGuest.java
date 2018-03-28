@@ -1,6 +1,8 @@
 package UI;
 
 import Oracle.OraGuest;
+import Object.GuestInfo;
+import Oracle.OraVIP;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -9,12 +11,31 @@ public class InfoGuest extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JPanel infoPanel;
+    private JLabel nameLabel;
+    private JLabel bdayLabel;
+    private JLabel phoneLabel;
+    private JLabel cardLabel;
+    private JLabel idLabel;
+    private JLabel pointLabel;
     private static InfoGuest dialog;
     OraGuest gm = new OraGuest();
-    int id;
+    OraVIP vm = new OraVIP();
+    private GuestInfo guest;
 
     public InfoGuest(int a) {
-        id = a;
+        guest = gm.getGuestById(a);
+        nameLabel.setText(guest.getName());
+        bdayLabel.setText(guest.getBirthday().toString());
+        phoneLabel.setText(guest.getPhoneNum()+"");
+        cardLabel.setText(guest.getCredit_card_num()+"");
+        idLabel.setText(guest.getID()+"");
+        if(vm.getVipWithID(a) == null){
+            pointLabel.setText("You are not a Member!");
+        }else{
+            pointLabel.setText(""+vm.getVipWithID(a).getPoints());
+        }
+
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -49,6 +70,7 @@ public class InfoGuest extends JDialog {
 
     private void onOK() {
         // add your code here
+        InfoEditGuest.run(guest.getID());
         dispose();
     }
 

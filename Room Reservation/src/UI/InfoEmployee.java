@@ -1,5 +1,7 @@
 package UI;
 
+import Oracle.OraEmployee;
+import Object.EmployeeInfo;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -7,8 +9,19 @@ public class InfoEmployee extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JLabel idLabel;
+    private JLabel phoneLabel;
+    private JLabel nameLAbel;
+    private static InfoEmployee dialog;
+    private static OraEmployee em = new OraEmployee();
+    private static EmployeeInfo employee;
 
-    public InfoEmployee() {
+    public InfoEmployee(int id) {
+        employee = em.getEmployeeById(id);
+        idLabel.setText(""+employee.getID());
+        phoneLabel.setText(employee.getPhoneNum()+"");
+        nameLAbel.setText(employee.getName());
+
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -51,8 +64,8 @@ public class InfoEmployee extends JDialog {
         dispose();
     }
 
-    public static void main(String[] args) {
-        InfoEmployee dialog = new InfoEmployee();
+    public static void run(int id) {
+        dialog = new InfoEmployee(id);
         dialog.pack();
         dialog.setVisible(true);
     }
