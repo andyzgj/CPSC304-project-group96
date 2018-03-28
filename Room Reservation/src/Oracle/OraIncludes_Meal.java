@@ -25,9 +25,8 @@ public class OraIncludes_Meal {
                 int reserve_num = rs.getInt("reserve_num");
                 double price = rs.getDouble("price");
                 String name = rs.getString("mname");
-                Date time = rs.getDate("time");
 
-                Includes_MealInfo imi = new Includes_MealInfo(reserve_num,price,name,time);
+                Includes_MealInfo imi = new Includes_MealInfo(reserve_num,price,name);
                 meal.add(imi);
             }
 
@@ -46,7 +45,6 @@ public class OraIncludes_Meal {
             ps.setInt(1, reserve_num);
             ps.setDouble(2, price);
             ps.setString(3, name);
-            ps.setDate(4,time);
 
             ps.executeUpdate();
             con.commit();
