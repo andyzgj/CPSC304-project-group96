@@ -261,7 +261,7 @@ INTO		Room(room_num, type, price)
 VALUES	(910,'Presidential Suite',2000);
 INSERT
 INTO		Room(room_num, type, price)
-VALUES	(911,'Presidential Suite',20000);
+VALUES	(911,'Presidential Suite',2000);
 
 
 INSERT
@@ -279,6 +279,12 @@ VALUES	(909,54321);
 INSERT
 INTO		Booked_At(room_num, reserve_num)
 VALUES	(306,28493);
+INSERT
+INTO		Booked_At(room_num, reserve_num)
+VALUES	(507,99873);
+INSERT
+INTO		Booked_At(room_num, reserve_num)
+VALUES	(909,19283);
 
 INSERT
 INTO		Employee(ename, employee_ID,phone_num)
