@@ -72,7 +72,7 @@ CREATE TABLE Booked_At(
 	CONSTRAINT fk_Booked_At FOREIGN KEY (room_num) REFERENCES Room(room_num)
                ON DELETE SET NULL,
 	CONSTRAINT fk_Booked FOREIGN KEY (reserve_num) REFERENCES Make_Reservation(reserve_num)
-               ON DELETE SET NULL
+               ON DELETE CASCADE
 );
 grant select on Booked_At to public;
 
@@ -89,7 +89,7 @@ CREATE TABLE Approve(
 	employee_ID		INT,
 	CONSTRAINT pk_Approve PRIMARY KEY (reserve_num,employee_ID),
 	CONSTRAINT fk_Approve FOREIGN KEY (reserve_num) REFERENCES Make_Reservation(reserve_num)
-		ON DELETE SET NULL,
+		ON DELETE CASCADE,
 	CONSTRAINT fk_Approved FOREIGN KEY (employee_ID) REFERENCES Employee(employee_ID)
 		ON DELETE SET NULL
 );
@@ -98,7 +98,7 @@ grant select on Approve to public;
 CREATE TABLE Includes_Meal(
 	reserve_num		INT NOT NULL,
 	mname			VARCHAR(20),
-	CONSTRAINT pk_Includes_Meal PRIMARY KEY (reserve_num, mname),
+	CONSTRAINT pk_Includes_Meal PRIMARY KEY(reserve_num, mname),
 	CONSTRAINT fk_Includes_Meal FOREIGN KEY(reserve_num) REFERENCES Make_Reservation(reserve_num)
 	  ON DELETE CASCADE
 );
@@ -116,7 +116,7 @@ CREATE TABLE Provides(
 	stall_num		INT,
 	CONSTRAINT pk_Provides PRIMARY KEY (reserve_num, stall_num),
 	CONSTRAINT fk_Provides FOREIGN KEY(reserve_num) REFERENCES Make_Reservation(reserve_num)
-		ON DELETE SET NULL,
+		ON DELETE CASCADE,
 	CONSTRAINT fk_Provide FOREIGN KEY(stall_num) REFERENCES Parking_Space(stall_num)
 	  ON DELETE SET NULL
 );
