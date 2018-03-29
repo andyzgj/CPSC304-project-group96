@@ -4,11 +4,14 @@ import Oracle.*;
 import Object.*;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
+
 
 public class ManagementHUB {
     OraGuest gm = new OraGuest();;
@@ -72,7 +75,13 @@ public class ManagementHUB {
     private JRadioButton gGuestIDRadioButton;
     private JRadioButton gGuestPhoneRadioButton;
     private JButton cancelMealButton;
+    private JButton showAllGuestButton;
+    private JButton showMostDiscountUserButton;
+    private JButton showLeastDiscountUserButton;
+    private JList list1;
+    private JTable table1;
     private static JFrame frame = new JFrame("ManagementHUB");
+    private List<MakeReservationInfo> ana = new ArrayList<MakeReservationInfo>();
     public static void run(Integer id) {
 
         frame.setContentPane(new ManagementHUB(id).mainPanel);
@@ -176,13 +185,13 @@ public class ManagementHUB {
     }
     public ManagementHUB(int a) {
 
-
-
         employee = em.getEmployeeById(a);
         guestList.setListData(gList.toArray());
         ResList.setListData(rList.toArray());
         allUnapprovedRadioButton.setSelected(true);
         allGuestRadioButton.setSelected(true);
+        ana = resm.AverageDiscountForEachGuest();
+        //TODO
         guestSearchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -381,6 +390,37 @@ public class ManagementHUB {
             public void actionPerformed(ActionEvent e) {
                 guestSearchBar.setText("");
                 refreshGuestList();
+            }
+        });
+
+
+        showAllGuestButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+            }
+        });
+        showMostDiscountUserButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ana = resm.getIDOfMaxOfAverageDiscount();
+
+            }
+        });
+        showLeastDiscountUserButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ana = resm.getIDOfMinOfAverageDiscount();
+
+
+            }
+        });
+
+        list1.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+
             }
         });
     }

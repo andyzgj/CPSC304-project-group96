@@ -184,6 +184,7 @@ public class ReservationForm extends JDialog {
         double discount = 0;
         if(usePointsCheckBox.isSelected()){
             discount = slider1.getValue();
+            vm.updatePoints(gid,discount);
         }
 
         int resNum = resm.InsertReservation(gn,in,out,discount,gid);
