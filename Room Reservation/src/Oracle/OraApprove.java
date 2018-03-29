@@ -69,14 +69,14 @@ public class OraApprove {
     }
 
     //update VIP points if VIPs' reservation is approved
-    public void VIP_by_employee() {
+    public void VIPPoints(int reserve_num) {
 
-        try {
+        try{
             Statement st = con.createStatement();
-            String query = "create view VIP_by_employees as "
-                    +"select VIP.points,Make_Reservation.price, VIP.ID"
-                    +" from VIP join Make_Reservation on VIP.ID = Make_Reservation.ID"
-                    +" join Approve on Approve.reserve_num = Make_Reservation.reserve_num";
+            String query = "create view VIPPoints as select VIP.points as point,Room.price as prices, VIP.ID as id"
+            + " from VIP join Make_Reservation on VIP.ID = Make_Reservation.ID"
+            + " join Booked_At on Make_Reservation.reserve_num = Booked_At.reserve_num"
+            + " join Room on Booked_At.room_num = Room.room_num where Make_Reservation.reserve_num = " + reserve_num;
              st.executeQuery(query);
 
         } catch (SQLException e) {
@@ -105,19 +105,21 @@ public class OraApprove {
     }
 
 
-    public void update(){
+
+    public void addPoints(int reserve_num){
         try{
             OraVIP VIP = new OraVIP();
             Statement st = con.createStatement();
-            VIP_by_employee();
-            String query = "select * from VIP_by_employee";
+            VIPPoints(reserve_num);
+            String query = "select * from VIPPoints";
             ResultSet rs = st.executeQuery(query);
-
-            double points = rs.getDouble("points");
-            double price = rs.getDouble("price");
-            int id = rs.getInt("ID");
-            points = points + price * 0.1;
-            VIP.updateVIP(id,points);
+            if (rs.next()) {
+                double points = rs.getDouble("points");
+                double price = rs.getDouble("price");
+                int id = rs.getInt("ID");
+                points = points + price * 0.1;
+                VIP.updateVIP(id, points);
+            }
             dropReservationWithEmployee();
         }
         catch (SQLException e){
@@ -125,11 +127,10 @@ public class OraApprove {
         }
     }
 
-
     private void dropReservationWithEmployee() {
         try {
             Statement st = con.createStatement();
-            st.executeQuery("drop view VIP_by_employees");
+            st.executeQuery("drop view VIPPoints");
         } catch (SQLException e) {
             e.printStackTrace();
         }
