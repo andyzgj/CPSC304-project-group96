@@ -41,9 +41,9 @@ public class OraMakeReservation {
         return reservation;
     }
 
-    public void InsertReservation(int number_of_guest, Date start_date, Date end_date, double discount, int ID) {
+    public int InsertReservation(int number_of_guest, Date start_date, Date end_date, double discount, int ID) {
         PreparedStatement ps;
-
+        int i = -1;
         try {
             int reserve_num = generateReserveNum();
             ps = con.prepareStatement("INSERT INTO Make_Reservation VALUES (?,?,?,?,?,?)");
@@ -65,6 +65,7 @@ public class OraMakeReservation {
             ps.executeUpdate();
             con.commit();
             ps.close();
+            return reserve_num;
         }
         catch (SQLException ex)
         {
@@ -80,7 +81,7 @@ public class OraMakeReservation {
                 System.exit(-1);
             }
         }
-
+        return i;
     }
 
 
