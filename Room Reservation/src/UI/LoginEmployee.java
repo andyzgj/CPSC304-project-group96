@@ -22,8 +22,8 @@ public class LoginEmployee {
             public void actionPerformed(ActionEvent e) {
                 try{
 
-                    int id = Integer.parseInt(employeeIDTextField.getText());
-                    //JOptionPane.showMessageDialog(frame, "Employee ID "+id);
+                    Integer id = Integer.parseInt(employeeIDTextField.getText());
+
                     if(em.isValidEID(id)){
                         ManagementHUB.run(id);
                         frame.dispose();
@@ -40,6 +40,7 @@ public class LoginEmployee {
     }
 
     public static void run() {
+
         frame.setContentPane(new LoginEmployee().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
