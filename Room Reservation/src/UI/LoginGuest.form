@@ -28,7 +28,8 @@
             <constraints border-constraint="South"/>
             <properties>
               <font name="Impact" size="72"/>
-              <text value="XXX HOTEL GUEST LOG-IN SYSTEM"/>
+              <foreground color="-7820802"/>
+              <text value="GUEST LOG-IN"/>
             </properties>
           </component>
         </children>
@@ -63,27 +64,14 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <background color="-12828862"/>
                   <borderPainted value="false"/>
                   <contentAreaFilled value="false"/>
                   <focusPainted value="true"/>
-                  <font size="36"/>
+                  <font size="50"/>
+                  <foreground color="-65794"/>
                   <opaque value="true"/>
                   <text value="Log in"/>
-                </properties>
-              </component>
-              <component id="bdb8d" class="javax.swing.JButton" binding="registerButton" default-binding="true">
-                <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false">
-                    <minimum-size width="300" height="100"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <borderPainted value="false"/>
-                  <contentAreaFilled value="false"/>
-                  <font size="36"/>
-                  <opaque value="true"/>
-                  <text value="Register"/>
-                  <verticalAlignment value="0"/>
                 </properties>
               </component>
               <hspacer id="e6e7e">
@@ -101,6 +89,23 @@
                   <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
               </hspacer>
+              <component id="bdb8d" class="javax.swing.JButton" binding="registerButton" default-binding="true">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="300" height="100"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-12828862"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <font size="50"/>
+                  <foreground color="-65794"/>
+                  <opaque value="true"/>
+                  <text value="Register"/>
+                  <verticalAlignment value="0"/>
+                </properties>
+              </component>
             </children>
           </grid>
           <grid id="b2164" binding="buttom" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
@@ -144,6 +149,7 @@
                   <autoscrolls value="true"/>
                   <background color="-16757087"/>
                   <font size="48"/>
+                  <foreground color="-65794"/>
                   <opaque value="false"/>
                   <selected value="true"/>
                   <text value="Phone Number"/>
@@ -154,13 +160,14 @@
                 <properties>
                   <background color="-16757087"/>
                   <font size="48"/>
+                  <foreground color="-65794"/>
                   <opaque value="false"/>
                   <text value="Guest ID"/>
                 </properties>
               </component>
             </children>
           </grid>
-          <grid id="57ebf" binding="textPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="4" vgap="5">
+          <grid id="57ebf" binding="textPanel" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="4" vgap="5">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -173,20 +180,19 @@
             <children>
               <vspacer id="d6c08">
                 <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
               <component id="27eb1" class="javax.swing.JTextField" binding="selectLogInTypeTextField" default-binding="true">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false">
-                    <minimum-size width="500" height="100"/>
-                    <preferred-size width="500" height="100"/>
-                    <maximum-size width="500" height="100"/>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="1" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="1000" height="-1"/>
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-2502201"/>
+                  <background color="-12828862"/>
                   <font size="60" style="1"/>
+                  <foreground color="-65794"/>
                   <horizontalAlignment value="10"/>
                   <text value=""/>
                   <toolTipText value="inout your Account ID or phone number"/>
@@ -194,9 +200,19 @@
               </component>
               <vspacer id="6ea7">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
+              <hspacer id="cf686">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
+              <hspacer id="44785">
+                <constraints>
+                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
             </children>
           </grid>
         </children>

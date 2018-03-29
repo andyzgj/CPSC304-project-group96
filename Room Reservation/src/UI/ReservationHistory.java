@@ -74,7 +74,6 @@ public class ReservationHistory extends JDialog {
         ResList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                //todo show detail on right side correspond to the selection in the list
 
                 Integer resNum = (int)ResList.getSelectedValue();
                 RoomInfo room = rm.getRoomWithResrveNum(resNum);

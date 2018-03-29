@@ -2,10 +2,10 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="UI.ManagementHUB">
   <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="1081" height="616"/>
+      <xy x="20" y="20" width="1395" height="616"/>
     </constraints>
     <properties>
-      <preferredSize width="1000" height="700"/>
+      <preferredSize width="1400" height="900"/>
     </properties>
     <border type="none"/>
     <children>
@@ -21,20 +21,21 @@
             <properties>
               <background color="-16757087"/>
               <minimumSize width="254" height="50"/>
-              <preferredSize width="254" height="50"/>
+              <preferredSize width="254" height="100"/>
             </properties>
             <border type="none"/>
             <children>
               <component id="78044" class="javax.swing.JLabel" binding="nameTxt">
                 <constraints border-constraint="West"/>
                 <properties>
-                  <font size="24"/>
+                  <font size="50"/>
+                  <foreground color="-7820802"/>
                   <horizontalAlignment value="2"/>
                   <horizontalTextPosition value="2"/>
-                  <text value=""/>
+                  <text value="Mr.Nobody"/>
                 </properties>
               </component>
-              <grid id="1565c" binding="infoButtonPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="1565c" binding="infoButtonPanel" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints border-constraint="East"/>
                 <properties>
@@ -44,13 +45,23 @@
                 <children>
                   <component id="5b854" class="javax.swing.JButton" binding="InfoButton">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="-1" height="70"/>
+                      </grid>
                     </constraints>
                     <properties>
+                      <background color="-12828862"/>
+                      <font size="25"/>
+                      <foreground color="-65794"/>
                       <text value="Your Info"/>
                     </properties>
                   </component>
                   <hspacer id="f7a64">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <hspacer id="f967d">
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -74,7 +85,9 @@
                     <preferred-size width="200" height="200"/>
                   </grid>
                 </constraints>
-                <properties/>
+                <properties>
+                  <font size="20"/>
+                </properties>
                 <border type="none"/>
                 <children>
                   <grid id="ea930" binding="tab1" layout-manager="BorderLayout" hgap="0" vgap="0">
@@ -92,13 +105,17 @@
                           <grid id="ed319" binding="ReslistPanelInner" layout-manager="BorderLayout" hgap="0" vgap="0">
                             <constraints border-constraint="Center"/>
                             <properties>
-                              <preferredSize width="120" height="200"/>
+                              <background color="-12828862"/>
+                              <preferredSize width="300" height="200"/>
                             </properties>
                             <border type="none"/>
                             <children>
                               <component id="5962c" class="javax.swing.JLabel" binding="rlTitle">
                                 <constraints border-constraint="North"/>
                                 <properties>
+                                  <background color="-12828862"/>
+                                  <font size="25"/>
+                                  <foreground color="-65794"/>
                                   <text value="Reservation#"/>
                                 </properties>
                               </component>
@@ -110,10 +127,14 @@
                                   <component id="147e5" class="javax.swing.JList" binding="ResList">
                                     <constraints/>
                                     <properties>
-                                      <font size="16"/>
+                                      <background color="-12828862"/>
+                                      <font size="30"/>
+                                      <foreground color="-65794"/>
                                       <layoutOrientation value="0"/>
                                       <model/>
                                       <name value=""/>
+                                      <selectionBackground color="-16777216"/>
+                                      <selectionForeground color="-65794"/>
                                       <selectionMode value="0"/>
                                     </properties>
                                   </component>
@@ -129,307 +150,319 @@
                         <properties/>
                         <border type="none"/>
                         <children>
-                          <scrollpane id="6496">
-                            <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties/>
-                            <border type="none"/>
-                            <children>
-                              <grid id="5f7e" binding="infoPanel" layout-manager="GridBagLayout">
-                                <constraints/>
-                                <properties/>
-                                <border type="none" title="Reservation Information"/>
-                                <children>
-                                  <component id="2da0" class="javax.swing.JLabel" binding="checkInLabel">
-                                    <constraints>
-                                      <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <text value="XXXXXX"/>
-                                    </properties>
-                                  </component>
-                                  <component id="d3eae" class="javax.swing.JLabel" binding="checkOutLabel">
-                                    <constraints>
-                                      <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <text value="XXXXXX"/>
-                                    </properties>
-                                  </component>
-                                  <component id="74f45" class="javax.swing.JLabel">
-                                    <constraints>
-                                      <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <text value="ROOM#"/>
-                                    </properties>
-                                  </component>
-                                  <component id="436eb" class="javax.swing.JLabel" binding="guestNumberLabel">
-                                    <constraints>
-                                      <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <text value="XXXXXX"/>
-                                    </properties>
-                                  </component>
-                                  <component id="5ba71" class="javax.swing.JLabel">
-                                    <constraints>
-                                      <grid row="3" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <text value="Number of Guests"/>
-                                    </properties>
-                                  </component>
-                                  <component id="4c7c3" class="javax.swing.JLabel">
-                                    <constraints>
-                                      <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <text value="Check-out Date"/>
-                                    </properties>
-                                  </component>
-                                  <component id="24197" class="javax.swing.JLabel">
-                                    <constraints>
-                                      <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <text value="Check-in Date"/>
-                                    </properties>
-                                  </component>
-                                  <component id="5552e" class="javax.swing.JLabel" binding="roomTypeLabel">
-                                    <constraints>
-                                      <grid row="1" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <text value="XXXXXX"/>
-                                    </properties>
-                                  </component>
-                                  <component id="59be3" class="javax.swing.JLabel" binding="discountLabel">
-                                    <constraints>
-                                      <grid row="2" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <text value="XXXXXX"/>
-                                    </properties>
-                                  </component>
-                                  <component id="55298" class="javax.swing.JLabel" binding="mealLabel">
-                                    <constraints>
-                                      <grid row="3" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <text value="XXXXXX"/>
-                                    </properties>
-                                  </component>
-                                  <component id="835a" class="javax.swing.JLabel">
-                                    <constraints>
-                                      <grid row="1" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <text value="Room Type"/>
-                                    </properties>
-                                  </component>
-                                  <component id="81210" class="javax.swing.JLabel">
-                                    <constraints>
-                                      <grid row="2" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <text value="Discount"/>
-                                    </properties>
-                                  </component>
-                                  <component id="26093" class="javax.swing.JLabel">
-                                    <constraints>
-                                      <grid row="3" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <text value="Meal"/>
-                                    </properties>
-                                  </component>
-                                  <component id="8b9f5" class="javax.swing.JLabel" binding="roomNumberLabel">
-                                    <constraints>
-                                      <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <text value="XXXXXX"/>
-                                    </properties>
-                                  </component>
-                                  <hspacer id="4e556">
-                                    <constraints>
-                                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                  </hspacer>
-                                  <hspacer id="8f4d5">
-                                    <constraints>
-                                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                  </hspacer>
-                                  <vspacer id="fa81b">
-                                    <constraints>
-                                      <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                  </vspacer>
-                                  <hspacer id="823f6">
-                                    <constraints>
-                                      <grid row="1" column="6" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                  </hspacer>
-                                  <hspacer id="7782c">
-                                    <constraints>
-                                      <grid row="1" column="8" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                  </hspacer>
-                                  <hspacer id="f28f0">
-                                    <constraints>
-                                      <grid row="1" column="10" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                  </hspacer>
-                                  <component id="1d143" class="javax.swing.JLabel" binding="parkingLabel">
-                                    <constraints>
-                                      <grid row="4" column="5" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <text value="XXXXXXZXXXXXXXZXXXXXX"/>
-                                    </properties>
-                                  </component>
-                                  <component id="f71f6" class="javax.swing.JLabel">
-                                    <constraints>
-                                      <grid row="4" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                    <properties>
-                                      <font size="16"/>
-                                      <text value="Parking"/>
-                                    </properties>
-                                  </component>
-                                  <hspacer id="ce1cf">
-                                    <constraints>
-                                      <grid row="1" column="11" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                  </hspacer>
-                                  <component id="cbb46" class="javax.swing.JButton" binding="approveButton" default-binding="true">
-                                    <constraints>
-                                      <grid row="5" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                      <gridbag weightx="0.0" weighty="0.0"/>
-                                    </constraints>
-                                    <properties>
-                                      <text value="Approve"/>
-                                    </properties>
-                                  </component>
-                                </children>
-                              </grid>
-                            </children>
-                          </scrollpane>
                           <grid id="2357d" layout-manager="GridBagLayout">
                             <constraints>
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                             </constraints>
-                            <properties/>
+                            <properties>
+                              <background color="-12828862"/>
+                            </properties>
                             <border type="none"/>
                             <children>
                               <component id="1e6d5" class="javax.swing.JRadioButton" binding="reservationNumberRadioButton" default-binding="true">
-                                <constraints>
-                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                  <gridbag weightx="0.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <text value="Reservation number"/>
-                                </properties>
-                              </component>
-                              <component id="8293e" class="javax.swing.JRadioButton" binding="guestIDRadioButton" default-binding="true">
-                                <constraints>
-                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                  <gridbag weightx="0.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <text value="Guest ID"/>
-                                </properties>
-                              </component>
-                              <component id="163ce" class="javax.swing.JRadioButton" binding="guestPhoneNumberRadioButton" default-binding="true">
-                                <constraints>
-                                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                  <gridbag weightx="0.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <text value="Guest Phone Number"/>
-                                </properties>
-                              </component>
-                              <component id="4ba8b" class="javax.swing.JTextField" default-binding="true">
-                                <constraints>
-                                  <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                    <preferred-size width="150" height="-1"/>
-                                  </grid>
-                                  <gridbag weightx="0.0" weighty="0.0"/>
-                                </constraints>
-                                <properties/>
-                              </component>
-                              <component id="149f7" class="javax.swing.JButton" binding="searchButton">
-                                <constraints>
-                                  <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                  <gridbag weightx="0.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <text value="Search"/>
-                                </properties>
-                              </component>
-                              <hspacer id="e0e00">
-                                <constraints>
-                                  <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                  <gridbag weightx="0.0" weighty="0.0"/>
-                                </constraints>
-                              </hspacer>
-                              <component id="2478d" class="javax.swing.JRadioButton" binding="notApprovedRadioButton" default-binding="true">
-                                <constraints>
-                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                  <gridbag weightx="0.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <text value="Not Approved"/>
-                                </properties>
-                              </component>
-                              <component id="32d7" class="javax.swing.JRadioButton" binding="approvedRadioButton" default-binding="true">
                                 <constraints>
                                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                   <gridbag weightx="0.0" weighty="0.0"/>
                                 </constraints>
                                 <properties>
-                                  <text value="Approved"/>
+                                  <background color="-12828862"/>
+                                  <font size="20"/>
+                                  <foreground color="-65794"/>
+                                  <text value="Reservation number"/>
+                                </properties>
+                              </component>
+                              <component id="8293e" class="javax.swing.JRadioButton" binding="guestIDRadioButton" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-12828862"/>
+                                  <font size="20"/>
+                                  <foreground color="-65794"/>
+                                  <text value="Guest ID"/>
+                                </properties>
+                              </component>
+                              <component id="163ce" class="javax.swing.JRadioButton" binding="guestPhoneNumberRadioButton" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-12828862"/>
+                                  <font size="20"/>
+                                  <foreground color="-65794"/>
+                                  <text value="Guest Phone Number"/>
+                                </properties>
+                              </component>
+                              <component id="4ba8b" class="javax.swing.JTextField" binding="resSearchBar">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="150" height="-1"/>
+                                  </grid>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-10527394"/>
+                                  <font size="20"/>
+                                </properties>
+                              </component>
+                              <component id="149f7" class="javax.swing.JButton" binding="resSearchButton">
+                                <constraints>
+                                  <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-10527394"/>
+                                  <font size="20"/>
+                                  <text value="Search"/>
+                                </properties>
+                              </component>
+                              <component id="41171" class="javax.swing.JRadioButton" binding="allUnapprovedRadioButton" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-12828862"/>
+                                  <font size="20"/>
+                                  <foreground color="-65794"/>
+                                  <text value="All Unapproved"/>
+                                </properties>
+                              </component>
+                              <component id="32d7" class="javax.swing.JRadioButton" binding="approvedRadioButton" default-binding="true">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-12828862"/>
+                                  <font size="20"/>
+                                  <foreground color="-65794"/>
+                                  <text value="All Approved"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="5f7e" binding="infoPanel" layout-manager="GridBagLayout">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <background color="-10527394"/>
+                            </properties>
+                            <border type="none" title="Reservation Information"/>
+                            <children>
+                              <component id="2da0" class="javax.swing.JLabel" binding="checkInLabel">
+                                <constraints>
+                                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <font size="25"/>
+                                  <foreground color="-16777216"/>
+                                  <text value="N/A"/>
+                                </properties>
+                              </component>
+                              <component id="d3eae" class="javax.swing.JLabel" binding="checkOutLabel">
+                                <constraints>
+                                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <font size="25"/>
+                                  <foreground color="-16777216"/>
+                                  <text value="N/A"/>
+                                </properties>
+                              </component>
+                              <component id="74f45" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <font size="35"/>
+                                  <foreground color="-16777216"/>
+                                  <text value="ROOM#"/>
+                                </properties>
+                              </component>
+                              <component id="436eb" class="javax.swing.JLabel" binding="guestNumberLabel">
+                                <constraints>
+                                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <font size="25"/>
+                                  <foreground color="-16777216"/>
+                                  <text value="N/A"/>
+                                </properties>
+                              </component>
+                              <component id="5ba71" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <font size="25"/>
+                                  <foreground color="-16777216"/>
+                                  <text value="Number of Guests "/>
+                                </properties>
+                              </component>
+                              <component id="4c7c3" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <font size="25"/>
+                                  <foreground color="-16777216"/>
+                                  <text value="Check-out Date "/>
+                                </properties>
+                              </component>
+                              <component id="24197" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <font size="25"/>
+                                  <foreground color="-16777216"/>
+                                  <text value="Check-in Date "/>
+                                </properties>
+                              </component>
+                              <component id="5552e" class="javax.swing.JLabel" binding="roomTypeLabel">
+                                <constraints>
+                                  <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <font size="25"/>
+                                  <foreground color="-16777216"/>
+                                  <text value="N/A"/>
+                                </properties>
+                              </component>
+                              <component id="59be3" class="javax.swing.JLabel" binding="discountLabel">
+                                <constraints>
+                                  <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <font size="25"/>
+                                  <foreground color="-16777216"/>
+                                  <text value="N/A"/>
+                                </properties>
+                              </component>
+                              <component id="55298" class="javax.swing.JLabel" binding="mealLabel">
+                                <constraints>
+                                  <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <font size="25"/>
+                                  <foreground color="-16777216"/>
+                                  <text value="N/A"/>
+                                </properties>
+                              </component>
+                              <component id="835a" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <font size="25"/>
+                                  <foreground color="-16777216"/>
+                                  <text value="Room Type "/>
+                                </properties>
+                              </component>
+                              <component id="81210" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <font size="25"/>
+                                  <foreground color="-16777216"/>
+                                  <text value="Discount "/>
+                                </properties>
+                              </component>
+                              <component id="26093" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <font size="25"/>
+                                  <foreground color="-16777216"/>
+                                  <text value="Meal "/>
+                                </properties>
+                              </component>
+                              <component id="8b9f5" class="javax.swing.JLabel" binding="roomNumberLabel">
+                                <constraints>
+                                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <font size="35"/>
+                                  <foreground color="-16777216"/>
+                                  <text value="N/A"/>
+                                </properties>
+                              </component>
+                              <component id="1d143" class="javax.swing.JLabel" binding="parkingLabel">
+                                <constraints>
+                                  <grid row="4" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <font size="25"/>
+                                  <foreground color="-16777216"/>
+                                  <text value="N/A"/>
+                                </properties>
+                              </component>
+                              <component id="f71f6" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <font size="25"/>
+                                  <foreground color="-16777216"/>
+                                  <text value="Parking "/>
+                                </properties>
+                              </component>
+                              <component id="cbb46" class="javax.swing.JButton" binding="approveButton" default-binding="true">
+                                <constraints>
+                                  <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-12828862"/>
+                                  <font size="25"/>
+                                  <foreground color="-65794"/>
+                                  <text value="Approve"/>
+                                </properties>
+                              </component>
+                              <component id="c02ad" class="javax.swing.JButton" binding="cancelButton" default-binding="true">
+                                <constraints>
+                                  <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-12828862"/>
+                                  <font size="25"/>
+                                  <foreground color="-65794"/>
+                                  <text value="Cancel"/>
+                                </properties>
+                              </component>
+                              <component id="86ca1" class="javax.swing.JButton" binding="cancelMealButton" default-binding="true">
+                                <constraints>
+                                  <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-12828862"/>
+                                  <font size="25"/>
+                                  <foreground color="-65794"/>
+                                  <text value="Cancel Meal"/>
                                 </properties>
                               </component>
                             </children>
@@ -521,7 +554,7 @@
                                     </constraints>
                                     <properties>
                                       <font size="16"/>
-                                      <text value="Label"/>
+                                      <text value="N/A"/>
                                     </properties>
                                   </component>
                                   <component id="2d1c6" class="javax.swing.JLabel">
@@ -541,7 +574,7 @@
                                     </constraints>
                                     <properties>
                                       <font size="16"/>
-                                      <text value="Label"/>
+                                      <text value="N/A"/>
                                     </properties>
                                   </component>
                                   <component id="7c587" class="javax.swing.JLabel">
@@ -561,7 +594,7 @@
                                     </constraints>
                                     <properties>
                                       <font size="16"/>
-                                      <text value="Label"/>
+                                      <text value="N/A"/>
                                     </properties>
                                   </component>
                                   <component id="ac7c8" class="javax.swing.JLabel">
@@ -581,7 +614,7 @@
                                     </constraints>
                                     <properties>
                                       <font size="16"/>
-                                      <text value="Label"/>
+                                      <text value="N/A"/>
                                     </properties>
                                   </component>
                                   <component id="30611" class="javax.swing.JLabel">
@@ -601,7 +634,7 @@
                                     </constraints>
                                     <properties>
                                       <font size="16"/>
-                                      <text value="Label"/>
+                                      <text value="N/A"/>
                                     </properties>
                                   </component>
                                   <component id="3346c" class="javax.swing.JLabel">
@@ -621,7 +654,7 @@
                                     </constraints>
                                     <properties>
                                       <font size="16"/>
-                                      <text value="Label"/>
+                                      <text value="N/A"/>
                                     </properties>
                                   </component>
                                   <hspacer id="15151">
@@ -690,7 +723,16 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
-                                      <text value="edit"/>
+                                      <text value="Edit"/>
+                                    </properties>
+                                  </component>
+                                  <component id="802ff" class="javax.swing.JButton" binding="deleteButton" default-binding="true">
+                                    <constraints>
+                                      <grid row="7" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                      <gridbag weightx="0.0" weighty="0.0"/>
+                                    </constraints>
+                                    <properties>
+                                      <text value="Delete"/>
                                     </properties>
                                   </component>
                                 </children>
@@ -704,36 +746,29 @@
                             <properties/>
                             <border type="none"/>
                             <children>
-                              <component id="7112" class="javax.swing.JRadioButton" default-binding="true">
+                              <component id="7112" class="javax.swing.JRadioButton" binding="gGuestIDRadioButton">
                                 <constraints>
-                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                   <gridbag weightx="0.0" weighty="0.0"/>
                                 </constraints>
                                 <properties>
                                   <text value="Guest ID"/>
                                 </properties>
                               </component>
-                              <component id="30e95" class="javax.swing.JRadioButton" default-binding="true">
+                              <component id="6ded" class="javax.swing.JTextField" binding="guestSearchBar">
                                 <constraints>
-                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                  <gridbag weightx="0.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <text value="Guest Phone#"/>
-                                </properties>
-                              </component>
-                              <component id="6ded" class="javax.swing.JTextField" binding="textField1" default-binding="true">
-                                <constraints>
-                                  <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                  <grid row="1" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="150" height="-1"/>
                                   </grid>
                                   <gridbag weightx="0.0" weighty="0.0"/>
                                 </constraints>
-                                <properties/>
+                                <properties>
+                                  <text value=""/>
+                                </properties>
                               </component>
                               <component id="dc274" class="javax.swing.JButton" binding="guestSearchButton">
                                 <constraints>
-                                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                   <gridbag weightx="0.0" weighty="0.0"/>
                                 </constraints>
                                 <properties>
@@ -742,10 +777,125 @@
                               </component>
                               <hspacer id="40a1b">
                                 <constraints>
-                                  <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                   <gridbag weightx="0.0" weighty="0.0"/>
                                 </constraints>
                               </hspacer>
+                              <component id="c42b5" class="javax.swing.JRadioButton" binding="allGuestRadioButton" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <text value="All Guest"/>
+                                </properties>
+                              </component>
+                              <component id="30e95" class="javax.swing.JRadioButton" binding="gGuestPhoneRadioButton">
+                                <constraints>
+                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="0.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Guest Phone#"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <grid id="4668d" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints>
+                      <tabbedpane title="Discount Analyzing"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <grid id="36a66" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                        <constraints border-constraint="North"/>
+                        <properties>
+                          <background color="-10527394"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="2a722" class="javax.swing.JButton" binding="showAllGuestButton" default-binding="true">
+                            <constraints/>
+                            <properties>
+                              <background color="-12828862"/>
+                              <font size="25"/>
+                              <foreground color="-65794"/>
+                              <text value="Show All Guest"/>
+                            </properties>
+                          </component>
+                          <component id="a7fde" class="javax.swing.JButton" binding="showMostDiscountUserButton" default-binding="true">
+                            <constraints/>
+                            <properties>
+                              <background color="-12828862"/>
+                              <font size="25"/>
+                              <foreground color="-65794"/>
+                              <text value="Show Most Discount User"/>
+                            </properties>
+                          </component>
+                          <component id="27295" class="javax.swing.JButton" binding="showLeastDiscountUserButton" default-binding="true">
+                            <constraints/>
+                            <properties>
+                              <background color="-12828862"/>
+                              <font size="25"/>
+                              <foreground color="-65794"/>
+                              <text value="Show Least Discount User"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="2eff6" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints border-constraint="Center"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <scrollpane id="f6f1a">
+                            <constraints border-constraint="West"/>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="c9a47" class="javax.swing.JList" binding="list1" default-binding="true">
+                                <constraints/>
+                                <properties>
+                                  <font size="30"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </scrollpane>
+                          <grid id="dd38c" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                            <margin top="0" left="0" bottom="0" right="0"/>
+                            <constraints border-constraint="Center"/>
+                            <properties>
+                              <background color="-12828862"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="24e3e" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="60" style="0"/>
+                                  <foreground color="-2502201"/>
+                                  <text value="Average Discount Usage"/>
+                                </properties>
+                              </component>
+                              <component id="51ae9" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <font size="72" style="1"/>
+                                  <foreground color="-2502201"/>
+                                  <text value="Label"/>
+                                </properties>
+                              </component>
                             </children>
                           </grid>
                         </children>
@@ -762,13 +912,17 @@
   </grid>
   <buttonGroups>
     <group name="approveGroup">
-      <member id="32d7"/>
       <member id="2478d"/>
+      <member id="c42b5"/>
+      <member id="7112"/>
+      <member id="30e95"/>
     </group>
     <group name="resManageGroup">
       <member id="1e6d5"/>
       <member id="8293e"/>
       <member id="163ce"/>
+      <member id="32d7"/>
+      <member id="41171"/>
     </group>
   </buttonGroups>
   <inspectionSuppressions>

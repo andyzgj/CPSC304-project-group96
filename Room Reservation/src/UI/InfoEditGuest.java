@@ -92,7 +92,6 @@ public class InfoEditGuest extends JDialog {
                 JOptionPane.showMessageDialog(dialog, "INVALID Credit Card Number!");
                 return;
             }
-            //TODO:DEBUG THE UPDATE FUNCTION
             JOptionPane.showMessageDialog(dialog, "guest info check birthday: "+(1900+y)+"-"+(m+1)+"-"+d+" Name: "+name.getText()+" Phone: "+ph+" Card: "+cr);
             gm.updateGuestInfo(guest.getID(), name.getText(), new Date(y,m,d), ph, cr);
            // gm.updatePhone(ph,guest.getID());
