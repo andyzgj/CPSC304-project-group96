@@ -1,9 +1,8 @@
 package Oracle;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.sql.Date;
+import java.util.*;
 
 import Object.MakeReservationInfo;
 
@@ -259,11 +258,78 @@ public class OraMakeReservation {
             e.printStackTrace();
         }
         return mr;
+    }
+
+    public Map<Integer,Double> getMaxOfAverageDiscount(){
+        Map<Integer,Double> ret = new HashMap<>();
+        try {
+            getViewAverageDiscountForEachGuest();
+            Statement st = con.createStatement();
+            String query = "select ID, MAX(discount) from avg_discount";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                int id = rs.getInt("ID");
+                double discount = rs.getDouble("discount");
+                ret.put(id, discount);
+            }
+            dropAverageDiscountForEachGuest();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
 
     }
 
-    public List<Double> getAverageDiscountForEachGuest(){
-        List<Double> dis = new ArrayList<>();
+    public Map<Integer,Double> getMinOfAverageDiscount(){
+        Map<Integer,Double> ret = new HashMap<>();
+        try {
+            getViewAverageDiscountForEachGuest();
+            Statement st = con.createStatement();
+            String query = "select ID, MIN(discount) from avg_discount";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                int id = rs.getInt("ID");
+                double discount = rs.getDouble("discount");
+                ret.put(id, discount);
+            }
+            dropAverageDiscountForEachGuest();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+
+    }
+
+    public Map<Integer,Double> AverageDiscountForEachGuest(){
+        Map<Integer,Double> ret = new HashMap<>();
+
+        try {
+            getViewAverageDiscountForEachGuest();
+            Statement st = con.createStatement();
+            String query = "select * from avg_discount";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                int id = rs.getInt("ID");
+                double discount = rs.getDouble("discount");
+                ret.put(id, discount);
+            }
+            dropAverageDiscountForEachGuest();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+
+
+    public void getViewAverageDiscountForEachGuest(){
+
         try {
             Statement st = con.createStatement();
             String query = "create view avg_discount as "
@@ -273,9 +339,16 @@ public class OraMakeReservation {
             e.printStackTrace();
         }
 
-       return dis;
+
     }
 
-
+    private void dropAverageDiscountForEachGuest() {
+        try {
+            Statement st = con.createStatement();
+            st.executeQuery("drop view avg_discount");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
