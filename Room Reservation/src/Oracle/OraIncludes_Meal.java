@@ -42,7 +42,7 @@ public class OraIncludes_Meal {
         try {
             while (i<name.size()) {
                 PreparedStatement ps;
-                ps = con.prepareStatement("insert into Make_Reservation values (?,?)");
+                ps = con.prepareStatement("insert into Includes_Meal values (?,?)");
                 ps.setInt(1, reserve_num);
                 ps.setString(2, name.get(i));
                 ps.executeUpdate();
