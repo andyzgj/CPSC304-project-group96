@@ -105,7 +105,7 @@ public class ManagementHUB {
                 guestNumberLabel.setText(reservation.getNumber_of_guest()+"");
                 roomTypeLabel.setText(room.getType());
                 discountLabel.setText("$"+reservation.getDiscount());
-                if(/*resNum is approved*/){
+                if(am.approveOrNot(resNum)){
                     approveButton.setEnabled(false);
                 }else{
                     approveButton.setEnabled(true);
