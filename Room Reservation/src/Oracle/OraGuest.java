@@ -10,7 +10,7 @@ import Object.GuestInfo;
 
 public class OraGuest {
 
-        Random rand = new Random();;
+        Random rand = new Random();
         Omanager manager;
         Connection c;
 
@@ -70,7 +70,7 @@ public class OraGuest {
 
         public int generateID(){
 
-            int id = rand.nextInt(89999999) + 10000000; //randomly generate a number between 0 and 9999
+            int id = rand.nextInt(89999999) + 10000000;
             if (isValidID(id)) {
                 return generateID();
             }
