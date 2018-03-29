@@ -42,7 +42,7 @@ public class OraIncludes_Meal {
         try {
             while (i<name.size()) {
                 PreparedStatement ps;
-                ps = con.prepareStatement("INSERT INTO Make_Reservation VALUES (?,?)");
+                ps = con.prepareStatement("insert into Make_Reservation values (?,?)");
                 ps.setInt(1, reserve_num);
                 ps.setString(2, name.get(i));
                 ps.executeUpdate();
@@ -75,14 +75,8 @@ public class OraIncludes_Meal {
         try {
 
             Statement st = con.createStatement();
-            String query = "select mname " +
-                           "from Includes_Meal i " +
-                           "where NOT EXISTS " +
-                                   "(select m.reserve_num " +
-                                    "from Make_Reservation m" +
-                                    "MINUS select im.reserve_num " +
-                                    "from Includes_Meal im " +
-                                    "where im.mname = i.mname)";
+            String query = "select i.mname from Includes_Meal i where NOT EXISTS " +
+                           "(select m.reserve_num from Make_Reservation m MINUS select im.reserve_num from Includes_Meal im where im.mname = i.mname)";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
