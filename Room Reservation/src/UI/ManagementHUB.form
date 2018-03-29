@@ -187,7 +187,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
-                                      <font size="12"/>
+                                      <font size="16"/>
                                       <text value="Number of Guests"/>
                                     </properties>
                                   </component>
@@ -197,7 +197,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
-                                      <font size="12"/>
+                                      <font size="16"/>
                                       <text value="Check-out Date"/>
                                     </properties>
                                   </component>
@@ -207,7 +207,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
-                                      <font size="12"/>
+                                      <font size="16"/>
                                       <text value="Check-in Date"/>
                                     </properties>
                                   </component>
@@ -247,7 +247,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
-                                      <font size="12"/>
+                                      <font size="16"/>
                                       <text value="Room Type"/>
                                     </properties>
                                   </component>
@@ -257,7 +257,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
-                                      <font size="12"/>
+                                      <font size="16"/>
                                       <text value="Discount"/>
                                     </properties>
                                   </component>
@@ -267,7 +267,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
-                                      <font size="12"/>
+                                      <font size="16"/>
                                       <text value="Meal"/>
                                     </properties>
                                   </component>
@@ -277,7 +277,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
-                                      <font size="18"/>
+                                      <font size="16"/>
                                       <text value="XXXXXX"/>
                                     </properties>
                                   </component>
@@ -333,7 +333,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
-                                      <font size="12"/>
+                                      <font size="16"/>
                                       <text value="Parking"/>
                                     </properties>
                                   </component>
