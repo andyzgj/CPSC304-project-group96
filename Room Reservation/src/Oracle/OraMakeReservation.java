@@ -270,8 +270,8 @@ public class OraMakeReservation {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                int id = rs.getInt("ID");
-                double discount = rs.getDouble("discount");
+                int id = rs.getInt("id");
+                double discount = rs.getDouble("avg_dis");
                 mr.add(new MakeReservationInfo(0,0,null,null,discount,id));
             }
             dropAverageDiscountForEachGuest();
@@ -293,8 +293,8 @@ public class OraMakeReservation {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                int id = rs.getInt("ID");
-                double discount = rs.getDouble("discount");
+                int id = rs.getInt("id");
+                double discount = rs.getDouble("avg_dis");
                 mr.add(new MakeReservationInfo(0,0,null,null,discount,id));
             }
             dropAverageDiscountForEachGuest();
