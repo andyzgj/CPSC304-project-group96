@@ -97,7 +97,6 @@ grant select on Approve to public;
 
 CREATE TABLE Includes_Meal(
 	reserve_num		INT NOT NULL,
-	price			FLOAT,
 	mname			VARCHAR(20),
 	CONSTRAINT pk_Includes_Meal PRIMARY KEY (reserve_num, mname),
 	CONSTRAINT fk_Includes_Meal FOREIGN KEY(reserve_num) REFERENCES Make_Reservation(reserve_num)
@@ -289,13 +288,13 @@ INTO		Employee(ename, employee_ID,phone_num)
 VALUES	('Amber',5748,5749102758);
 INSERT
 INTO		Employee(ename, employee_ID, phone_num)
-VALUES	('Jack',2736,36472937820);
+VALUES	('Jack',2736,3647293782);
 INSERT
 INTO		Employee(ename, employee_ID,phone_num)
-VALUES	('Tom',8746,83729475031);
+VALUES	('Tom',8746,8372947503);
 INSERT
 INTO		Employee(ename, employee_ID,phone_num)
-VALUES	('Leon',6666,73628563911);
+VALUES	('Leon',6666,7362856391);
 
 INSERT
 INTO		Approve(reserve_num, employee_ID)
@@ -315,29 +314,29 @@ VALUES	(54321,6666);
 
 
 INSERT
-INTO		Includes_Meal(reserve_num, price, mname)
-VALUES	(12345,10,'dumplings');
+INTO		Includes_Meal(reserve_num, mname)
+VALUES	(12345,'vegetable dumplings');
 INSERT
-INTO		Includes_Meal(reserve_num, price, mname)
-VALUES	(12345,23,'pizza');
+INTO		Includes_Meal(reserve_num, mname)
+VALUES	(12345,'chicken pizza');
 INSERT
-INTO		Includes_Meal(reserve_num, price, mname)
-VALUES	(12346,10,'dumplings');
+INTO		Includes_Meal(reserve_num, mname)
+VALUES	(12346,'vegetable dumplings');
 INSERT
-INTO		Includes_Meal(reserve_num, price, mname)
-VALUES	(54321,10,'dumplings');
+INTO		Includes_Meal(reserve_num, mname)
+VALUES	(54321,'vegetable dumplings');
 INSERT
-INTO		Includes_Meal(reserve_num, price, mname)
-VALUES	(12346,31,'steak');
+INTO		Includes_Meal(reserve_num, mname)
+VALUES	(12346,'angus steak');
 INSERT
-INTO		Includes_Meal(reserve_num, price, mname)
-VALUES	(12346,23,'pizza');
+INTO		Includes_Meal(reserve_num, mname)
+VALUES	(12346,'chicken pizza');
 INSERT
-INTO		Includes_Meal(reserve_num, price, mname)
-VALUES	(12346,450,'King Crab');
+INTO		Includes_Meal(reserve_num,  mname)
+VALUES	(12346,'cheese pasta');
 INSERT
-INTO		Includes_Meal(reserve_num, price, mname)
-VALUES	(54321,15,'mashed potatoes');
+INTO		Includes_Meal(reserve_num, mname)
+VALUES	(54321,'mashed potatoes');
 
 INSERT
 INTO		Parking_Space(plate_num, stall_num)

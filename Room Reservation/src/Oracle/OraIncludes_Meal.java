@@ -23,10 +23,9 @@ public class OraIncludes_Meal {
 
             while (rs.next()) {
                 int reserve_num = rs.getInt("reserve_num");
-                double price = rs.getDouble("price");
                 String name = rs.getString("mname");
 
-                Includes_MealInfo imi = new Includes_MealInfo(reserve_num,price,name);
+                Includes_MealInfo imi = new Includes_MealInfo(reserve_num,name);
                 meal.add(imi);
             }
 
@@ -37,15 +36,13 @@ public class OraIncludes_Meal {
         return meal;
     }
 
-    public void InsertMeal(int reserve_num, double price, String name) {
+    public void InsertMeal(int reserve_num, String name) {
         PreparedStatement ps;
 
         try {
-            ps = con.prepareStatement("INSERT INTO Make_Reservation VALUES (?,?,?)");
+            ps = con.prepareStatement("INSERT INTO Make_Reservation VALUES (?,?)");
             ps.setInt(1, reserve_num);
-            ps.setDouble(2, price);
-            ps.setString(3, name);
-
+            ps.setString(2, name);
             ps.executeUpdate();
             con.commit();
             ps.close();
@@ -119,7 +116,26 @@ public class OraIncludes_Meal {
 
     }
 
+    public List<String> allMeal(){
+     List<String> meal = new ArrayList<>();
+        try {
+            Statement st = con.createStatement();
+            String query = "select mname from Includes_Meal";
+            ResultSet rs = st.executeQuery(query);
 
+            while (rs.next()) {
+
+                meal.add(rs.getString("mname"));
+
+
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return meal;
+    }
 
 
     public boolean deleteMeal(int reserve_num, double price, String name) {
