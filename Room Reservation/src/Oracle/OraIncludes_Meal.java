@@ -136,14 +136,16 @@ public class OraIncludes_Meal {
     }
 
 
-    public boolean deleteMeal(int reserve_num, double price, String name) {
-        manager.getConnection();
-        int rowCount = manager.execute("DELETE from Includes_Meal WHERE reserve_num = " + reserve_num);
-        manager.disconnect();
-        if (rowCount == 1)
-            return true;
-        else
-            return false;
+    public void cancelMeal(int reserve_num) {
+
+        try {
+            PreparedStatement ps = con.prepareStatement("DELETE from Includes_Meal WHERE reserve_num = " + reserve_num);
+            ps.executeUpdate();
+            con.commit();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
