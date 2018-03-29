@@ -35,7 +35,6 @@ public class InfoGuest extends JDialog {
         }else{
             pointLabel.setText(""+vm.getVipWithID(a).getPoints());
         }
-
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);

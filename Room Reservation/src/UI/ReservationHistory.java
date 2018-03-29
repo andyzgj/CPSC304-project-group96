@@ -31,25 +31,28 @@ public class ReservationHistory extends JDialog {
 
     OraGuest gm = new OraGuest();
     OraMakeReservation resm=new OraMakeReservation();
-    OraApprove apm = new OraApprove();
     OraRoom rm = new OraRoom();
     OraIncludes_Meal mm = new OraIncludes_Meal();
-    OraProvides pm = new OraProvides();
-    OraBooked_At bm = new OraBooked_At();
+    OraParking_Space pm = new OraParking_Space();
+
 
     private List<Integer> resNumList;
 
-    public ReservationHistory(int a ) {
-        guest = gm.getGuestById(a);
+    public static void run(int id) {
+        dialog = new ReservationHistory(id);
+        dialog.pack();
+        dialog.setVisible(true);
 
+    }
+
+    public ReservationHistory(int a) {
+        guest = gm.getGuestById(a);
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
-        //TODO:set reservation list
-        
 
-
-
+        resNumList = resm.getAllReservationNumWithGuestID(a);
+        ResList.setListData(resNumList.toArray());
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -65,37 +68,35 @@ public class ReservationHistory extends JDialog {
             }
         });
 
-        // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+
+
         ResList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 //todo show detail on right side correspond to the selection in the list
 
-/*
-                checkInLabel.setText();
-                checkOutLabel.setText();
-                guestNumberLabel.setText();
-                roomTypeLabel.setText();
+                Integer resNum = (int)ResList.getSelectedValue();
+                RoomInfo room = rm.getRoomWithResrveNum(resNum);
+                MakeReservationInfo reservation = resm.getReservationInfoWithReserveNum(resNum);
+                roomNumberLabel.setText(room.getRoom_num()+"");
+                checkInLabel.setText(reservation.getStart_date().toString());
+                checkOutLabel.setText(reservation.getEnd_date().toString());
+                guestNumberLabel.setText(reservation.getNumber_of_guest()+"");
+                roomTypeLabel.setText(room.getType());
+                discountLabel.setText("$"+reservation.getDiscount());
 
-                discountLabel.setText();
-
-                if(){
-                    mealLabel.setText();
+                if(mm.getMealWithReserveNum(resNum).isEmpty()){
+                    mealLabel.setText("Meal Not Included");
                 }else{
-                    mealLabel.setText();
+                    mealLabel.setText(mm.getMealWithReserveNum(resNum).toString());
                 }
 
-                if(){
-                    parkingLabel.setText();
+                if(pm.getParkingInfoWithReserveNum(resNum) == null){
+                    parkingLabel.setText("Parking Not Included");
                 }else{
-                    parkingLabel.setText();
+                    parkingLabel.setText(pm.getParkingInfoWithReserveNum(resNum).getPlate_num()+" (Stall#"+pm.getParkingInfoWithReserveNum(resNum).getStall_num()+") ");
                 }
-                */
             }
         });
     }
@@ -104,12 +105,4 @@ public class ReservationHistory extends JDialog {
         // add your code here if necessary
         dispose();
     }
-
-    public static void run(int id) {
-        dialog = new ReservationHistory(id);
-        dialog.pack();
-        dialog.setVisible(true);
-
-    }
-
 }
