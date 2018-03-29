@@ -261,8 +261,8 @@ public class OraMakeReservation {
         return mr;
     }
 
-    public Map<Integer,Double> getIDOfMaxOfAverageDiscount(){
-        Map<Integer,Double> ret = new HashMap<>();
+    public List<MakeReservationInfo> getIDOfMaxOfAverageDiscount(){
+        List<MakeReservationInfo> mr = new ArrayList<>();
         try {
             getViewAverageDiscountForEachGuest();
             Statement st = con.createStatement();
@@ -272,19 +272,20 @@ public class OraMakeReservation {
             while (rs.next()) {
                 int id = rs.getInt("ID");
                 double discount = rs.getDouble("discount");
-                ret.put(id, discount);
+                mr.add(new MakeReservationInfo(0,0,null,null,discount,id));
             }
             dropAverageDiscountForEachGuest();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return ret;
+        return mr;
 
     }
 
-    public Map<Integer,Double> getIDOfMinOfAverageDiscount(){
-        Map<Integer,Double> ret = new HashMap<>();
+    public List<MakeReservationInfo> getIDOfMinOfAverageDiscount(){
+
+        List<MakeReservationInfo> mr = new ArrayList<>();
         try {
             getViewAverageDiscountForEachGuest();
             Statement st = con.createStatement();
@@ -294,20 +295,20 @@ public class OraMakeReservation {
             while (rs.next()) {
                 int id = rs.getInt("ID");
                 double discount = rs.getDouble("discount");
-                ret.put(id, discount);
+                mr.add(new MakeReservationInfo(0,0,null,null,discount,id));
             }
             dropAverageDiscountForEachGuest();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return ret;
+        return mr;
 
     }
 
-    public Map<Integer,Double> AverageDiscountForEachGuest(){
-        Map<Integer,Double> ret = new HashMap<>();
+    public List<MakeReservationInfo> AverageDiscountForEachGuest(){
 
+        List<MakeReservationInfo> mr = new ArrayList<>();
         try {
             getViewAverageDiscountForEachGuest();
             Statement st = con.createStatement();
@@ -317,14 +318,14 @@ public class OraMakeReservation {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 double discount = rs.getDouble("avg_dis");
-                ret.put(id, discount);
+                mr.add(new MakeReservationInfo(0,0,null,null,discount,id));
             }
             dropAverageDiscountForEachGuest();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return ret;
+        return mr;
     }
 
 
