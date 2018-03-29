@@ -168,7 +168,7 @@ public class OraRoom {
         List<Integer> rooms = new ArrayList<>();
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select room_num,MAX(price) from Room");
+            ResultSet rs = st.executeQuery("select room_num from ROOM r where (price) IN (select max(price) from Room)");
 
             while(rs.next()) {
                 int room_num = rs.getInt("room_num");
@@ -187,7 +187,7 @@ public class OraRoom {
         List<Integer> rooms = new ArrayList<>();
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select room_num,MIN(price) from Room");
+            ResultSet rs = st.executeQuery("select room_num from ROOM r where (price) IN (select min(price) from Room)");
 
             while(rs.next()) {
                 int room_num = rs.getInt("room_num");
