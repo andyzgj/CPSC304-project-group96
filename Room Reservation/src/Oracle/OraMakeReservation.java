@@ -261,12 +261,12 @@ public class OraMakeReservation {
         return mr;
     }
 
-    public Map<Integer,Double> getMaxOfAverageDiscount(){
+    public Map<Integer,Double> getIDOfMaxOfAverageDiscount(){
         Map<Integer,Double> ret = new HashMap<>();
         try {
             getViewAverageDiscountForEachGuest();
             Statement st = con.createStatement();
-            String query = "select ID, MAX(discount) from avg_discount";
+            String query = "SELECT id, avg_dis FROM avg_discount WHERE (avg_dis) IN (SELECT max(avg_dis) FROM avg_discount)";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
@@ -283,12 +283,12 @@ public class OraMakeReservation {
 
     }
 
-    public Map<Integer,Double> getMinOfAverageDiscount(){
+    public Map<Integer,Double> getIDOfMinOfAverageDiscount(){
         Map<Integer,Double> ret = new HashMap<>();
         try {
             getViewAverageDiscountForEachGuest();
             Statement st = con.createStatement();
-            String query = "select ID, MIN(discount) from avg_discount";
+            String query = "SELECT id, avg_dis FROM avg_discount WHERE (avg_dis) IN (SELECT min(avg_dis) FROM avg_discount)";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
@@ -315,8 +315,8 @@ public class OraMakeReservation {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                int id = rs.getInt("ID");
-                double discount = rs.getDouble("discount");
+                int id = rs.getInt("id");
+                double discount = rs.getDouble("avg_dis");
                 ret.put(id, discount);
             }
             dropAverageDiscountForEachGuest();
@@ -333,8 +333,8 @@ public class OraMakeReservation {
 
         try {
             Statement st = con.createStatement();
-            String query = "create view avg_discount as "
-                    + "select ID, AVG(discount) from Make_Reservation";
+            String query = "create view avg_discount as select ID as id, avg(discount) as avg_dis from Make_Reservation GROUP BY ID";
+
             st.executeQuery(query);
         } catch (SQLException e) {
             e.printStackTrace();
