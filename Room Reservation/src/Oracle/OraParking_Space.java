@@ -3,9 +3,12 @@ package Oracle;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 import Object.Parking_SpraceInfo;
 public class OraParking_Space {
 
+    Random rand = new Random();
     Omanager manager;
     Connection con;
 
@@ -33,6 +36,44 @@ public class OraParking_Space {
         }
         return parking;
     }
+
+    public void InsertParking(String plate_num) {
+        PreparedStatement ps;
+        int stall_num = generateStall_num();
+        try {
+            ps = con.prepareStatement("INSERT INTO Parking_space VALUES (?,?)");
+            ps.setInt(1, stall_num);
+            ps.setString(2, plate_num);
+            ps.executeUpdate();
+            con.commit();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int generateStall_num(){
+
+        int stall_num = rand.nextInt(99); //randomly generate a number between 0 and 99
+        if (isValidStall_num(stall_num)) {
+            return generateStall_num();
+        }
+        return stall_num;
+    }
+
+    public boolean isValidStall_num(int stall_num) {
+        try {
+            Statement st = con.createStatement();
+            String query = "select * from Parking_space where stall_num = " + stall_num;
+            ResultSet rs = st.executeQuery(query);
+            if (!rs.next()) return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+
 
     public Parking_SpraceInfo getParkingWithStallNum(int stall_num) {
         try {
