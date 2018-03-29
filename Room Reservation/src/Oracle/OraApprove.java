@@ -84,6 +84,27 @@ public class OraApprove {
         }
     }
 
+    public boolean approveOrNot(int reserve_num){
+
+        try {
+            Statement st = con.createStatement();
+            String query = "select * from Approve where reserve_num = " + reserve_num;
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+
+                return true;
+            }
+
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+
     public void update(){
         try{
             OraVIP VIP = new OraVIP();
