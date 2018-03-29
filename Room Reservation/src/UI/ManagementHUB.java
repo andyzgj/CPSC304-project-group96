@@ -65,9 +65,9 @@ public class ManagementHUB {
     private JButton searchButton;
     private JButton editButton;
     private JButton approveButton;
-
+    private static JFrame frame = new JFrame("ManagementHUB");
     public static void run(Integer id) {
-        JFrame frame = new JFrame("ManagementHUB");
+
         frame.setContentPane(new ManagementHUB(id).mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
@@ -105,7 +105,11 @@ public class ManagementHUB {
                 guestNumberLabel.setText(reservation.getNumber_of_guest()+"");
                 roomTypeLabel.setText(room.getType());
                 discountLabel.setText("$"+reservation.getDiscount());
-
+                if(am.approveOrNot(resNum)){
+                    approveButton.setEnabled(false);
+                }else{
+                    approveButton.setEnabled(true);
+                }
                 if(mm.getMealWithReserveNum(resNum).isEmpty()){
                     mealLabel.setText("Meal Not Included");
                 }else{
@@ -150,6 +154,18 @@ public class ManagementHUB {
                 }else{
                     pointLabel.setText(""+vm.getVipWithID(guest.getID()).getPoints());
                 }
+            }
+        });
+        approveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedRes = (Integer)ResList.getSelectedValue();
+                am.InsertApprove(selectedRes,employee.getID());
+                JOptionPane.showMessageDialog(frame, "Employee"+employee.getName()+"("+employee.getID()+") Approved Reservation "+ selectedRes);
+
+                rList.clear();
+                rList.addAll(am.getUnApproveReserveNUm());
+                ResList.setListData(rList.toArray());
             }
         });
     }

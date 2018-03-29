@@ -4,8 +4,11 @@ import Oracle.*;
 import Object.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.Date;
+import java.util.List;
 
 public class ReservationForm extends JDialog {
+    private OraVIP vm = new OraVIP();
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
@@ -26,26 +29,46 @@ public class ReservationForm extends JDialog {
     private JTextField plateField;
     private JLabel priceLable;
     private JLabel roomTypeLabel;
-    private JComboBox comboBox1;
+    private JComboBox mealComboBox;
     private JCheckBox showOnlyPopularMealCheckBox;
     private JSpinner guestSpinner;
+    private JSlider slider1;
+    private JCheckBox usePointsCheckBox;
+    private JButton addButton;
     private static ReservationForm dialog;
     private OraRoom rm = new OraRoom();
+    private OraGuest gm = new OraGuest();
+    private OraIncludes_Meal mm = new OraIncludes_Meal();
     private RoomInfo room;
+    private List<String> mealSelection;
+    private List<String> selectedMeal;
+    private GuestInfo guest;
+    private OraMakeReservation resm = new OraMakeReservation();
+    private OraParking_Space parkm = new OraParking_Space();
+    private OraProvides stallm =  new OraProvides();
+    private OraBooked_At bm = new OraBooked_At();
 
 
-    public ReservationForm(int roomNum) {
+    public ReservationForm(int roomNum,int id) {
+        guest = gm.getGuestById(id);
         roomNumberLabel.setText(""+roomNum);
         room = rm.getRoomByRoomNum(roomNum);
         roomTypeLabel.setText(room.getType());
         priceLable.setText("$"+room.getPrice());
-        plateField.setEnabled(false);
-        comboBox1.setEnabled(false);
+        if(vm.getVipWithID(id) == null){
+            usePointsCheckBox.setEnabled(false);
+            slider1.setEnabled(false);
+        }else{
+            usePointsCheckBox.setEnabled(true);
+            usePointsCheckBox.setSelected(false);
+            slider1.setEnabled(false);
+            slider1.setMaximum((int)Math.min(vm.getVipPoints(id)/10,room.getPrice()));
+        }
+        mealComboBox.setEnabled(false);
         mealCheckBox.setSelected(false);
         showOnlyPopularMealCheckBox.setSelected(false);
-        parkingCheckBox.setSelected(false);
         showOnlyPopularMealCheckBox.setEnabled(false);
-        comboBox1.setEnabled(true);
+        parkingCheckBox.setSelected(false);
         plateField.setEnabled(false);
 
         setContentPane(contentPane);
@@ -81,19 +104,30 @@ public class ReservationForm extends JDialog {
         showOnlyPopularMealCheckBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                if(showOnlyPopularMealCheckBox.isSelected()){
+                    mealSelection = mm.getPopularMeals();
+                }else{
+                    mealSelection = mm.allMeal();
+                }
+                mealComboBox.setModel(new DefaultComboBoxModel(mealSelection.toArray()));
             }
         });
         mealCheckBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(mealCheckBox.isSelected()){
-                    comboBox1.setEnabled(true);
+                    mealComboBox.setEnabled(true);
                     showOnlyPopularMealCheckBox.setEnabled(true);
                 }else {
-                    comboBox1.setEnabled(false);
+                    mealComboBox.setEnabled(false);
                     showOnlyPopularMealCheckBox.setEnabled(false);
                 }
+                if(showOnlyPopularMealCheckBox.isSelected()){
+                    mealSelection = mm.getPopularMeals();
+                }else{
+                    mealSelection = mm.allMeal();
+                }
+                mealComboBox.setModel(new DefaultComboBoxModel(mealSelection.toArray()));
             }
         });
         parkingCheckBox.addActionListener(new ActionListener() {
@@ -106,13 +140,46 @@ public class ReservationForm extends JDialog {
                 }
             }
         });
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectedMeal.add((String)mealComboBox.getSelectedItem());
+            }
+        });
     }
 
     private void onOK() {
         //TODO: add your code here,confirm a reservation
+        int gn = (Integer)guestSpinner.getValue();
+        Date in = new Date(inYear.getSelectedIndex()+2018,inMonth.getSelectedIndex(),inDate.getSelectedIndex()+1);
+        Date out = new Date(outYear.getSelectedIndex()+2018,outMonth.getSelectedIndex(),outDate.getSelectedIndex()+1);
+        if(in.after(out)){
+            JOptionPane.showMessageDialog(dialog, "check in date must earlier than check out date");
+            return;
+        }
+        int gid = guest.getID();
+        double discount = 0;
+        if(usePointsCheckBox.isSelected()){
+            discount = slider1.getValue();
+        }
 
+        int resNum = resm.InsertReservation(gn,in,out,discount,gid);
+        if(resNum == -1){
+            JOptionPane.showMessageDialog(dialog, "Adding Reservation failed");
+            return;
+        }
+        bm.InsertBook_At(room.getRoom_num(),resNum);
 
+        //parking
+        if(parkingCheckBox.isSelected()){
+            String plate = plateField.getText();
+            //add it to parking
+            stallm.addProvidesInfo(resNum,parkm.InsertParking(plate));
+        }
 
+        if(mealCheckBox.isSelected()){
+            selectedMeal;
+        }
         dialog.dispose();
     }
 
@@ -121,8 +188,8 @@ public class ReservationForm extends JDialog {
         dialog.dispose();
     }
 
-    public static void run(int rmNum) {
-        dialog = new ReservationForm(rmNum);
+    public static void run(int rmNum,int id) {
+        dialog = new ReservationForm(rmNum,id);
         dialog.pack();
         dialog.setVisible(true);
     }

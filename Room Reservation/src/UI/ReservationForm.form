@@ -3,7 +3,7 @@
   <grid id="cbd77" binding="contentPane" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="10" left="10" bottom="10" right="10"/>
     <constraints>
-      <xy x="48" y="54" width="544" height="346"/>
+      <xy x="48" y="54" width="1254" height="518"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -430,13 +430,13 @@
               </vspacer>
               <hspacer id="6cf17">
                 <constraints>
-                  <grid row="4" column="12" row-span="2" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="16" row-span="2" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
               </hspacer>
               <hspacer id="e6374">
                 <constraints>
-                  <grid row="5" column="13" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="5" column="17" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
               </hspacer>
@@ -492,21 +492,12 @@
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
               </vspacer>
-              <component id="30211" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+              <component id="30211" class="javax.swing.JComboBox" binding="mealComboBox">
                 <constraints>
-                  <grid row="8" column="9" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="8" column="9" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
                 <properties/>
-              </component>
-              <component id="fd01e" class="javax.swing.JCheckBox" binding="showOnlyPopularMealCheckBox" default-binding="true">
-                <constraints>
-                  <grid row="9" column="8" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <text value="Show only Popular Meal"/>
-                </properties>
               </component>
               <component id="1bb05" class="javax.swing.JSpinner" binding="guestSpinner">
                 <constraints>
@@ -514,6 +505,40 @@
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
                 <properties/>
+              </component>
+              <component id="c346f" class="javax.swing.JSlider" binding="slider1" default-binding="true">
+                <constraints>
+                  <grid row="6" column="9" row-span="1" col-span="9" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="1ceba" class="javax.swing.JCheckBox" binding="usePointsCheckBox" default-binding="true">
+                <constraints>
+                  <grid row="6" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <text value="Use Points"/>
+                </properties>
+              </component>
+              <component id="fd01e" class="javax.swing.JCheckBox" binding="showOnlyPopularMealCheckBox" default-binding="true">
+                <constraints>
+                  <grid row="9" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <text value="Popular Only"/>
+                </properties>
+              </component>
+              <component id="2445f" class="javax.swing.JButton" binding="addButton" default-binding="true">
+                <constraints>
+                  <grid row="8" column="13" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <text value="Add"/>
+                </properties>
               </component>
             </children>
           </grid>
