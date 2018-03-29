@@ -73,4 +73,26 @@ public class OraParking_Space {
             return false;
     }
 
+    public Parking_SpraceInfo getParkingInfoWithReserveNum(int reserve_num){
+        Parking_SpraceInfo ps = null;
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select s.stall_num, s.plate_num from Parking_Space s, Provides p where s.stall_num = p.stall_num and reserve_num = " + reserve_num);
+
+            while(rs.next()) {
+                int stall_num = rs.getInt("stall_num");
+                String plate_num = rs.getString("plate_num");
+
+
+                ps = new Parking_SpraceInfo(plate_num,stall_num);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ps;
+
+
+
+    }
+
 }
