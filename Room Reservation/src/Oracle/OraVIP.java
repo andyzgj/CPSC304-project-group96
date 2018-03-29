@@ -112,9 +112,13 @@ public class OraVIP {
         }
     }
 
+    public void updatePoints(int id, double consumePoints){
+       updateVIP(id,getVipPoints(id) - consumePoints*10);
+    }
+
     public void updateVIP( int id , double points) {
         try {
-            PreparedStatement ps = con.prepareStatement("UPDATE VIPt SET points = ? WHERE ID = ?");
+            PreparedStatement ps = con.prepareStatement("UPDATE VIP SET points = ? WHERE ID = ?");
             ps.setDouble(1, points);
             ps.setInt(2, id);
 
