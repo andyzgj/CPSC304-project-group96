@@ -260,13 +260,55 @@ public class OraMakeReservation {
         return mr;
     }
 
-    //public Map<Integer,Double> getMaxOfAverge
+    public Map<Integer,Double> getMaxOfAverageDiscount(){
+        Map<Integer,Double> ret = new HashMap<>();
+        try {
+            getViewAverageDiscountForEachGuest();
+            Statement st = con.createStatement();
+            String query = "select ID, MAX(discount) from avg_discount";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                int id = rs.getInt("ID");
+                double discount = rs.getDouble("discount");
+                ret.put(id, discount);
+            }
+            dropAverageDiscountForEachGuest();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+
+    }
+
+    public Map<Integer,Double> getMinOfAverageDiscount(){
+        Map<Integer,Double> ret = new HashMap<>();
+        try {
+            getViewAverageDiscountForEachGuest();
+            Statement st = con.createStatement();
+            String query = "select ID, MIN(discount) from avg_discount";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                int id = rs.getInt("ID");
+                double discount = rs.getDouble("discount");
+                ret.put(id, discount);
+            }
+            dropAverageDiscountForEachGuest();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+
+    }
 
     public Map<Integer,Double> AverageDiscountForEachGuest(){
         Map<Integer,Double> ret = new HashMap<>();
 
         try {
-            createReservationWithEmployee();
+            getViewAverageDiscountForEachGuest();
             Statement st = con.createStatement();
             String query = "select * from avg_discount";
             ResultSet rs = st.executeQuery(query);
@@ -276,7 +318,7 @@ public class OraMakeReservation {
                 double discount = rs.getDouble("discount");
                 ret.put(id, discount);
             }
-            dropReservationWithEmployee();
+            dropAverageDiscountForEachGuest();
 
         } catch (SQLException e) {
             e.printStackTrace();
