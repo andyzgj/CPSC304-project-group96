@@ -337,6 +337,12 @@ VALUES	(12346,'cheese pasta');
 INSERT
 INTO		Includes_Meal(reserve_num, mname)
 VALUES	(54321,'mashed potatoes');
+INSERT
+INTO		Includes_Meal(reserve_num,  mname)
+VALUES	(28493,'vegetable dumplings');
+INSERT
+INTO		Includes_Meal(reserve_num, mname)
+VALUES	(12347,'vegetable dumplings');
 
 INSERT
 INTO		Parking_Space(plate_num, stall_num)
