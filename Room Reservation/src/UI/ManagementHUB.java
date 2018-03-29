@@ -330,7 +330,6 @@ public class ManagementHUB {
         cancelMealButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO cancel the meal and refresh the info window
                 Integer resNum = (int)ResList.getSelectedValue();
 
                 mm.cancelMeal(resNum);

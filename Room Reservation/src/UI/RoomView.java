@@ -147,7 +147,6 @@ public class RoomView {
             public void actionPerformed(ActionEvent e) {
                 if(searchByUsingFilterRadioButton.isSelected()){
                     if(searchRoomByTypeCheckBox.isSelected()&&searchRoomWithPriceCheckBox.isSelected()){
-                        //TODO: use both filter field to get a room table
                         try{
                             roomNumList.clear();
                             if (rm.getRoomWithTypeAndLowerPrice(typeComboBox.getSelectedItem().toString(),Double.parseDouble(priceTxtField.getText())).size()==0) {
@@ -205,7 +204,6 @@ public class RoomView {
                         JOptionPane.showMessageDialog(frame, "Invalid Room Number");
                         return;
                     }
-
 
                 }else if(maximumPriceRadioButton.isSelected()) {
                     roomNumList.clear();
