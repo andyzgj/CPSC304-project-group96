@@ -162,6 +162,28 @@ public class OraGuest {
         return gi;
 
     }
+
+    public List<Integer> getAllGuestID(){
+            List<Integer> g = null;
+        try {
+            Statement st = c.createStatement();
+            String query = "select * from Guest";
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()) {
+                int id = rs.getInt("ID");
+                g.add(id);
+
+            }
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return g;
+
+
+
+    }
+
         //delete guest Id(cause cascade)
         //reflect delete operation
         public void deleteGuest(int id) {
