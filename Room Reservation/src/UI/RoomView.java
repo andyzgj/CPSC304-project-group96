@@ -38,9 +38,6 @@ public class RoomView {
     private JTextField rmNumField;
     private JButton resetButton;
     private JTextField priceTxtField;
-    private JCheckBox showOnlyCheckBox;
-    private JRadioButton minPriceRadioButton;
-    private JRadioButton maxPriceRadioButton;
     private OraGuest gm = new OraGuest();
     private GuestInfo guest;
     private static JFrame frame = new JFrame("RoomView");

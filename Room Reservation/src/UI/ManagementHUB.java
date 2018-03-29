@@ -61,10 +61,11 @@ public class ManagementHUB {
     private JLabel pointLabel;
     private JLabel cardLabel;
     private JRadioButton approvedRadioButton;
-    private JRadioButton notApprovedRadioButton;
     private JButton searchButton;
     private JButton editButton;
     private JButton approveButton;
+    private JButton cancelButton;
+    private JButton deleteButton;
     private static JFrame frame = new JFrame("ManagementHUB");
     public static void run(Integer id) {
 
@@ -166,6 +167,22 @@ public class ManagementHUB {
                 rList.clear();
                 rList.addAll(am.getUnApproveReserveNUm());
                 ResList.setListData(rList.toArray());
+            }
+        });
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO:cancel button delete a reservation
+                int selectedRes = (Integer)ResList.getSelectedValue();
+                resm.deleteReservation(selectedRes);
+
+            }
+        });
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO:delete button delete a guest
+
             }
         });
     }
