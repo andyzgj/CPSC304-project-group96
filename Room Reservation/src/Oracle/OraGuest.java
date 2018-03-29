@@ -17,6 +17,7 @@ public class OraGuest {
         public OraGuest() {
             manager = Omanager.getInstance();
             c = manager.getConnection();
+
         }
 
         public List<GuestInfo> getGuest() {
@@ -164,7 +165,7 @@ public class OraGuest {
     }
 
     public List<Integer> getAllGuestID(){
-            List<Integer> g = null;
+            List<Integer> g = new ArrayList<>();
         try {
             Statement st = c.createStatement();
             String query = "select * from Guest";

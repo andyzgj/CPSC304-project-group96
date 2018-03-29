@@ -87,8 +87,10 @@ public class OraEmployee {
             String query = "select * from Employee where employee_ID = " + employee_ID;
             ResultSet rs = st.executeQuery(query);
             if (!rs.next()) return false;
+
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("cool");
         }
         return true;
     }

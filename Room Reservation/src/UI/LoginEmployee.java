@@ -32,6 +32,7 @@ public class LoginEmployee {
                     }
                 }catch(NumberFormatException exp){JOptionPane.showMessageDialog(frame, "Input is INVALID!");}
                 catch (Exception exp){
+
                     JOptionPane.showMessageDialog(frame, "Error!");
                 }
             }

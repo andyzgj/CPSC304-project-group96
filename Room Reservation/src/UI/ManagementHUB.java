@@ -61,6 +61,7 @@ public class ManagementHUB {
     private JList ResList ;
 
     public ManagementHUB(int id) {
+
         eid = id;
 
         guestList.setListData(gList.toArray());
@@ -123,7 +124,9 @@ public class ManagementHUB {
     }
 
     public static void run(int id) {
+
         frame.setContentPane(new ManagementHUB(id).mainPanel);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

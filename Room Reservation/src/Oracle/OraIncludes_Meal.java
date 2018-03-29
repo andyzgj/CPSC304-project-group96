@@ -37,11 +37,11 @@ public class OraIncludes_Meal {
         return meal;
     }
 
-    public void InsertMeal(int reserve_num, double price, String name, Date time) {
+    public void InsertMeal(int reserve_num, double price, String name) {
         PreparedStatement ps;
 
         try {
-            ps = con.prepareStatement("INSERT INTO Make_Reservation VALUES (?,?,?,?)");
+            ps = con.prepareStatement("INSERT INTO Make_Reservation VALUES (?,?,?)");
             ps.setInt(1, reserve_num);
             ps.setDouble(2, price);
             ps.setString(3, name);
@@ -122,7 +122,7 @@ public class OraIncludes_Meal {
 
 
 
-    public boolean deleteMeal(int reserve_num, double price, String name, Date time) {
+    public boolean deleteMeal(int reserve_num, double price, String name) {
         manager.getConnection();
         int rowCount = manager.execute("DELETE from Includes_Meal WHERE reserve_num = " + reserve_num);
         manager.disconnect();

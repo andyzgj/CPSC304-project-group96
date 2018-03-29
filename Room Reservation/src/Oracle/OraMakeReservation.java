@@ -262,5 +262,20 @@ public class OraMakeReservation {
 
     }
 
+    public List<Double> getAverageDiscountForEachGuest(){
+        List<Double> dis = new ArrayList<>();
+        try {
+            Statement st = con.createStatement();
+            String query = "create view avg_discount as "
+                    + "select ID, AVG(discount) from Make_Reservation";
+            st.executeQuery(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+       return dis;
+    }
+
+
 
 }
