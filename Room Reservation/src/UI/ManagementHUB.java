@@ -40,7 +40,7 @@ public class ManagementHUB {
     private JLabel rlTitle;
     private JRadioButton reservationNumberRadioButton;
     private JRadioButton guestPhoneNumberRadioButton;
-    private JTextField textField1;
+    private JTextField guestSearchBar;
     private JPanel filterPanel;
     private JRadioButton reservationRadioButton;
     private JRadioButton guestPhoneRadioButton;
@@ -66,6 +66,8 @@ public class ManagementHUB {
     private JButton approveButton;
     private JButton cancelButton;
     private JButton deleteButton;
+    private JRadioButton allUnapprovedRadioButton;
+    private JTextField resSearchBar;
     private static JFrame frame = new JFrame("ManagementHUB");
     public static void run(Integer id) {
 
@@ -73,6 +75,42 @@ public class ManagementHUB {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+    }
+    public void refreshResList(){
+        rList.clear();
+        if(allUnapprovedRadioButton.isSelected()){
+            rList.addAll(am.getUnApproveReserveNUm());
+            ResList.setListData(rList.toArray());
+        }else if(approvedRadioButton.isSelected()){
+            rList.addAll(am.getApproveReserveNUm());
+            ResList.setListData(rList.toArray());
+        }else if(reservationNumberRadioButton.isSelected()){
+            String s = resSearchBar.getText();
+            try{
+                rList.add(resm.getReservationInfoWithReserveNum(Integer.parseInt(s)).getReserve_num());
+                ResList.setListData(rList.toArray());
+            }catch(NumberFormatException exp){
+                JOptionPane.showMessageDialog(frame, "ERROR");
+            }
+        }else if(guestIDRadioButton.isSelected()){
+            String s = resSearchBar.getText();
+            try{
+                rList.addAll(resm.getAllReservationNumWithGuestID(Integer.parseInt(s)));
+                ResList.setListData(rList.toArray());
+            }catch(NumberFormatException exp){
+                JOptionPane.showMessageDialog(frame, "ERROR");
+            }
+        }else if(guestPhoneNumberRadioButton.isSelected()){
+            String s = resSearchBar.getText();
+            try{
+                rList.addAll(resm.getAllReservationNumWithGuestPhoneNum(Long.parseLong(s)));
+                ResList.setListData(rList.toArray());
+            }catch(NumberFormatException exp){
+                JOptionPane.showMessageDialog(frame, "ERROR");
+            }
+        }else{
+
+        }
     }
     public ManagementHUB(int a) {
 
@@ -163,25 +201,26 @@ public class ManagementHUB {
                 int selectedRes = (Integer)ResList.getSelectedValue();
                 am.InsertApprove(selectedRes,employee.getID());
                 JOptionPane.showMessageDialog(frame, "Employee"+employee.getName()+"("+employee.getID()+") Approved Reservation "+ selectedRes);
+                refreshResList();
 
-                rList.clear();
-                rList.addAll(am.getUnApproveReserveNUm());
-                ResList.setListData(rList.toArray());
             }
         });
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO:cancel button delete a reservation
+                //TODO:cancel button delete a reservation (wait for test)
                 int selectedRes = (Integer)ResList.getSelectedValue();
                 resm.deleteReservation(selectedRes);
-
+                refreshResList();
             }
         });
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO:delete button delete a guest
+                //TODO:delete button delete a guest (wait for test)
+                int selectGuest = (Integer)guestList.getSelectedValue();
+                gm.deleteGuest(selectGuest);
+                refreshResList();
 
             }
         });
