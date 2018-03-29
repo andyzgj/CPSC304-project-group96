@@ -77,19 +77,19 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <grid id="ea930" layout-manager="BorderLayout" hgap="0" vgap="0">
+                  <grid id="ea930" binding="tab1" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints>
                       <tabbedpane title="Reservation Managing"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <grid id="72df0" layout-manager="BorderLayout" hgap="0" vgap="0">
+                      <grid id="72df0" binding="resListPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
                         <constraints border-constraint="West"/>
                         <properties/>
                         <border type="none"/>
                         <children>
-                          <grid id="ed319" layout-manager="BorderLayout" hgap="0" vgap="0">
+                          <grid id="ed319" binding="ReslistPanelInner" layout-manager="BorderLayout" hgap="0" vgap="0">
                             <constraints border-constraint="Center"/>
                             <properties>
                               <preferredSize width="120" height="200"/>
@@ -112,22 +112,7 @@
                                     <properties>
                                       <font size="16"/>
                                       <layoutOrientation value="0"/>
-                                      <model>
-                                        <item value="1"/>
-                                        <item value="2"/>
-                                        <item value="3"/>
-                                        <item value="4"/>
-                                        <item value="5"/>
-                                        <item value="6"/>
-                                        <item value="7"/>
-                                        <item value="8"/>
-                                        <item value="9"/>
-                                        <item value="0"/>
-                                        <item value="11"/>
-                                        <item value="12"/>
-                                        <item value="13"/>
-                                        <item value="14"/>
-                                      </model>
+                                      <model/>
                                       <name value=""/>
                                       <selectionMode value="0"/>
                                     </properties>
@@ -138,7 +123,7 @@
                           </grid>
                         </children>
                       </grid>
-                      <grid id="c3e3d" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                      <grid id="c3e3d" binding="resSearchPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                         <margin top="0" left="0" bottom="0" right="0"/>
                         <constraints border-constraint="Center"/>
                         <properties/>
@@ -358,6 +343,15 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                   </hspacer>
+                                  <component id="cbb46" class="javax.swing.JButton" binding="approveButton" default-binding="true">
+                                    <constraints>
+                                      <grid row="5" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                      <gridbag weightx="0.0" weighty="0.0"/>
+                                    </constraints>
+                                    <properties>
+                                      <text value="Approve"/>
+                                    </properties>
+                                  </component>
                                 </children>
                               </grid>
                             </children>
@@ -444,7 +438,7 @@
                       </grid>
                     </children>
                   </grid>
-                  <grid id="631a3" layout-manager="BorderLayout" hgap="0" vgap="0">
+                  <grid id="631a3" binding="tab2" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints>
                       <tabbedpane title="Guest Viewer"/>
                     </constraints>
@@ -479,22 +473,7 @@
                                     <properties>
                                       <font size="16"/>
                                       <layoutOrientation value="0"/>
-                                      <model>
-                                        <item value="1"/>
-                                        <item value="2"/>
-                                        <item value="3"/>
-                                        <item value="4"/>
-                                        <item value="5"/>
-                                        <item value="6"/>
-                                        <item value="7"/>
-                                        <item value="8"/>
-                                        <item value="9"/>
-                                        <item value="0"/>
-                                        <item value="11"/>
-                                        <item value="12"/>
-                                        <item value="13"/>
-                                        <item value="14"/>
-                                      </model>
+                                      <model/>
                                       <name value=""/>
                                       <selectionMode value="0"/>
                                     </properties>
@@ -520,7 +499,9 @@
                             <children>
                               <grid id="c4ad8" layout-manager="GridBagLayout">
                                 <constraints/>
-                                <properties/>
+                                <properties>
+                                  <font size="16"/>
+                                </properties>
                                 <border type="none" title="Your Profile"/>
                                 <children>
                                   <component id="894ab" class="javax.swing.JLabel">
@@ -529,6 +510,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
+                                      <font size="16"/>
                                       <text value="Name"/>
                                     </properties>
                                   </component>
@@ -538,6 +520,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
+                                      <font size="16"/>
                                       <text value="Label"/>
                                     </properties>
                                   </component>
@@ -547,6 +530,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
+                                      <font size="16"/>
                                       <text value="Birthday"/>
                                     </properties>
                                   </component>
@@ -556,6 +540,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
+                                      <font size="16"/>
                                       <text value="Label"/>
                                     </properties>
                                   </component>
@@ -565,15 +550,17 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
+                                      <font size="16"/>
                                       <text value="Phone Number"/>
                                     </properties>
                                   </component>
                                   <component id="f4bde" class="javax.swing.JLabel" binding="phoneLabel">
                                     <constraints>
-                                      <grid row="4" column="3" row-span="1" col-span="7" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                      <grid row="4" column="3" row-span="1" col-span="6" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
+                                      <font size="16"/>
                                       <text value="Label"/>
                                     </properties>
                                   </component>
@@ -583,6 +570,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
+                                      <font size="16"/>
                                       <text value="ID"/>
                                     </properties>
                                   </component>
@@ -592,6 +580,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
+                                      <font size="16"/>
                                       <text value="Label"/>
                                     </properties>
                                   </component>
@@ -601,6 +590,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
+                                      <font size="16"/>
                                       <text value="VIP points:"/>
                                     </properties>
                                   </component>
@@ -610,6 +600,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
+                                      <font size="16"/>
                                       <text value="Label"/>
                                     </properties>
                                   </component>
@@ -619,6 +610,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
+                                      <font size="16"/>
                                       <text value="Credit Card Number"/>
                                     </properties>
                                   </component>
@@ -628,6 +620,7 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                     <properties>
+                                      <font size="16"/>
                                       <text value="Label"/>
                                     </properties>
                                   </component>
@@ -691,6 +684,15 @@
                                       <gridbag weightx="0.0" weighty="0.0"/>
                                     </constraints>
                                   </vspacer>
+                                  <component id="cf5da" class="javax.swing.JButton" binding="editButton" default-binding="true">
+                                    <constraints>
+                                      <grid row="7" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                      <gridbag weightx="0.0" weighty="0.0"/>
+                                    </constraints>
+                                    <properties>
+                                      <text value="edit"/>
+                                    </properties>
+                                  </component>
                                 </children>
                               </grid>
                             </children>
@@ -728,15 +730,6 @@
                                   <gridbag weightx="0.0" weighty="0.0"/>
                                 </constraints>
                                 <properties/>
-                              </component>
-                              <component id="59096" class="javax.swing.JRadioButton" default-binding="true">
-                                <constraints>
-                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                  <gridbag weightx="0.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <text value="RadioButton"/>
-                                </properties>
                               </component>
                               <component id="dc274" class="javax.swing.JButton" binding="guestSearchButton">
                                 <constraints>
@@ -778,4 +771,7 @@
       <member id="163ce"/>
     </group>
   </buttonGroups>
+  <inspectionSuppressions>
+    <suppress inspection="I18nForm" id="ea930"/>
+  </inspectionSuppressions>
 </form>

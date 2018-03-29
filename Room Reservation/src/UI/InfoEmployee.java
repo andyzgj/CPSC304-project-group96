@@ -8,7 +8,6 @@ import java.awt.event.*;
 public class InfoEmployee extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
-    private JButton buttonCancel;
     private JLabel idLabel;
     private JLabel phoneLabel;
     private JLabel nameLAbel;
@@ -32,11 +31,6 @@ public class InfoEmployee extends JDialog {
             }
         });
 
-        buttonCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
 
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);

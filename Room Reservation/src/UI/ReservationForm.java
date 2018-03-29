@@ -109,7 +109,10 @@ public class ReservationForm extends JDialog {
     }
 
     private void onOK() {
-        // add your code here
+        //TODO: add your code here,confirm a reservation
+
+
+
         dialog.dispose();
     }
 

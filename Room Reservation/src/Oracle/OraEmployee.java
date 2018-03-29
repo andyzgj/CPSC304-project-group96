@@ -51,7 +51,7 @@ public class OraEmployee {
             while(rs.next()) {
                 String ename = rs.getString("ename");
                 int employee_ID = rs.getInt("employee_ID");
-                int phone_num = rs.getInt("phone_num");
+                long phone_num = rs.getLong("phone_num");
                 ei = new EmployeeInfo(ename,employee_ID,phone_num);
             }
             st.close();

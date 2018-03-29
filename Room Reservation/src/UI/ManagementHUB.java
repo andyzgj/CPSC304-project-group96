@@ -11,6 +11,24 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public class ManagementHUB {
+    OraGuest gm = new OraGuest();;
+    OraEmployee em = new OraEmployee();
+    OraMakeReservation resm = new OraMakeReservation();
+    OraRoom rm = new OraRoom();;
+    OraIncludes_Meal mm = new OraIncludes_Meal() ;
+    OraParking_Space pm= new OraParking_Space();
+    OraVIP vm = new OraVIP();
+    OraApprove am = new OraApprove();
+    private List<Integer> gList= gm.getAllGuestID();
+    private List<Integer> rList= am.getUnApproveReserveNUm();
+    private JList guestList;
+    private JList ResList ;
+    private JPanel tab1;
+    private JPanel tab2;
+    private JPanel resListPanel;
+    private JPanel ReslistPanelInner;
+    private JPanel resSearchPanel;
+    private EmployeeInfo employee;
     private JButton guestSearchButton;
     private JPanel mainPanel;
     private JPanel topPanel;
@@ -44,26 +62,22 @@ public class ManagementHUB {
     private JLabel cardLabel;
     private JRadioButton approvedRadioButton;
     private JRadioButton notApprovedRadioButton;
-
     private JButton searchButton;
+    private JButton editButton;
+    private JButton approveButton;
 
-    private int eid;
-    private static JFrame frame = new JFrame("ManagementHUB");
-    OraGuest gm = new OraGuest();
-    OraMakeReservation resm=new OraMakeReservation();
-    OraRoom rm = new OraRoom();
-    OraIncludes_Meal mm = new OraIncludes_Meal();
-    OraParking_Space pm = new OraParking_Space();
-    OraVIP vm = new OraVIP();
-    private List<Integer> gList = gm.getAllGuestID();
-    private List<Integer> rList = resm.getAllReservationNum();
-    private JList guestList ;
-    private JList ResList ;
+    public static void run(Integer id) {
+        JFrame frame = new JFrame("ManagementHUB");
+        frame.setContentPane(new ManagementHUB(id).mainPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+    public ManagementHUB(int a) {
 
-    public ManagementHUB(int id) {
 
-        eid = id;
 
+        employee = em.getEmployeeById(a);
         guestList.setListData(gList.toArray());
         ResList.setListData(rList.toArray());
 
@@ -76,7 +90,7 @@ public class ManagementHUB {
         InfoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InfoEmployee.run(eid);
+                InfoEmployee.run(employee.getID());
             }
         });
         ResList.addListSelectionListener(new ListSelectionListener() {
@@ -121,14 +135,24 @@ public class ManagementHUB {
                 }
             }
         });
+        editButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InfoEditGuest.run((Integer)guestList.getSelectedValue());
+                GuestInfo guest = gm.getGuestById((Integer)guestList.getSelectedValue());
+                nameLabel.setText(guest.getName());
+                bdayLabel.setText(guest.getBirthday().toString());
+                phoneLabel.setText(guest.getPhoneNum()+"");
+                cardLabel.setText(guest.getCredit_card_num()+"");
+                idLabel.setText(guest.getID()+"");
+                if(vm.getVipWithID(guest.getID()) == null){
+                    pointLabel.setText("You are not a Member!");
+                }else{
+                    pointLabel.setText(""+vm.getVipWithID(guest.getID()).getPoints());
+                }
+            }
+        });
     }
 
-    public static void run(int id) {
 
-        frame.setContentPane(new ManagementHUB(id).mainPanel);
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
 }
