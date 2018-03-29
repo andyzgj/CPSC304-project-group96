@@ -508,7 +508,7 @@
               </component>
               <component id="c346f" class="javax.swing.JSlider" binding="slider1" default-binding="true">
                 <constraints>
-                  <grid row="6" column="9" row-span="1" col-span="9" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="6" column="9" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
                 <properties/>
@@ -538,6 +538,15 @@
                 </constraints>
                 <properties>
                   <text value="Add"/>
+                </properties>
+              </component>
+              <component id="5e9be" class="javax.swing.JLabel" binding="sliderValue">
+                <constraints>
+                  <grid row="6" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <text value="0"/>
                 </properties>
               </component>
             </children>

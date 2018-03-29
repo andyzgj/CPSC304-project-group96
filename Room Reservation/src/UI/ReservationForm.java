@@ -3,6 +3,8 @@ package UI;
 import Oracle.*;
 import Object.*;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.event.*;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -36,6 +38,7 @@ public class ReservationForm extends JDialog {
     private JSlider slider1;
     private JCheckBox usePointsCheckBox;
     private JButton addButton;
+    private JLabel sliderValue;
     private static ReservationForm dialog;
     private OraRoom rm = new OraRoom();
     private OraGuest gm = new OraGuest();
@@ -150,6 +153,20 @@ public class ReservationForm extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(dialog, mealComboBox.getSelectedItem().toString());
                 selectedMeal.add(mealComboBox.getSelectedItem().toString());
+            }
+        });
+        usePointsCheckBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(usePointsCheckBox.isSelected()){
+                    slider1.setEnabled(true);
+                }
+            }
+        });
+        slider1.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                sliderValue.setText(""+slider1.getValue());
             }
         });
     }
