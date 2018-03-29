@@ -37,7 +37,7 @@ public class OraParking_Space {
         return parking;
     }
 
-    public void InsertParking(String plate_num) {
+    public int InsertParking(String plate_num) {
         PreparedStatement ps;
         int stall_num = generateStall_num();
         try {
@@ -47,10 +47,14 @@ public class OraParking_Space {
             ps.executeUpdate();
             con.commit();
             ps.close();
+            return stall_num;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return -1;
     }
+
+
 
     public int generateStall_num(){
 
