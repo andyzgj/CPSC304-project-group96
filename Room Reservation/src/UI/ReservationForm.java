@@ -52,8 +52,9 @@ public class ReservationForm extends JDialog {
 
     public ReservationForm(int roomNum,int id) {
         guest = gm.getGuestById(id);
-        roomNumberLabel.setText(""+roomNum);
+
         room = rm.getRoomByRoomNum(roomNum);
+        roomNumberLabel.setText(""+room.getRoom_num());
         roomTypeLabel.setText(room.getType());
         priceLable.setText("$"+room.getPrice());
         if(vm.getVipWithID(id) == null){
@@ -123,10 +124,13 @@ public class ReservationForm extends JDialog {
                     mealComboBox.setEnabled(false);
                     showOnlyPopularMealCheckBox.setEnabled(false);
                 }
+
                 if(showOnlyPopularMealCheckBox.isSelected()){
                     mealSelection = mm.getPopularMeals();
+
                 }else{
                     mealSelection = mm.allMeal();
+
                 }
                 mealComboBox.setModel(new DefaultComboBoxModel(mealSelection.toArray()));
             }
@@ -171,8 +175,9 @@ public class ReservationForm extends JDialog {
             return;
         }
         JOptionPane.showMessageDialog(dialog, "Reservation"+resNum+" created");
+
         bm.InsertBook_At(room.getRoom_num(),resNum);
-        JOptionPane.showMessageDialog(dialog, "book_at created");
+
 
         //parking
         if(parkingCheckBox.isSelected()){
@@ -180,11 +185,11 @@ public class ReservationForm extends JDialog {
             //add it to parking
             stallm.addProvidesInfo(resNum,parkm.InsertParking(plate));
         }
-        JOptionPane.showMessageDialog(dialog, "parking created");
+
         if(mealCheckBox.isSelected()||!selectedMeal.isEmpty()){
             mm.InsertMeal(resNum,selectedMeal);
         }
-        JOptionPane.showMessageDialog(dialog, "meal created");
+
         dialog.dispose();
     }
 
