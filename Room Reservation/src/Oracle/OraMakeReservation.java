@@ -88,7 +88,7 @@ public class OraMakeReservation {
 
     public void deleteReservation(int reserve_num) {
             try {
-                PreparedStatement ps = con.prepareStatement("DELETE from Make_Reservation WHERE reserve_nun = " + reserve_num);
+                PreparedStatement ps = con.prepareStatement("delete from Make_Reservation WHERE reserve_num = " + reserve_num);
                 ps.executeUpdate();
                 con.commit();
                 ps.close();

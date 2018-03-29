@@ -82,7 +82,7 @@ public class ManagementHUB {
             rList.addAll(am.getUnApproveReserveNUm());
             ResList.setListData(rList.toArray());
         }else if(approvedRadioButton.isSelected()){
-            rList.addAll(am.getApproveReserveNUm());
+            rList.addAll(am.getApproveReserveNum());
             ResList.setListData(rList.toArray());
         }else if(reservationNumberRadioButton.isSelected()){
             String s = resSearchBar.getText();

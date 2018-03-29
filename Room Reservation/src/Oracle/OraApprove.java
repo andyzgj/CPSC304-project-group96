@@ -135,6 +135,28 @@ public class OraApprove {
         }
     }
 
+    public List<Integer> getApproveReserveNum(){
+        List<Integer> unApprove = new ArrayList<>();
+        try {
+            Statement st = con.createStatement();
+            String query = "select reserve_num from Approve";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+
+                int ai = rs.getInt("reserve_num");;
+                unApprove.add(ai);
+            }
+
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return unApprove;
+
+    }
+    }
+
     public List<Integer> getUnApproveReserveNUm(){
         List<Integer> unApprove = new ArrayList<>();
         try {
