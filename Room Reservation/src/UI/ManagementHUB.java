@@ -84,11 +84,9 @@ public class ManagementHUB {
         rList.clear();
         if(allUnapprovedRadioButton.isSelected()){
             rList.addAll(am.getUnApproveReserveNUm());
-            ResList.setListData(rList.toArray());
             resSearchBar.setEnabled(false);
         }else if(approvedRadioButton.isSelected()){
             rList.addAll(am.getApproveReserveNum());
-            ResList.setListData(rList.toArray());
             resSearchBar.setEnabled(false);
         }else if(reservationNumberRadioButton.isSelected()){
             String s = resSearchBar.getText();
@@ -99,7 +97,7 @@ public class ManagementHUB {
                 }else{
                     rList.add(resm.getReservationInfoWithReserveNum(Integer.parseInt(s)).getReserve_num());
                 }
-                ResList.setListData(rList.toArray());
+
             }catch(NumberFormatException exp){
                 JOptionPane.showMessageDialog(frame, "ERROR");
             }
@@ -112,7 +110,7 @@ public class ManagementHUB {
                 }else{
                     rList.addAll(resm.getAllReservationNumWithGuestID(Integer.parseInt(s)));
                 }
-                ResList.setListData(rList.toArray());
+
             }catch(NumberFormatException exp){
                 JOptionPane.showMessageDialog(frame, "ERROR");
             }
@@ -125,18 +123,56 @@ public class ManagementHUB {
                 }else {
                     rList.addAll(resm.getAllReservationNumWithGuestPhoneNum(Long.parseLong(s)));
                 }
-                ResList.setListData(rList.toArray());
+
             }catch(NumberFormatException exp){
                 JOptionPane.showMessageDialog(frame, "ERROR");
             }
         }else{
             resSearchBar.setEnabled(false);
-            ResList.setListData(rList.toArray());
+
         }
 
+        ResList.setListData(rList.toArray());
     }
     public void refreshGuestList(){
+        gList.clear();
+        if(allGuestRadioButton.isSelected()){
+            gList.addAll(gm.getAllGuestID());
+            guestSearchBar.setEnabled(false);
+        }else if(gGuestIDRadioButton.isSelected()){
+            String s = guestSearchBar.getText();
+            guestSearchBar.setEnabled(true);
+            try{
+                if(s.isEmpty()){
+                    gList.addAll(gm.getAllGuestID());
+                }else{
+                    if(gm.getGuestByPhoneNumber(Long.parseLong(s)) != null)
+                        gList.add(gm.getGuestById(Integer.parseInt(s)).getID());
+                }
 
+            }catch(NumberFormatException exp){
+                JOptionPane.showMessageDialog(frame, "ERROR");
+            }
+        }else if(gGuestPhoneRadioButton.isSelected()){
+            String s = guestSearchBar.getText();
+            guestSearchBar.setEnabled(true);
+            try{
+                if(s.isEmpty()){
+                    gList.addAll(gm.getAllGuestID());
+                }else {
+                    if(gm.getGuestByPhoneNumber(Long.parseLong(s)) != null)
+                        gList.add(gm.getGuestByPhoneNumber(Long.parseLong(s)).getID());
+                }
+
+            }catch(NumberFormatException exp){
+                JOptionPane.showMessageDialog(frame, "ERROR");
+            }
+        }else{
+            gList.addAll(gm.getAllGuestID());
+            guestSearchBar.setEnabled(false);
+        }
+
+        guestList.setListData(gList.toArray());
     }
     public ManagementHUB(int a) {
 
@@ -146,7 +182,7 @@ public class ManagementHUB {
         guestList.setListData(gList.toArray());
         ResList.setListData(rList.toArray());
         allUnapprovedRadioButton.setSelected(true);
-
+        allGuestRadioButton.setSelected(true);
         guestSearchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -252,36 +288,42 @@ public class ManagementHUB {
         reservationNumberRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resSearchBar.setText("");
                 refreshResList();
             }
         });
         guestIDRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resSearchBar.setText("");
                 refreshResList();
             }
         });
         guestPhoneNumberRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resSearchBar.setText("");
                 refreshResList();
             }
         });
         allUnapprovedRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resSearchBar.setText("");
                 refreshResList();
             }
         });
         approvedRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resSearchBar.setText("");
                 refreshResList();
             }
         });
         resSearchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resSearchBar.setText("");
                 refreshResList();
             }
         });
@@ -289,11 +331,10 @@ public class ManagementHUB {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //TODO cancel the meal and refresh the info window
-
-
-
-
                 Integer resNum = (int)ResList.getSelectedValue();
+
+                mm.cancelMeal(resNum);
+
                 RoomInfo room = rm.getRoomWithResrveNum(resNum);
                 MakeReservationInfo reservation = resm.getReservationInfoWithReserveNum(resNum);
                 roomNumberLabel.setText(room.getRoom_num()+"");
@@ -318,6 +359,29 @@ public class ManagementHUB {
                 }else{
                     parkingLabel.setText(pm.getParkingInfoWithReserveNum(resNum).getPlate_num()+" (Stall#"+pm.getParkingInfoWithReserveNum(resNum).getStall_num()+") ");
                 }
+            }
+        });
+        allGuestRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                guestSearchBar.setText("");
+                refreshGuestList();
+
+            }
+        });
+        gGuestIDRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                guestSearchBar.setText("");
+                refreshGuestList();
+
+            }
+        });
+        gGuestPhoneRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                guestSearchBar.setText("");
+                refreshGuestList();
             }
         });
     }
