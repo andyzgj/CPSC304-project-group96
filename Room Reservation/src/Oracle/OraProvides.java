@@ -39,7 +39,7 @@ public class OraProvides {
         try {
             PreparedStatement ps = con.prepareStatement("insert into Provides values (?,?)");
             ps.setInt(1,reserve_num);
-            ps.setInt(2, stall_num);
+            ps.setInt(2,stall_num);
             ps.executeUpdate();
             con.commit();
             ps.close();

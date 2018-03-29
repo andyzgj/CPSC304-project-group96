@@ -204,7 +204,7 @@ public class OraRoom {
         RoomInfo ri = null;
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select r.room_num, r.type, r.price from Room r, Booked_At b, Make_Reservation m where r.room_num = b.room_num and b.reserve_num = m.reserve_num");
+            ResultSet rs = st.executeQuery("select r.room_num, r.type, r.price from Room r, Booked_At b, Make_Reservation m where r.room_num = b.room_num and b.reserve_num = m.reserve_num and b.reserve_num = " + reserve_num);
 
             while(rs.next()) {
                 int room_num = rs.getInt("room_num");

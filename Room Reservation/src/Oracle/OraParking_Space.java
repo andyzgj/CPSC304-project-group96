@@ -42,8 +42,8 @@ public class OraParking_Space {
         int stall_num = generateStall_num();
         try {
             ps = con.prepareStatement("insert into Parking_Space values (?,?)");
-            ps.setInt(1, stall_num);
-            ps.setString(2, plate_num);
+            ps.setString(1, plate_num);
+            ps.setInt(2, stall_num);
             ps.executeUpdate();
             con.commit();
             ps.close();
