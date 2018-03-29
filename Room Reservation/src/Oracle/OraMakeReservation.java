@@ -145,7 +145,7 @@ public class OraMakeReservation {
         try {
 
             Statement st = con.createStatement();
-            String query = "select reserve_num from Make_Reservatio m, Guest g where m.ID = g.ID and phone_num = " + phone_num;
+            String query = "select reserve_num from Make_Reservation m, Guest g where m.ID = g.ID and phone_num = " + phone_num;
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
@@ -161,6 +161,26 @@ public class OraMakeReservation {
         return ret;
     }
 
+    public List<Integer> getAllReservationNum(){
+        List<Integer> ret = new ArrayList<>();
+        try {
+
+            Statement st = con.createStatement();
+            String query = "select reserve_num from Make_Reservation";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                int reserve_num = rs.getInt("reserve_num");
+
+                ret.add(reserve_num);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
 
     public List<MakeReservationInfo> getReservationWithEmployee(int employee_id) {
         List<MakeReservationInfo> ret = new ArrayList<>();
