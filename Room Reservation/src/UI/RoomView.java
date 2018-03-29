@@ -38,6 +38,8 @@ public class RoomView {
     private JTextField rmNumField;
     private JButton resetButton;
     private JTextField priceTxtField;
+    private JRadioButton maximumPriceRadioButton;
+    private JRadioButton minimumPriceRadioButton;
     private OraGuest gm = new OraGuest();
     private GuestInfo guest;
     private static JFrame frame = new JFrame("RoomView");
@@ -205,6 +207,14 @@ public class RoomView {
                     }
 
 
+                }else if(maximumPriceRadioButton.isSelected()) {
+                    roomNumList.clear();
+                    roomNumList.addAll(rm.getRoomWithMaxPrice());
+                    roomList.setListData(roomNumList.toArray());
+                }else if(minimumPriceRadioButton.isSelected()) {
+                    roomNumList.clear();
+                    roomNumList.addAll(rm.getRoomWithMinPrice());
+                    roomList.setListData(roomNumList.toArray());
                 }else{
                     JOptionPane.showMessageDialog(frame, "Chose one of the search methods before pressing the button :)");
                 }
@@ -216,6 +226,26 @@ public class RoomView {
                 Integer tempRm = (int)roomList.getSelectedValue();
                 typeField.setText(rm.getRoomByRoomNum(tempRm).getType());
                 priceField.setText(""+rm.getRoomByRoomNum(tempRm).getPrice());
+            }
+        });
+        maximumPriceRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                searchRoomByTypeCheckBox.setEnabled(false);
+                searchRoomWithPriceCheckBox.setEnabled(false);
+                priceTxtField.setEnabled(false);
+                typeComboBox.setEnabled(false);
+                rmNumField.setEnabled(false);
+            }
+        });
+        minimumPriceRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                searchRoomByTypeCheckBox.setEnabled(false);
+                searchRoomWithPriceCheckBox.setEnabled(false);
+                priceTxtField.setEnabled(false);
+                typeComboBox.setEnabled(false);
+                rmNumField.setEnabled(false);
             }
         });
     }
