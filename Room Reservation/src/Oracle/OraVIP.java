@@ -98,7 +98,6 @@ public class OraVIP {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return 0;
     }
 
