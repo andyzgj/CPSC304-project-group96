@@ -1,6 +1,7 @@
 package UI;
 
 import Oracle.OraEmployee;
+import com.sun.deploy.panel.ExceptionListDialog;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -29,8 +30,10 @@ public class LoginEmployee {
                     }else{
                         JOptionPane.showMessageDialog(frame, "Employee ID does not exist!");
                     }
-                }catch(Exception exp){JOptionPane.showMessageDialog(frame, "Input is INVALID!");}
-
+                }catch(NumberFormatException exp){JOptionPane.showMessageDialog(frame, "Input is INVALID!");}
+                catch (Exception exp){
+                    JOptionPane.showMessageDialog(frame, "Error!");
+                }
             }
         });
     }
