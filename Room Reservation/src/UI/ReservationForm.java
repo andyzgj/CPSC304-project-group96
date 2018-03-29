@@ -5,6 +5,7 @@ import Object.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationForm extends JDialog {
@@ -41,7 +42,7 @@ public class ReservationForm extends JDialog {
     private OraIncludes_Meal mm = new OraIncludes_Meal();
     private RoomInfo room;
     private List<String> mealSelection;
-    private List<String> selectedMeal;
+    private List<String> selectedMeal = new ArrayList<String>();
     private GuestInfo guest;
     private OraMakeReservation resm = new OraMakeReservation();
     private OraParking_Space parkm = new OraParking_Space();
@@ -143,16 +144,17 @@ public class ReservationForm extends JDialog {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                selectedMeal.add((String)mealComboBox.getSelectedItem());
+                JOptionPane.showMessageDialog(dialog, mealComboBox.getSelectedItem().toString());
+                selectedMeal.add(mealComboBox.getSelectedItem().toString());
             }
         });
     }
 
     private void onOK() {
-        //TODO: add your code here,confirm a reservation
+
         int gn = (Integer)guestSpinner.getValue();
-        Date in = new Date(inYear.getSelectedIndex()+2018,inMonth.getSelectedIndex(),inDate.getSelectedIndex()+1);
-        Date out = new Date(outYear.getSelectedIndex()+2018,outMonth.getSelectedIndex(),outDate.getSelectedIndex()+1);
+        Date in = new Date(inYear.getSelectedIndex()+2018-1900,inMonth.getSelectedIndex(),inDate.getSelectedIndex()+1);
+        Date out = new Date(outYear.getSelectedIndex()+2018-1900,outMonth.getSelectedIndex(),outDate.getSelectedIndex()+1);
         if(in.after(out)){
             JOptionPane.showMessageDialog(dialog, "check in date must earlier than check out date");
             return;
@@ -168,7 +170,9 @@ public class ReservationForm extends JDialog {
             JOptionPane.showMessageDialog(dialog, "Adding Reservation failed");
             return;
         }
+        JOptionPane.showMessageDialog(dialog, "Reservation"+resNum+" created");
         bm.InsertBook_At(room.getRoom_num(),resNum);
+        JOptionPane.showMessageDialog(dialog, "book_at created");
 
         //parking
         if(parkingCheckBox.isSelected()){
@@ -176,10 +180,11 @@ public class ReservationForm extends JDialog {
             //add it to parking
             stallm.addProvidesInfo(resNum,parkm.InsertParking(plate));
         }
-
-        if(mealCheckBox.isSelected()){
-            selectedMeal;
+        JOptionPane.showMessageDialog(dialog, "parking created");
+        if(mealCheckBox.isSelected()||!selectedMeal.isEmpty()){
+            mm.InsertMeal(resNum,selectedMeal);
         }
+        JOptionPane.showMessageDialog(dialog, "meal created");
         dialog.dispose();
     }
 
