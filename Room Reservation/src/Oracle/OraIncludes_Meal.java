@@ -97,8 +97,8 @@ public class OraIncludes_Meal {
     }
 
 
-    public List<Includes_MealInfo> getMealWithReserveNum(int reserve_num){
-        List<Includes_MealInfo> im = new ArrayList<>();
+    public List<String> getMealWithReserveNum(int reserve_num){
+        List<String> im = new ArrayList<>();
         try {
 
             Statement st = con.createStatement();
@@ -106,9 +106,9 @@ public class OraIncludes_Meal {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                double price = rs.getDouble("price");
-                String name = rs.getString("mname");
-                im.add(new Includes_MealInfo(reserve_num,price,name));
+
+                im.add(rs.getString("mname"));
+
 
             }
 
