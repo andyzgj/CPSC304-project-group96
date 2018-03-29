@@ -36,16 +36,20 @@ public class OraIncludes_Meal {
         return meal;
     }
 
-    public void InsertMeal(int reserve_num, String name) {
-        PreparedStatement ps;
+    public void InsertMeal(int reserve_num, List<String> name) {
 
+        int i = 0;
         try {
-            ps = con.prepareStatement("INSERT INTO Make_Reservation VALUES (?,?)");
-            ps.setInt(1, reserve_num);
-            ps.setString(2, name);
-            ps.executeUpdate();
-            con.commit();
-            ps.close();
+            while (i<name.size()) {
+                PreparedStatement ps;
+                ps = con.prepareStatement("INSERT INTO Make_Reservation VALUES (?,?)");
+                ps.setInt(1, reserve_num);
+                ps.setString(2, name.get(i));
+                ps.executeUpdate();
+                con.commit();
+                ps.close();
+                i++;
+            }
         }
         catch (SQLException ex1)
         {
