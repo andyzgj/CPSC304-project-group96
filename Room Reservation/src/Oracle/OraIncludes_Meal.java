@@ -75,8 +75,8 @@ public class OraIncludes_Meal {
         try {
 
             Statement st = con.createStatement();
-            String query = "select i.mname from Includes_Meal i where NOT EXISTS " +
-                           "(select m.reserve_num from Make_Reservation m MINUS select im.reserve_num from Includes_Meal im where im.mname = i.mname)";
+            String query = "select distinct i.mname from Includes_Meal i where NOT EXISTS " +
+                           "(select m.reserve_num from Approve m minus select im.reserve_num from Includes_Meal im where im.mname = i.mname)";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
