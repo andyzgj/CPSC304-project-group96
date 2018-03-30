@@ -94,29 +94,7 @@ public class OraParking_Space {
         return null;
     }
 
-    public void deleteParkingSpace(int stall_num) {
-        try {
-            PreparedStatement ps = con.prepareStatement("DELETE from Parking_Space WHERE stall_num = " + stall_num);
-            ps.executeUpdate();
-            con.commit();
-            ps.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
-    public boolean updateParkingInfo(int stall_num, String plate_num) {
-        manager.getConnection();
-        int rowCount = manager.execute("UPDATE Parking_Space SET plate_num = '"
-                + plate_num
-                + "' WHERE stall_num = "
-                + stall_num);
-        manager.disconnect();
-        if (rowCount == 1)
-            return true;
-        else
-            return false;
-    }
 
     public Parking_SpraceInfo getParkingInfoWithReserveNum(int reserve_num){
         Parking_SpraceInfo ps = null;

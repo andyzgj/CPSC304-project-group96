@@ -198,32 +198,5 @@ public class OraGuest {
         }
     }
 
-        //delete credit card number(doesn't cause cascade)
-        //reflect delete operation
-        public void deleteGuest(long ccn) {
-        try {
-            PreparedStatement ps = c.prepareStatement("DELETE from Guest WHERE credit_card_num = " + ccn);
-            ps.executeUpdate();
-            c.commit();
-            ps.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-        // guest can update their phone numbers if the numbers have 10 digits, otherwise can't update
-        // reflect update operation
-        public boolean updatePhone(long phone_num,int id){
-            manager.getConnection();
-            int rowCount = manager.execute("UPDATE Guest SET phone_num = "
-                    + phone_num
-                    +"WHERE ID = "
-                    + id);
-            manager.disconnect();
-            if (rowCount >= 1)
-                return true;
-            else
-                return false;
-        }
 
 }

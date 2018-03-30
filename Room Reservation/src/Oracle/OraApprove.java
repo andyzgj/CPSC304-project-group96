@@ -68,20 +68,8 @@ public class OraApprove {
 
     }
 
-    //update VIP points if VIPs' reservation is approved
-    public void VIPPoints(int reserve_num){
 
-        try{
-            Statement st = con.createStatement();
-            String query = "create view VIPoints as select VIP.points as point,Room.price as prices, VIP.ID as id from VIP join Make_Reservation on VIP.ID = Make_Reservation.ID join Booked_At on Make_Reservation.reserve_num = Booked_At.reserve_num join Room on Booked_At.room_num = Room.room_num where Make_Reservation.reserve_num = " + reserve_num;
-
-            st.executeQuery(query);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
+    // return true if a reservation is approved
     public boolean approveOrNot(int reserve_num){
 
         try {
@@ -108,7 +96,6 @@ public class OraApprove {
         try{
             OraVIP VIP = new OraVIP();
             Statement st = con.createStatement();
-            //VIPPoints(reserve_num);
             String query = "SELECT VIP.points AS point,Room.price AS prices, VIP.ID AS id FROM VIP JOIN Make_Reservation ON VIP.ID = Make_Reservation.ID JOIN Booked_At ON Make_Reservation.reserve_num = Booked_At.reserve_num JOIN Room ON Booked_At.room_num = Room.room_num WHERE Make_Reservation.reserve_num = " + reserve_num;
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
@@ -121,23 +108,12 @@ public class OraApprove {
                 points = points + price * 0.1;
                 VIP.updateVIP(id, points);
             }
-         //   dropReservationWithEmployee();
         }
         catch (SQLException e){
             e.printStackTrace();
         }
     }
 
-    private void dropReservationWithEmployee() {
-        try {
-            Statement st = con.createStatement();
-            st.executeQuery("drop view VIPoints");
-            con.commit();
-            st.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     public List<Integer> getApproveReserveNum(){
         List<Integer> unApprove = new ArrayList<>();

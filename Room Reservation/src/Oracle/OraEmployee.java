@@ -61,25 +61,6 @@ public class OraEmployee {
         return ei;
     }
 
-    //insert a new employee information
-    public void insertEmployee(String ename, long phone_num) {
-        rand = new Random();
-        int employee_ID = rand.nextInt(9999); //randomly generate a number between 0 and 9999
-        if (!isValidEID(employee_ID)) {
-            try {
-                PreparedStatement ps = con.prepareStatement("insert into Employee values (?,?,?)");
-                ps.setInt(1,employee_ID);
-                ps.setString(2, ename);
-                ps.setLong(3, phone_num);
-                ps.executeUpdate();
-                con.commit();
-                ps.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        } else insertEmployee(ename,phone_num);
-    }
-
 
     public boolean isValidEID(int employee_ID) {
         try {
@@ -95,46 +76,7 @@ public class OraEmployee {
         return true;
     }
 
-    public String getEname(int employee_ID) {
-            String ename = null;
-        try {
-            Statement st = con.createStatement();
-            String query = "select ename from Employee where employee_ID = " + employee_ID;
-            ResultSet rs = st.executeQuery(query);
-            if (rs.next())
-                ename = rs.getString("ename");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return ename;
-    }
 
-    public boolean updateEmployeeInfo(String ename , int employee_id, long phone_num, long credit_card_num) {
-        manager.getConnection();
-        int rowCount = manager.execute("UPDATE Employee SET ename = '"
-                + ename
-                + ", phone_num = "
-                + phone_num
-                + " WHERE employee_ID = "
-                + employee_id);
-        manager.disconnect();
-        if (rowCount == 1)
-            return true;
-        else
-            return false;
-    }
-
-
-    public void deleteEmployeeInfo(int employee_ID) {
-        try {
-            PreparedStatement ps = con.prepareStatement("delete from Employee where employee_ID = " + employee_ID);
-            ps.executeUpdate();
-            con.commit();
-            ps.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
 
 

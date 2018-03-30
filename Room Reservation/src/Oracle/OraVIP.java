@@ -47,10 +47,6 @@ public class OraVIP {
             ResultSet rs = st.executeQuery("select * from VIP where id = " + id);
 
             if(rs.next()) {
-               // String gname = rs.getString("gname");
-              //  Date birthday = rs.getDate("birthday");
-               // int phone = rs.getInt("phone_num");
-               // int credit = rs.getInt("credit_card_num");
                 double points = rs.getDouble("points");
 
                 return new VIPInfo(id, points);
@@ -101,16 +97,6 @@ public class OraVIP {
         return 0;
     }
 
-    public void deleteVIP(int id) {
-        try {
-            PreparedStatement ps = con.prepareStatement("DELETE from VIP WHERE ID = " + id);
-            ps.executeUpdate();
-            con.commit();
-            ps.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void updatePoints(int id, double consumePoints){
        updateVIP(id,getVipPoints(id) - consumePoints*10);
