@@ -52,13 +52,8 @@ public class OraMakeReservation {
             ps.setInt(2, number_of_guest);
             ps.setDate(3, start_date);
             ps.setDate(4, end_date);
+            ps.setDouble(5, discount);
 
-
-            if (discount == 0) {
-                ps.setNull(5, Types.DOUBLE);
-            } else {
-                ps.setDouble(5, discount);
-            }
 
             ps.setInt(6, ID);
 
@@ -348,6 +343,7 @@ public class OraMakeReservation {
         try {
             Statement st = con.createStatement();
             st.executeQuery("drop view avg_discount");
+            con.commit();
         } catch (SQLException e) {
             e.printStackTrace();
         }
