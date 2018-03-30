@@ -280,6 +280,7 @@ public class ManagementHUB {
                 int selectedRes = (Integer)ResList.getSelectedValue();
                 am.InsertApprove(selectedRes,employee.getID());
                 JOptionPane.showMessageDialog(frame, "Employee"+employee.getName()+"("+employee.getID()+") Approved Reservation "+ selectedRes);
+                am.addPoints(selectedRes);
                 refreshResList();
 
             }
