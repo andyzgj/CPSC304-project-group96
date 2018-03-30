@@ -4,7 +4,6 @@ import Oracle.*;
 import Object.*;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
@@ -24,8 +23,9 @@ public class ManagementHUB {
     OraApprove am = new OraApprove();
     private List<Integer> gList= gm.getAllGuestID();
     private List<Integer> rList= am.getUnApproveReserveNUm();
+    private List<Integer> pList= new ArrayList<Integer>();
     private JList guestList;
-    private JList ResList ;
+    private JList ResList;
     private JPanel tab1;
     private JPanel tab2;
     private JPanel resListPanel;
@@ -78,8 +78,8 @@ public class ManagementHUB {
     private JButton showAllGuestButton;
     private JButton showMostDiscountUserButton;
     private JButton showLeastDiscountUserButton;
-    private JList list1;
-    private JTable table1;
+    private JList pointList;
+    private JLabel ADULabel;
     private static JFrame frame = new JFrame("ManagementHUB");
     private List<MakeReservationInfo> ana = new ArrayList<MakeReservationInfo>();
     public static void run(Integer id) {
@@ -186,12 +186,19 @@ public class ManagementHUB {
     public ManagementHUB(int a) {
 
         employee = em.getEmployeeById(a);
+        nameTxt.setText("Welcom! "+employee.getName());
         guestList.setListData(gList.toArray());
         ResList.setListData(rList.toArray());
         allUnapprovedRadioButton.setSelected(true);
         allGuestRadioButton.setSelected(true);
         ana = resm.AverageDiscountForEachGuest();
-        //TODO
+
+        ana = resm.AverageDiscountForEachGuest();
+        pList.clear();
+        for(int i = 0;i<ana.size();i++){
+            pList.add(ana.get(i).getID());
+        }
+        pointList.setListData(pList.toArray());
         guestSearchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -397,30 +404,47 @@ public class ManagementHUB {
         showAllGuestButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-
+                ana = resm.AverageDiscountForEachGuest();
+                pList.clear();
+                for(int i = 0;i<ana.size();i++){
+                    pList.add(ana.get(i).getID());
+                }
+                pointList.setListData(pList.toArray());
             }
         });
         showMostDiscountUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ana = resm.getIDOfMaxOfAverageDiscount();
-
+                pList.clear();
+                for(int i = 0;i<ana.size();i++){
+                    pList.add(ana.get(i).getID());
+                }
+                pointList.setListData(pList.toArray());
             }
         });
         showLeastDiscountUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ana = resm.getIDOfMinOfAverageDiscount();
-
+                pList.clear();
+                for(int i = 0;i<ana.size();i++){
+                    pList.add(ana.get(i).getID());
+                }
+                pointList.setListData(pList.toArray());
 
             }
         });
 
-        list1.addListSelectionListener(new ListSelectionListener() {
+        pointList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-
+                int pointID = (Integer) pointList.getSelectedValue();
+                for(int i = 0;i<ana.size();i++){
+                    if(ana.get(i).getID() == pointID){
+                        ADULabel.setText(""+ana.get(i).getDiscount());
+                    }
+                }
             }
         });
     }
