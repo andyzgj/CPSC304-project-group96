@@ -147,15 +147,13 @@ public class ManagementHUB {
         gList.clear();
         if(allGuestRadioButton.isSelected()){
             gList.addAll(gm.getAllGuestID());
-            guestSearchBar.setEnabled(false);
         }else if(gGuestIDRadioButton.isSelected()){
             String s = guestSearchBar.getText();
-            guestSearchBar.setEnabled(true);
             try{
                 if(s.isEmpty()){
                     gList.addAll(gm.getAllGuestID());
                 }else{
-                    if(gm.getGuestByPhoneNumber(Long.parseLong(s)) != null)
+                    if(gm.getGuestById(Integer.parseInt(s)) != null)
                         gList.add(gm.getGuestById(Integer.parseInt(s)).getID());
                 }
 
@@ -340,7 +338,6 @@ public class ManagementHUB {
         resSearchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                resSearchBar.setText("");
                 refreshResList();
             }
         });
@@ -381,6 +378,7 @@ public class ManagementHUB {
             @Override
             public void actionPerformed(ActionEvent e) {
                 guestSearchBar.setText("");
+                guestSearchBar.setEnabled(false);
                 refreshGuestList();
 
             }
@@ -389,6 +387,7 @@ public class ManagementHUB {
             @Override
             public void actionPerformed(ActionEvent e) {
                 guestSearchBar.setText("");
+                guestSearchBar.setEnabled(true);
                 refreshGuestList();
 
             }
@@ -397,6 +396,7 @@ public class ManagementHUB {
             @Override
             public void actionPerformed(ActionEvent e) {
                 guestSearchBar.setText("");
+                guestSearchBar.setEnabled(true);
                 refreshGuestList();
             }
         });
