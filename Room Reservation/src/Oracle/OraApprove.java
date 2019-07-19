@@ -1,5 +1,5 @@
 package Oracle;
-
+# cool cat four bro, now on their own direction
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
